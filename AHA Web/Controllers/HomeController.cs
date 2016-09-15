@@ -26,5 +26,35 @@ namespace AHA_Web.Controllers
 
             return View();
         }
+
+        public ActionResult Programs()
+        {
+
+            return View();
+        }
+
+        public ActionResult Students()
+        {
+
+            return View();
+        }
+
+        public ActionResult GetInvolved()
+        {
+
+            return View();
+        }
+
+        public ActionResult Sponsors()
+        {
+
+            return View();
+        }
+
+        public ActionResult StudentOfMonth()
+        {
+
+            return View();
+        }
     }
 }
