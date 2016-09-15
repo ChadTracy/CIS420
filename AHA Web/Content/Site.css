@@ -1,7 +1,58 @@
 ﻿body {
     padding-top: 50px;
-    padding-bottom: 20px;
+    padding-bottom: -3px;
+    background-color: #E0DECF;
+    font-family: "Lato Medium";
+    color: #24161B; 
 }
+/*Declare font faces*/
+@font-face {
+    font-family: "Lato Medium";
+    src: url("../fonts//Lato//Lato-Medium.ttf");
+}
+
+/*Tweak the jumbotron to use the light stone color for example purposes*/
+.jumbotron {
+    background-color: #FAFAF0;
+    margin-top: 10px;
+}
+
+
+/*Implement the footer with fixed columns*/
+footer {
+    width:100%;
+    font-size: 10pt;
+    line-height: 95%;
+}
+
+.footercolumn1 {
+    width: 33%;
+    float: left;
+    text-align: center;
+    position: relative;
+}
+.footercolumn2 {
+    width: 33%;
+    float: left;
+    text-align: center;
+    position: relative;
+}
+.footercolumn3 {
+    width: 33%;
+    float: left;
+    text-align: center;
+    position: relative;
+}
+
+/*Change Thematic break line color*/
+hr {
+    background-color: #89785E;
+    color: #89785E;
+    border: none;
+    height: 5px;
+    margin-bottom: 5px;
+}
+
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
@@ -22,3 +73,38 @@ select,
 textarea {
     max-width: 280px;
 }
+
+/*Override default boostrap navbar*/
+
+.navbar .nav > li > a {
+    color: #E0DECF;
+}
+.navbar-inverse {
+    min-height:50px; /*double the height of the navbar*/
+    background-color: #24161B;
+    color: #ffffff;
+}
+
+.navbar-brand {
+    background: url('../Images/New Adelantelogo2015 smaller copy.png') no-repeat;
+    background-size: 150px, 50px;
+    background-position: center;
+    width: 170px;
+    font-size: 0px;
+    
+}
+
+/* Will be used later to align navbar to center, currently results in navbar-right wrapping under
+.navbar-nav {
+    float: none;
+    margin: 0 auto;
+    display: table;
+    table-layout: fixed;
+
+}
+
+.navbar-right {
+    float: right !important;
+
+}
+*/

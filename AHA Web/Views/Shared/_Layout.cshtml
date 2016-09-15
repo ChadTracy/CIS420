@@ -21,9 +21,11 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Students & Parents", "Contact", "Home")</li>  <!--Needs Model Made-->
+                    <li>@Html.ActionLink("Get Involved", "Contact", "Home")</li> <!--Needs Model Made-->
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Donate", "Contact", "Home")</li>  <!--Needs Model Made-->
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -31,12 +33,31 @@
     </div>
     <div class="container body-content">
         @RenderBody()
-        <hr />
+        <!--<hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer> -->
+        <hr />
+        <footer class="footer">
+            <div class="footercolumn1">
+                <p><b>Adelante’s Privacy Policy</b></p>
+                <p>Adelante respects your privacy. We collect no information about you unless you
+                 choose to provide that information to us. We do not give, share, sell or transfer any personal
+                 information about you to any third parties. To prevent unauthorized access, maintain accuracy,
+                 and ensure the correct use of information, we have put in place appropriate physical, electronic,
+                 and administrative procedures to safeguard and secure any information that we collect.</p>
+            </div>
+            <div class="footercolumn2">
+                <p><b>501 (c) 3 Statement</b></p>
+                <p>Adelante Hispanic Achievers, Inc. is a 501 (c) 3 non-profit organization
+                    based at Buechel United Methodist Church, 2817 Hikes Lane,
+                    Louisville, Kentucky, 40218</p>
+            </div>
+            <div class="footercolumn1">
+                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+            </div>
         </footer>
-    </div>
-
+    </div> 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
