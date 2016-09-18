@@ -17,52 +17,62 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Adelante", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav header-link">
                     @*ActionLink(linkText, actionName, controllerName)*@
+                    
+                    <li>@Html.ActionLink("Adelante", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
                     <li>@Html.ActionLink("About Us", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact Us", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Programs", "Programs", "Home")</li>
-                    <li>@Html.ActionLink("Students & Parents", "Students", "Home")</li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Students <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Students & Parents", "Students", "Home")</li>
+                            <li>@Html.ActionLink("Student of the Month", "StudentOfMonth", "Home")</li>
+                        </ul>
+                    </li>
                     <li>@Html.ActionLink("Get Involved", "GetInvolved", "Home")</li>
                     <li>@Html.ActionLink("Sponsors & Partners", "Sponsors", "Home")</li>
-                    <li>@Html.ActionLink("Student of the Month", "StudentOfMonth", "Home")</li>
+                    
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
-    <div class="container body-content container-fluid">
+    <div class="container container-fluid">
         @RenderBody()
     </div>
-    <hr />
+    
     <footer>
-        <div class="row">
-            <div class="col-md-4">
-                <p align="center"><b>Adelante’s Privacy Policy</b></p>
-                <p>
-                    Adelante respects your privacy. We collect no information about you unless you
-                    choose to provide that information to us. We do not give, share, sell or transfer any personal
-                    information about you to any third parties. To prevent unauthorized access, maintain accuracy,
-                    and ensure the correct use of information, we have put in place appropriate physical, electronic,
-                    and administrative procedures to safeguard and secure any information that we collect.
-                </p>
+        <nav class="navbar navbar-default navbar-fixed-bottom">
+            <div class="row">
+                <div class="col-md-4">
+                    <p align="center"><b>Adelante’s Privacy Policy</b></p>
+                    <p>
+                        Adelante respects your privacy. We collect no information about you unless you
+                        choose to provide that information to us. We do not give, share, sell or transfer any personal
+                        information about you to any third parties. To prevent unauthorized access, maintain accuracy,
+                        and ensure the correct use of information, we have put in place appropriate physical, electronic,
+                        and administrative procedures to safeguard and secure any information that we collect.
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <p align="center"><b>501 (c) 3 Statement</b></p>
+                    <p>
+                        Adelante Hispanic Achievers, Inc. is a 501 (c) 3 non-profit organization
+                        based at Buechel United Methodist Church, 2817 Hikes Lane,
+                        Louisville, Kentucky, 40218
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <p align="center"><b>Social Media Links</b></p>
+                    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+                </div>
             </div>
-            <div class="col-md-4">
-                <p align="center"><b>501 (c) 3 Statement</b></p>
-                <p>
-                    Adelante Hispanic Achievers, Inc. is a 501 (c) 3 non-profit organization
-                    based at Buechel United Methodist Church, 2817 Hikes Lane,
-                    Louisville, Kentucky, 40218
-                </p>
-            </div>
-            <div class="col-md-4">
-                <p align="center"><b>Social Media Links</b></p>
-                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-            </div>
-        </div>
+            
+        </nav>
     </footer>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

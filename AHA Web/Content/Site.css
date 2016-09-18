@@ -91,6 +91,14 @@ textarea {
     
 }
 
+.header-link li {
+    font-size: 17px;
+}
+
+.navbar-header {
+    width: 100%;
+}
+
 /* Will be used later to align navbar to center, currently results in navbar-right wrapping under
 .navbar-nav {
     float: none;
