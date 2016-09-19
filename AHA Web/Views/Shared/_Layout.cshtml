@@ -3,13 +3,25 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - Adelante Hispanic Achievers</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    @*Script for Facebook follow*@
+    <div id="fb-root"></div>
+    <script>
+        (function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.7";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    <div class="navbar navbar-inverse navbar-static-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -17,28 +29,100 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                <ul class="nav navbar-nav header-link">
+                    @*ActionLink(linkText, actionName, controllerName)*@
+                    
+                    <li>@Html.ActionLink("Adelante", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
+                    <li>@Html.ActionLink("About Us", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact Us", "Contact", "Home")</li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Students <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Student of the Month", "StudentOfMonth", "Home")</li>
+                            <li>@Html.ActionLink("Students & Parents", "Students", "Home")</li>
+                            <li>@Html.ActionLink("Programs", "Programs", "Home")</li>
+                        </ul>
+                    </li>
+                    <li>@Html.ActionLink("Get Involved", "GetInvolved", "Home")</li>
+                    <li>@Html.ActionLink("Sponsors & Partners", "Sponsors", "Home")</li>
+                    
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+    <div class="row">
+        <div class="col-md-0 col-lg-1"></div>
+        <div class="col-md-12 col-lg-10">
+            <div class="container body-content container-fluid col-md-8">
+                @RenderBody()
+            </div>
+            <div class="container col-md-4">
+                <div class="panel">
+                    @RenderSection("partyBox1", false)
+                </div>
+                <br />
+                <div class="panel">
+                    @RenderSection("partyBox2", false)
+                </div>
+            </div>
+        </div>
+        <div class="col-md-0 col-lg-1"></div>
     </div>
-
+    <hr />
+    <footer>
+        <nav class="navbar navbar-default navbar-collapse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#disclaimers">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="row collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#privacyPolicy" aria-expanded="false" aria-controls="privacyPolicy">
+                                Privacy Policy
+                            </button>
+                            <div class="col-md-4 collapse" id="privacyPolicy">
+                                <p align="center"><b>Adelante’s Privacy Policy</b></p>
+                                <p>
+                                    Adelante respects your privacy. We collect no information about you unless you
+                                    choose to provide that information to us. We do not give, share, sell or transfer any personal
+                                    information about you to any third parties. To prevent unauthorized access, maintain accuracy,
+                                    and ensure the correct use of information, we have put in place appropriate physical, electronic,
+                                    and administrative procedures to safeguard and secure any information that we collect.
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#501c3" aria-expanded="false" aria-controls="501c3">
+                                501 (c) 3 Statement
+                            </button>
+                            <div class="col-md-4 collapse" id="501c3">
+                                <p align="center"><b>501 (c) 3 Statement</b></p>
+                                <p>
+                                    Adelante Hispanic Achievers, Inc. is a 501 (c) 3 non-profit organization
+                                    based at Buechel United Methodist Church, 2817 Hikes Lane,
+                                    Louisville, Kentucky, 40218
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="fb-follow" data-href="https://www.facebook.com/Adelante-Hispanic-Achievers-164080746962301/" data-layout="button" data-size="large" data-show-faces="true"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </footer>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Scripts/footer.js")
     @RenderSection("scripts", required: false)
 </body>
 </html>
