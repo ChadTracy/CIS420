@@ -60,7 +60,13 @@
                 @RenderBody()
             </div>
             <div class="container col-md-4">
-
+                <div class="panel">
+                    @RenderSection("partyBox1", false)
+                </div>
+                <br />
+                <div class="panel">
+                    @RenderSection("partyBox2", false)
+                </div>
             </div>
         </div>
         <div class="col-md-0 col-lg-1"></div>
