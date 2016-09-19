@@ -1,5 +1,5 @@
 ﻿body {
-    padding-top: 50px;
+    padding-top: 0px;
     padding-bottom: -3px;
     background-color: #E0DECF;
     font-family: "Lato Medium";
@@ -27,7 +27,7 @@
 /*Implement the footer to span the entire container it's housed in, and include background color*/
 footer {
     width:100%;
-    font-size: 10pt;
+    font-size: 8pt;
     line-height: 95%;
     background-color: #FAFAF0;
     overflow:hidden;
