@@ -11,6 +11,33 @@
     src: url("../fonts//Lato//Lato-Medium.ttf");
 }
 
+/* Side Panel CSS*/
+.panel{
+    background-color: #FAFAF0;
+    margin-top: 6px;
+    margin-bottom:6px;
+    padding: 5px;
+    border-radius: 6px;
+    min-width: 340px; /* Widths set with px so the FB pane fits*/
+    max-width: 520px;
+}
+
+.panel p, h1, h2, h3, h4, h5, h6{
+    text-align:center;
+}
+
+
+/*Align fb Page, needs centering/resizing*/
+.fb-page{
+    margin-left: 2%;
+    min-width: 180px;
+    max-width:500px;
+    margin-top: 2%;
+    border-radius:6px;
+    h
+}
+
+
 /*Tweak the jumbotron to use the light stone color for example purposes*/
 .jumbotron {
     background-color: #FAFAF0;
@@ -20,7 +47,7 @@
 
 /*Container replacement class to allow better use of whitespace.*/
 .container-fluid{
-    max-width: 90%;
+    max-width: 85%;
     padding-left: 10%;
 }
 
@@ -38,6 +65,11 @@ footer {
 .col-md-4{
     padding-top:5px;
 }
+
+.col-md-4 collapse{
+
+}
+
 .row{
     padding: 5px;
 }
