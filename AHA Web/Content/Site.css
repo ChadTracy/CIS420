@@ -1,5 +1,5 @@
 ﻿body {
-    padding-top: 50px;
+    padding-top: 0px;
     padding-bottom: -3px;
     background-color: #E0DECF;
     font-family: "Lato Medium";
@@ -11,48 +11,76 @@
     src: url("../fonts//Lato//Lato-Medium.ttf");
 }
 
+/* Side Panel CSS*/
+.panel{
+    background-color: #FAFAF0;
+    margin-top: 6px;
+    margin-bottom:6px;
+    padding: 5px;
+    border-radius: 6px;
+    min-width: 340px; /* Widths set with px so the FB pane fits*/
+    max-width: 520px;
+}
+
+.panel p, h1, h2, h3, h4, h5, h6{
+    text-align:center;
+}
+
+
+/*Align fb Page, needs centering/resizing*/
+.fb-page{
+    margin-left: 2%;
+    min-width: 180px;
+    max-width:500px;
+    margin-top: 2%;
+    border-radius:6px;
+    h
+}
+
+
 /*Tweak the jumbotron to use the light stone color for example purposes*/
 .jumbotron {
     background-color: #FAFAF0;
     margin-top: 10px;
+    border-radius: 6px;
 }
 
+/*Container replacement class to allow better use of whitespace.*/
+.container-fluid{
+    max-width: 85%;
+    padding-left: 10%;
+}
 
-/*Implement the footer with fixed columns*/
+/*Implement the footer to span the entire container it's housed in, and include background color*/
 footer {
     width:100%;
-    font-size: 10pt;
+    font-size: 8pt;
     line-height: 95%;
+    background-color: #FAFAF0;
+    overflow:hidden;
 }
 
-.footercolumn1 {
-    width: 33%;
-    float: left;
-    text-align: center;
-    position: relative;
-}
-.footercolumn2 {
-    width: 33%;
-    float: left;
-    text-align: center;
-    position: relative;
-}
-.footercolumn3 {
-    width: 33%;
-    float: left;
-    text-align: center;
-    position: relative;
+/*Alternate method of doing footer comments that works better with mobile devices
+    use either footercolumn classes above, or col-md-4*/
+.col-md-4{
+    padding-top:5px;
 }
 
+.col-md-4 collapse{
+
+}
+
+.row{
+    padding: 5px;
+}
 /*Change Thematic break line color*/
 hr {
     background-color: #89785E;
     color: #89785E;
     border: none;
     height: 5px;
-    margin-bottom: 5px;
+    margin-bottom:0px;
 }
-
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
@@ -74,13 +102,13 @@ textarea {
     max-width: 280px;
 }
 
-/*Override default boostrap navbar*/
+/*Override default boostrap navbar behavior and formatting*/
 
-.navbar .nav > li > a {
+.navbar .nav > li > a { /*Change navbar text color*/
     color: #E0DECF;
 }
 .navbar-inverse {
-    min-height:50px; /*double the height of the navbar*/
+    min-height:50px; 
     background-color: #24161B;
     color: #ffffff;
 }
@@ -89,9 +117,18 @@ textarea {
     background: url('../Images/New Adelantelogo2015 smaller copy.png') no-repeat;
     background-size: 150px, 50px;
     background-position: center;
+    vertical-align: middle;
     width: 170px;
     font-size: 0px;
     
+}
+
+.header-link li {
+    font-size: 17px;
+}
+
+.navbar-header {
+    width: 100%;
 }
 
 /* Will be used later to align navbar to center, currently results in navbar-right wrapping under
