@@ -18,6 +18,9 @@
     margin-bottom:6px;
     padding: 5px;
     border-radius: 6px;
+}
+
+.side-panel{
     min-width: 340px; /* Widths set with px so the FB pane fits*/
     max-width: 520px;
 }

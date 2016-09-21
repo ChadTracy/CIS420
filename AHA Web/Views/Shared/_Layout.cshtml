@@ -52,14 +52,14 @@
 
                 <div class="container col-md-4">
                     @if (IsSectionDefined("partyBox1")) { 
-                        <div class="panel">
+                        <div class="panel side-panel">
                             @RenderSection("partyBox1", false)
                         </div>
                         <br />
                     }
                     @if (IsSectionDefined("partyBox2"))
                     {
-                        <div class="panel">
+                        <div class="panel side-panel">
                             @RenderSection("partyBox2", false)
                         </div>
                     }
