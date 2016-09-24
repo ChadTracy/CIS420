@@ -241,8 +241,17 @@
     <Content Include="Images\Copy of IMG_1923.jpg" />
     <Content Include="Images\Copy of IMG_20150228_145936318_HDR.jpg" />
     <Content Include="Images\Copy of IMG_2465.JPG" />
+    <Content Include="Images\GI_1.jpg" />
+    <Content Include="Images\GI_2.jpg" />
+    <Content Include="Images\GI_3.jpg" />
     <Content Include="Images\IMG_2477.jpg" />
     <Content Include="Images\New Adelantelogo2015 smaller copy.png" />
+    <Content Include="Images\SP_1.jpg" />
+    <Content Include="Images\SP_2.jpg" />
+    <Content Include="Images\SP_3.jpg" />
+    <Content Include="Images\SP_4.jpg" />
+    <Content Include="Images\SP_5.jpg" />
+    <Content Include="Images\SP_6.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\Lato\Lato-Black.eot" />
@@ -318,6 +327,7 @@
     <Content Include="fonts\Lato\Lato-ThinItalic.woff" />
     <Content Include="fonts\Lato\Lato-ThinItalic.woff2" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\facebook.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -368,6 +378,7 @@
     <Content Include="Views\Home\GetInvolved.cshtml" />
     <Content Include="Views\Home\Sponsors.cshtml" />
     <Content Include="Views\Home\StudentOfMonth.cshtml" />
+    <Content Include="Views\Home\Calendar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

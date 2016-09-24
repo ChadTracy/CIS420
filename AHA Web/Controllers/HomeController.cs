@@ -56,5 +56,9 @@ namespace AHA_Web.Controllers
 
             return View();
         }
+        public ActionResult Calendar()
+        {
+            return View();
+        }
     }
 }
