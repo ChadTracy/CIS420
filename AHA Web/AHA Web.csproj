@@ -219,8 +219,17 @@
     <Content Include="Images\Copy of IMG_1923.jpg" />
     <Content Include="Images\Copy of IMG_20150228_145936318_HDR.jpg" />
     <Content Include="Images\Copy of IMG_2465.JPG" />
+    <Content Include="Images\GI_1.jpg" />
+    <Content Include="Images\GI_2.jpg" />
+    <Content Include="Images\GI_3.jpg" />
     <Content Include="Images\IMG_2477.jpg" />
     <Content Include="Images\New Adelantelogo2015 smaller copy.png" />
+    <Content Include="Images\SP_1.jpg" />
+    <Content Include="Images\SP_2.jpg" />
+    <Content Include="Images\SP_3.jpg" />
+    <Content Include="Images\SP_4.jpg" />
+    <Content Include="Images\SP_5.jpg" />
+    <Content Include="Images\SP_6.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\Lato\Lato-Black.eot" />
