@@ -207,7 +207,7 @@
     <Content Include="Images\Copy of CIS Kayla Pine Mtn.jpg" />
     <Content Include="Images\Copy of CIS Pine Mtn.jpg" />
     <Content Include="Images\Copy of CIS UPS.jpg" />
-    <Content Include="Images\Copy of IMG_0897.JPG" />
+    <Content Include="Images\Programs\Copy of IMG_0897.JPG" />
     <Content Include="Images\Copy of IMG_1082.jpg" />
     <Content Include="Images\Copy of IMG_1453.jpg" />
     <Content Include="Images\Copy of IMG_1639.jpg" />
@@ -221,6 +221,9 @@
     <Content Include="Images\Copy of IMG_2465.JPG" />
     <Content Include="Images\IMG_2477.jpg" />
     <Content Include="Images\New Adelantelogo2015 smaller copy.png" />
+    <Content Include="Images\Programs\Gene Weiss.jpg" />
+    <Content Include="Images\Programs\IMG_0883.jpg" />
+    <Content Include="Images\Programs\Money Matters Luis.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\Lato\Lato-Black.eot" />
