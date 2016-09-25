@@ -327,6 +327,7 @@
     <Content Include="fonts\Lato-ThinItalic.ttf" />
     <Content Include="fonts\Lato-ThinItalic.woff" />
     <Content Include="fonts\Lato-ThinItalic.woff2" />
+    <None Include="Properties\PublishProfiles\cispack.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\facebook.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
