@@ -19,6 +19,15 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
+    <div class="carousel-control"></div>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $('.carousel').carousel({
+          interval: 400
+        })
+      });
+    </script>
+
     <div class="navbar navbar-inverse navbar-static-top">
         <div class="container">
             <div class="navbar-header">
@@ -150,5 +159,13 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+    <script type="text/javascript">
+                    $(document).ready(function() {
+                    $('.carousel').carousel({
+                        interval: 2000
+                    })
+                    });
+    </script>
 </body>
 </html>
