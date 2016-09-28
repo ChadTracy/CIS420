@@ -2,48 +2,82 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Contact Us";
 }
+<style type="text/css">
+    #map {
+        height: 300px;
+        width: 100%;
+    }
+</style>  <!--CSS for Maps API-->
 
 <div class="jumbotron">
     <h1 style="text-align:left">@ViewBag.Title</h1>
     <p>“In Adelante everyone has a dream, everyone speaks the same language, and everyone is FAMILY” - Sabrina Lloret</p>
 </div>
 @section partyBox1 {
-    <p>
-        <img class="img-responsive img-rounded" src="~/Images/4.jpg" />
-    </p>
+    <div id="map"></div>
 }
+
 @section partyBox2 {
-    <center>
-        <div class="fb-page" data-href="https://www.facebook.com/Adelante-Hispanic-Achievers-164080746962301/" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/Adelante-Hispanic-Achievers-164080746962301/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/Adelante-Hispanic-Achievers-164080746962301/">Adelante Hispanic Achievers</a></blockquote></div>
-    </center>
+    <div class="fb-page" data-href="https://www.facebook.com/Adelante-Hispanic-Achievers-164080746962301/" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/Adelante-Hispanic-Achievers-164080746962301/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/Adelante-Hispanic-Achievers-164080746962301/">Adelante Hispanic Achievers</a></blockquote></div>
 }
 <div class="row">
-    <center><h2>We'd love to hear from you!</h2></center> <br />
-    <div class="col-md-6">
-        <p>Mara Maldonado, Director<br />
-           502)-494-0353   <a href="mailto:maramaldonado@att.net">Email Mara</a></p>
+    <div class="col-md-4">
+        <h2>We'd love to hear from you!</h2>
+        <p>
+            Mara Maldonado, Director<br />
+            502)-494-0353   <a href="mailto:maramaldonado@att.net">Email Mara</a>
+        </p>
 
-           <p>Dustin Bishop<br />
+        <p>
+            Dustin Bishop<br />
             Volunteers/ Program Operations and Development<br />
             (231) 649-1652 <a href="mailto:dustinjbishop@gmail.com">Email Dustin</a>
         </p>
-        <p>Carol Fields,  College Readiness Coach<br />
-        (502)-649-6781 <a href="mailto:cefields90@gmail.com">Email Carol</a></p>
+    </div>
+    <div class="col-md-4">
+        <p>
+            Carol Fields,  College Readiness Coach<br />
+            (502)-649-6781 <a href="mailto:cefields90@gmail.com">Email Carol</a>
+        </p>
 
-        <p>Morgan Gerke,  Americorps VISTA <br />
-            <a href="mailto:gerkemk@gmail.com">Email Morgan</a></p>
+        <p>
+            Morgan Gerke,  Americorps VISTA <br />
+            <a href="mailto:gerkemk@gmail.com">Email Morgan</a>
+        </p>
 
         <p>Alison Greer and Kelcey Robinson , UofL LALS Interns</p>
-        <p>
-            Adelante Hispanic Achievers <br />
-            2817 Hikes Lane <br />
-            Louisville, KY 40218 <br />
-        </p>
+
+    </div>
+    <div class="col-md-4">
+
         <p>
             (Located in Buechel United Methodist Church on Hikes Lane between Goldsmith Lane and Furman Blvd.)
         </p>
     </div>
-    <div class="col-mid-6">
-        <img src="../images/Copy of IMG_1639.jpg" style="height:300px; width:450px;"/>
-    </div>
 </div>
+
+
+<!---------------------------------------Scripts--------------------------------------->
+<script>
+
+      function initMap() {
+          var myLatLng = { lat: 38.207089, lng: -85.648307 };
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 16,
+          center: myLatLng
+        });
+
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: 'Adelante Hispanic Achievers'
+        });
+      }
+</script> <!--Google Maps-->
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOzao4vmN7tapJrX8dfq-2hGfnLIxA6Zs&callback=initMap">
+    // Google Maps API
+    // API Key registered under quinnbanet359@gmail.com
+    // KEY - AIzaSyDOzao4vmN7tapJrX8dfq-2hGfnLIxA6Zs
+</script> <!--Google Maps-->
