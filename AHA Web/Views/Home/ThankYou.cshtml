@@ -29,7 +29,7 @@ closes a form used to "email me"*/
 						width: 60%;
 						overflow: auto;
 						padding: 0px 50px;
-						background: #E0DECF;
+						background: #FFFFFF;
 					  }
 
 					  #modal_wrapper.overlay #modal_window {
@@ -107,11 +107,11 @@ closes a form used to "email me"*/
         <div id="modal_window">
             <a href="#"><h3 style="text-align:right" id="modal_close"><img src="~/Images/close.svg"></img></h3></a>
             <h4>Email Me</h4>
-            <form action="SendForm.php" method="post" id="modal_feedback">
+            <form action="verify.php" method="post" id="modal_feedback">
 
                 <div class="row uniform">
                     <input type="hidden" name="subject" value="Form Submission" />
-                    <input type="hidden" name="redirect" value="ThankYou.cshtml" />
+                    <input type="hidden" name="redirect" value="Thank You.html" />
 
                     <div class="6u 12u$(xsmall)">
                         <input type="text" autofocus required name="name" placeholder="Name">
@@ -130,7 +130,7 @@ closes a form used to "email me"*/
                         <textarea name="message" required id="message" placeholder="Enter your message" rows="6"></textarea>
                     </div>
                     <!-- Google reCAPTCHA API -->
-                    <div class="g-recaptcha" data-callback="recaptchaCallback" data-sitekey="6Lcd6wcUAAAAALyfSPaS1UOZADXj6eDcFNCgqcUa"></div>
+                    <div class="g-recaptcha" data-theme="dark" data-callback="recaptchaCallback" data-sitekey="6Lcd6wcUAAAAALyfSPaS1UOZADXj6eDcFNCgqcUa"></div>
                     <script language="JavaScript">
 												// if reCAPTCHA is verified, enable submitBtn
 												function recaptchaCallback() {
@@ -172,8 +172,6 @@ closes a form used to "email me"*/
     // API Key registered under quinnbanet359@gmail.com
     // KEY - AIzaSyDOzao4vmN7tapJrX8dfq-2hGfnLIxA6Zs
 </script> <!--Google Maps-->
-<!--Google Recaptcha API-->
-<script src='https://www.google.com/recaptcha/api.js'></script>
 <script type="text/javascript" >							  // Original JavaScript code by Chirp Internet: www.chirp.com.au
     // Please acknowledge use of this code by including this header.
     // This script checks my form for validation before sending to server
