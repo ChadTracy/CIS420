@@ -26,6 +26,10 @@ namespace AHA_Web
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+            bundles.Add(new StyleBundle("~/UPContent/css").Include(
+                      "~/UPContent/bootstrap.css",
+                      "~/UPContent/site.css",
+                      "~/UPContent/fontawesome/font-awesome.css"));
         }
     }
 }
