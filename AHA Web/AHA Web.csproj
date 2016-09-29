@@ -118,6 +118,10 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
@@ -180,10 +184,12 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\FontAwesomeBundleConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\UserPortalController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -218,6 +224,12 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="UPContent\fontawesome\font-awesome.css" />
+    <Content Include="UPContent\fontawesome\font-awesome.min.css" />
+    <Content Include="UPContent\fonts\fontawesome-webfont.svg" />
+    <Content Include="UPContent\bootstrap.css" />
+    <Content Include="UPContent\bootstrap.min.css" />
+    <Content Include="UPContent\Site.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -339,6 +351,10 @@
     <Content Include="fonts\Lato-ThinItalic.ttf" />
     <Content Include="fonts\Lato-ThinItalic.woff" />
     <Content Include="fonts\Lato-ThinItalic.woff2" />
+    <Content Include="UPContent\fonts\FontAwesome.otf" />
+    <Content Include="UPContent\fonts\fontawesome-webfont.woff" />
+    <Content Include="UPContent\fonts\fontawesome-webfont.ttf" />
+    <Content Include="UPContent\fonts\fontawesome-webfont.eot" />
     <None Include="Properties\PublishProfiles\cispack.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\facebook.js" />
@@ -353,6 +369,12 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Views\UserPortal\AccountManagement.cshtml" />
+    <Content Include="Views\UserPortal\ViewCalendar.cshtml" />
+    <Content Include="Views\UserPortal\ViewGrants.cshtml" />
+    <None Include="Views\UserPortal\Index.cshtml" />
+    <None Include="Views\Shared\_UserPortalLayout.cshtml" />
+    <Content Include="Views\UserPortal\_ViewStart.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -396,6 +418,10 @@
     <Content Include="Views\Home\ThankYou.cshtml" />
     <Content Include="Views\Home\Error.cshtml" />
     <Content Include="Views\Home\SendForm.php" />
+    <Content Include="Views\UserPortal\CreateEvent.cshtml" />
+    <Content Include="Views\UserPortal\EditEvents.cshtml" />
+    <Content Include="Views\UserPortal\EditGrants.cshtml" />
+    <Content Include="Views\UserPortal\CreateGrant.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

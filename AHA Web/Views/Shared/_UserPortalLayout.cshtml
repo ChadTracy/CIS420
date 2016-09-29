@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/UPContent/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <!-- Top Menu Items -->
+           @Html.Partial("_LoginPartial")
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li>
+                        <a href="@Url.Action("Index", "UserPortal")"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("AccountManagement","UserPortal")"><i class="fa fa-fw fa-desktop"></i> Account Management</a>
+                    </li>
+                    <!--Dropdown links-->
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#calendar"><i class="fa fa-fw fa-arrows-v"></i> Calendar Management <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="calendar" class="collapse">
+                            <li>
+                                <a href="@Url.Action("ViewCalendar", "UserPortal")">View Calendar</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("CreateEvent", "UserPortal")">Create Event</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("EditEvents", "UserPortal")">Edit Events</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#grant"><i class="fa fa-fw fa-arrows-v"></i> Grant Writing <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="grant" class="collapse">
+                            <li>
+                                <a href="@Url.Action("ViewGrants", "UserPortal")">View Grants</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("CreateGrant", "UserPortal")">Create Grant</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("EditGrants", "UserPortal")">Edit Grants</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#staff"><i class="fa fa-fw fa-arrows-v"></i> Staff Options <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="staff" class="collapse">
+                            <li>
+                                <a href="#">Option 1</a>
+                            </li>
+                            <li>
+                                <a href="#">Option 2</a>
+                            </li>
+                            <li>
+                                <a href="#">Option 3</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!--Body Content-->
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
