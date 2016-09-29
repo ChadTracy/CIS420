@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations;
 
 namespace AHA_Web.Models
 {
@@ -16,19 +17,20 @@ namespace AHA_Web.Models
             DonorsAttendences = new HashSet<DonorsAttendence>();
         }
 
-
+        [Required]
+        [Key]
         public string Donor_ID { get; set; }
 
-
+        [Required]
         public string First_Name { get; set; }
 
-
+       
         public string Middle_Initial { get; set; }
 
-
+        [Required]
         public string Last_Name { get; set; }
 
-
+        
         public string Address { get; set; }
 
 
@@ -40,7 +42,7 @@ namespace AHA_Web.Models
 
         public string Zip_Code { get; set; }
 
-
+        [Required]
         public string Email { get; set; }
 
 
