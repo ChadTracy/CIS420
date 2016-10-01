@@ -351,10 +351,13 @@
     <Content Include="fonts\Lato-ThinItalic.ttf" />
     <Content Include="fonts\Lato-ThinItalic.woff" />
     <Content Include="fonts\Lato-ThinItalic.woff2" />
+<<<<<<< HEAD
     <Content Include="UPContent\fonts\FontAwesome.otf" />
     <Content Include="UPContent\fonts\fontawesome-webfont.woff" />
     <Content Include="UPContent\fonts\fontawesome-webfont.ttf" />
     <Content Include="UPContent\fonts\fontawesome-webfont.eot" />
+=======
+>>>>>>> parent of 640792e... Changed from Live Database to Local Database, Added Live database to release config. Fixed Classes to validate required fields. Fixed Classes to include primary Keys. Fixed classes to create tables locally. upon update database command. Deleted old migrations that had no use to project.
     <None Include="Properties\PublishProfiles\cispack.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\facebook.js" />
