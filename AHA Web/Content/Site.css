@@ -8,7 +8,7 @@
 /*Declare font faces*/
 @font-face {
     font-family: "Lato Medium";
-    src: url("../fonts//Lato//Lato-Medium.ttf");
+    src: url("../fonts//Lato-Medium.ttf");
 }
 
 /* Side Panel CSS*/
@@ -18,6 +18,9 @@
     margin-bottom:6px;
     padding: 5px;
     border-radius: 6px;
+}
+
+.side-panel{
     min-width: 340px; /* Widths set with px so the FB pane fits*/
     max-width: 540px;
 }
@@ -114,10 +117,10 @@ textarea {
 
 .navbar-brand {
     background: url('../Images/New Adelantelogo2015 smaller copy.png') no-repeat;
-    background-size: 150px, 50px;
+    background-size: 165px, 60px;
     background-position: center;
     vertical-align: middle;
-    width: 170px;
+    width: 200px;
     font-size: 0px;
     
 }

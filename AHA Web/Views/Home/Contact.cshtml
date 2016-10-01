@@ -1,17 +1,263 @@
-﻿@{
-    ViewBag.Title = "Contact";
+﻿<!------------------------Page Specific CSS and Links------------------------>
+<style type="text/css">
+    #map {
+        height: 300px;
+        width: 100%;
+    }
+</style> <!--CSS for Maps API-->
+<style type="text/css">
+/*This is a CSS that opens and
+closes a form used to "email me"*/
+					  #modal_wrapper.overlay:before {
+						content: " ";
+						width: 100%;
+						height: 100%;
+						position: fixed;
+						z-index: 100;
+						top: 0;
+						left: 0;
+						background: #000;
+						background: rgba(0,0,0,0.7);
+					  }
+
+					  #modal_window {
+						display: none;
+						z-index: 200;
+						position: fixed;
+						left: 50%;
+						top: 60%;
+						width: 60%;
+						overflow: auto;
+						padding: 0px 50px;
+						background: #E0DECF;
+					  }
+
+					  #modal_wrapper.overlay #modal_window {
+						display: block;
+					  }
+</style> <!--CSS for Email Popup-->
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Contact Us";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+<div class="jumbotron">
+    <h1>Contact Adelante!</h1>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+</div>
+
+<body>
+    <h2>We'd love to hear from you!</h2>
+
+    <div class="col-md-4">
+
+        <p>
+            Mara Maldonado, Director<br />
+            (502)-494-0353   <a href="mailto:maramaldonado@att.net">Email Mara</a>
+        </p>
+
+        <p>
+            Dustin Bishop<br />
+            Volunteers/ Program Operations and Development<br />
+            (231) 649-1652 <a href="mailto:dustinjbishop@gmail.com">Email Dustin</a>
+        </p>
+
+        <p>
+            Carol Fields,  College Readiness Coach<br />
+            (502)-649-6781 <a href="mailto:cefields90@gmail.com">Email Carol</a>
+        </p>
+
+        <p>
+            Morgan Gerke,  Americorps VISTA <br />
+            <a href="mailto:gerkemk@gmail.com">Email Morgan</a>
+        </p>
+
+        <p>Alison Greer and Kelcey Robinson , UofL LALS Interns</p>
+
+        <!-- Email me changes form depending on screen size -->
+        <script language="JavaScript">
+									if ((screen.width>=1280) && (screen.height>=720))
+									{
+									    document.write("<button class='btn btn-default' id='modal_open'> Email me</button>");
+									}
+									else
+									{
+									    document.write("<a class='btn btn-default' href='mailto:nathanstopinski@gmail.com'> Email me</a>");
+									}
+        </script> 
+    </div>
+    <div class="col-md-4">
+
+        <div id="map" style="width:300px; height:300px;"></div>
+
+        <br />
+        <p>Adelante Hispanic Achievers
+<br />
+            2817 Hikes Lane
+<br />
+            Louisville, KY 40218
+<br />
+<br />
+            We are located in Buechel United Methodist Church on Hikes Lane between Goldsmith Lane and Furman Blvd.</p>
+
+    </div>
+    <div class="col-md-4">
+        <center>
+            <img src="../Images/4.jpg" style="width:450px; height:300px;"
+        </center>
+    </div>
+</body>
+
+<!-- Email me Form -->
+<section id="Form">
+    <div id="modal_wrapper">
+        <div id="modal_window">
+            <a href="#"><h3 style="text-align:right" id="modal_close"><img src="~/Images/close.svg"/></h3></a>
+            <h4>Email Me</h4>
+            <form action="SendForm.php" method="post" id="modal_feedback">
+
+                <div class="row uniform">
+                    <input type="hidden" name="subject" value="Form Submission" />
+                    <input type="hidden" name="redirect" value="ThankYou.cshtml" />
+
+                    <div class="6u 12u$(xsmall)">
+                        <input type="text" autofocus required name="name" placeholder="Name">
+                    </div>
+                    <div class="6u 12u$(xsmall)">
+                        <input type="text" required name="email" placeholder="Email" />
+                    </div>
+                    <div class="12u$">
+                        <input type="text" name="subject" placeholder="Subject" />
+                    </div>
+                    <div class="6u 12u$(small)">
+                        <input type="checkbox" id="copy" name="copy">
+                        <label for="copy">Email me a copy</label>
+                    </div>
+                    <div class="12u$">
+                        <textarea name="message" required id="message" placeholder="Enter your message" rows="6"></textarea>
+                    </div>
+                    <!-- Google reCAPTCHA API -->
+                    <div class="g-recaptcha" data-callback="recaptchaCallback" data-sitekey="6Lcd6wcUAAAAALyfSPaS1UOZADXj6eDcFNCgqcUa"></div>
+                    <script language="JavaScript">
+												// if reCAPTCHA is verified, enable submitBtn
+												function recaptchaCallback() {
+												$('#submitBtn').removeAttr('disabled');
+												};
+                    </script>
+                    <ul class="actions">
+                        <input type="submit" name="submit" value="Send message" class="special" id="submitBtn" disabled />
+                    </ul>
+
+            </form>
+        </div>
+    </div> <!-- #modal_window -->
+</section>
+
+
+<!---------------------------------------Scripts--------------------------------------->
+<script>
+
+      function initMap() {
+          var myLatLng = { lat: 38.207089, lng: -85.648307 };
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 16,
+          center: myLatLng
+        });
+
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: 'Adelante Hispanic Achievers'
+        });
+      }
+</script> <!--Google Maps-->
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOzao4vmN7tapJrX8dfq-2hGfnLIxA6Zs&callback=initMap">
+    // Google Maps API
+    // API Key registered under quinnbanet359@gmail.com
+    // KEY - AIzaSyDOzao4vmN7tapJrX8dfq-2hGfnLIxA6Zs
+</script> <!--Google Maps-->
+<!--Google Recaptcha API-->
+<script src='https://www.google.com/recaptcha/api.js'></script>
+<script type="text/javascript" >							  // Original JavaScript code by Chirp Internet: www.chirp.com.au
+    // Please acknowledge use of this code by including this header.
+    // This script checks my form for validation before sending to server
+
+    var checkForm = function (e) {
+        var form = (e.target) ? e.target : e.srcElement;
+        if (form.name.value == "") {
+            alert("Please enter your Name");
+            form.name.focus();
+            e.preventDefault ? e.preventDefault() : e.returnValue = false;
+            return;
+        }
+        if (form.email.value == "") {
+            alert("Please enter a valid Email address");
+            form.email.focus();
+            e.preventDefault ? e.preventDefault() : e.returnValue = false;
+            return;
+        }
+        if (form.message.value == "") {
+            alert("Please enter your comment or question in the Message box");
+            form.message.focus();
+            e.preventDefault ? e.preventDefault() : e.returnValue = false;
+            return;
+        }
+    };</script> <!--Form Validation-->
+<script type="text/javascript">							  // Original JavaScript code by Chirp Internet: www.chirp.com.au
+    // Please acknowledge use of this code by including this header.
+
+    var modal_init = function () {
+
+        var modalWrapper = document.getElementById("modal_wrapper");
+        var modalWindow = document.getElementById("modal_window");
+
+        var openModal = function (e) {
+            modalWrapper.className = "overlay";
+            var overflow = modalWindow.offsetHeight - document.documentElement.clientHeight;
+            if (overflow > 0) {
+                modalWindow.style.maxHeight = (parseInt(window.getComputedStyle(modalWindow).height) - overflow) + "px";
+            }
+            modalWindow.style.marginTop = (-modalWindow.offsetHeight) / 2 + "px";
+            modalWindow.style.marginLeft = (-modalWindow.offsetWidth) / 2 + "px";
+            e.preventDefault ? e.preventDefault() : e.returnValue = false;
+        };
+
+        var closeModal = function (e) {
+            modalWrapper.className = "";
+            e.preventDefault ? e.preventDefault() : e.returnValue = false;
+        };
+
+        var clickHandler = function (e) {
+            if (!e.target) e.target = e.srcElement;
+            if (e.target.tagName == "DIV") {
+                if (e.target.id != "modal_window") closeModal(e);
+            }
+        };
+
+        var keyHandler = function (e) {
+            if (e.keyCode == 27) closeModal(e);
+        };
+
+        if (document.addEventListener) {
+            document.getElementById("modal_open").addEventListener("click", openModal, false);
+            document.getElementById("modal_close").addEventListener("click", closeModal, false);
+            document.addEventListener("click", clickHandler, false);
+            document.addEventListener("keydown", keyHandler, false);
+        } else {
+            document.getElementById("modal_open").attachEvent("onclick", openModal);
+            document.getElementById("modal_close").attachEvent("onclick", closeModal);
+            document.attachEvent("onclick", clickHandler);
+            document.attachEvent("onkeydown", keyHandler);
+        }
+
+    };</script> <!--Form Opener-->
+<script type="text/javascript">							  if (document.addEventListener) {
+							      document.getElementById("modal_feedback").addEventListener("submit", checkForm, false);
+							      document.addEventListener("DOMContentLoaded", modal_init, false);
+							  } else {
+							      document.getElementById("modal_feedback").attachEvent("onsubmit", checkForm);
+							      window.attachEvent("onload", modal_init);
+							  }</script> <!--Form Opener Helper-->
