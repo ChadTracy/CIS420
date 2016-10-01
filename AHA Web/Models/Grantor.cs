@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.ComponentModel.DataAnnotations;
 
 namespace AHA_Web.Models
 {
@@ -14,14 +13,13 @@ namespace AHA_Web.Models
             Grants = new HashSet<Grant>();
         }
 
-        [Required]
-        [Key]
+
         public string Grantor_ID { get; set; }
 
-        [Required]
+
         public string Organization { get; set; }
 
-        
+
         public string Address { get; set; }
 
 

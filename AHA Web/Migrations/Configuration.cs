@@ -9,7 +9,7 @@ namespace AHA_Web.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(AHA_Web.Models.ApplicationDbContext context)
