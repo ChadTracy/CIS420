@@ -132,30 +132,10 @@ textarea {
 .navbar-header {
     width: 100%;
 }
-/*google calendar classes*/
-.responsiveCal {
- 
-position: relative; padding-bottom: 75%; height: 0; overflow: hidden;
- 
-}
- 
-.responsiveCal iframe {
- 
-position: absolute; top:0; left: 0; width: 100%; height: 100%;
- 
-}
 
-/* Will be used later to align navbar to center, currently results in navbar-right wrapping under
-.navbar-nav {
-    float: none;
-    margin: 0 auto;
-    display: table;
-    table-layout: fixed;
-
+.scheduler_container {
+    width: 100%;
+    height: 600px;
+    border: 1px solid #aeaeae;
+    
 }
-
-.navbar-right {
-    float: right !important;
-
-}
-*/

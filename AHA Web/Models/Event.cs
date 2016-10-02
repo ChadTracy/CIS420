@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+using DHTMLX.Scheduler;
+using DHTMLX.Scheduler.Data;
+using DHTMLX.Common;
 
 namespace AHA_Web.Models
 {
@@ -15,19 +21,43 @@ namespace AHA_Web.Models
             StudentAttendences = new HashSet<StudentAttendence>();
         }
 
+        [Required]
+        [Key]
+        [MaxLength(12),MinLength(12)]
+        [Display(Name = "Event ID")]
         public string Event_ID { get; set; }
 
+        [Required]
+        [MaxLength(100)]
+        [Display(Name = "Description")]
+        public string Description { get; set; }
 
+        [Required]
+        [MaxLength(50)]
+        [Display(Name = "Event Title")]
         public string Event_Name { get; set; }
 
+        [Required]
+        [Display(Name = "Attendence Cost")]
+        [DataType(DataType.Currency, ErrorMessage = "Please Provide a Currency Value")]
         public decimal? Attendence_Cost { get; set; }
 
-
+        [Required]
+        [Display(Name = "Type of Event")]
+        [MaxLength(20)] 
         public string Event_Type { get; set; }
 
+        [Required]
+        [Display(Name = "Starting Date")]
+        [DataType(DataType.Date, ErrorMessage ="Please Enter a Valid Date")]
+        public DateTime? StartDate { get; set; }
 
-        public DateTime? Event_Date { get; set; }
+        [Display(Name = "Ending Date")]
+        [DataType(DataType.Date, ErrorMessage = "Please Enter a Valid Date")]
+        public DateTime? EndDate { get; set; }
 
+        [Required]
+        [DataType(DataType.Time,ErrorMessage = "Please Enter a Valid Time")]
         public TimeSpan? Event_Time { get; set; }
 
 

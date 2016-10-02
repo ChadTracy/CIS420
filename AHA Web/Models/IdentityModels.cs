@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace AHA_Web.Models
 {
@@ -29,5 +30,30 @@ namespace AHA_Web.Models
         {
             return new ApplicationDbContext();
         }
-    }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+         {
+             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+             
+             base.OnModelCreating(modelBuilder);
+         }
+         public DbSet<AdelanteStaff> Staff { get; set; }
+         public DbSet<BoardMember> BoardMember { get; set; }
+         public DbSet<Donation> Donation { get; set; }
+         public DbSet<Donor> Donors { get; set; }
+         public DbSet<DonorContact> Contact { get; set; }
+         public DbSet<DonorsAttendence> DonorAttendence { get; set; }
+         public DbSet<Event> Events { get; set; }
+         public DbSet<Grant> Grants { get; set; }
+         public DbSet<Grantor> Grantors { get; set; }
+        public DbSet<Parent> Parents { get; set; }
+        public DbSet<School> School { get; set; }
+         public DbSet<SchoolAttended> SchoolAttended { get; set; }
+         public DbSet<Student> Students { get; set; }
+         public DbSet<StudentAttendence> StudentAttendence { get; set; }
+         public DbSet<StudentFamily> StudentFamily { get; set; }
+         public DbSet<Volunteer> Volunteers { get; set; }
+ 
+         public DbSet<VolunteerHistory> VolunteerHistory { get; set; }
+
+}
 }
