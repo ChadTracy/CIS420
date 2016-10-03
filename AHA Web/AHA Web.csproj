@@ -554,6 +554,13 @@
     <Content Include="Views\UserPortal\AccountManagement.cshtml" />
     <Content Include="Views\UserPortal\ViewCalendar.cshtml" />
     <Content Include="Views\UserPortal\ViewGrants.cshtml" />
+    <Content Include="Views\Home\MentoringEnrichment.cshtml" />
+    <Content Include="Views\Home\CollegeReadiness.cshtml" />
+    <Content Include="Views\Home\AST.cshtml" />
+    <Content Include="Views\Home\ParentInvolvement.cshtml" />
+    <Content Include="Views\Home\Ambassadors.cshtml" />
+    <Content Include="Views\Home\TJXScholarship.cshtml" />
+    <Content Include="Views\Home\BAM.cshtml" />
     <None Include="Views\UserPortal\Index.cshtml" />
     <None Include="Views\Shared\_UserPortalLayout.cshtml" />
     <Content Include="Views\UserPortal\_ViewStart.cshtml" />

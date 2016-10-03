@@ -67,6 +67,17 @@ namespace AHA_Web.Controllers
 
             return View();
         }
+        public ActionResult MentoringEnrichment()
+        {
+            return View();
+        }
+        public ActionResult CollegeReadiness() { return View(); }
+        public ActionResult AST() { return View(); }
+        public ActionResult ParentInvolvement() { return View(); }
+        public ActionResult Ambassadors() { return View(); }
+        public ActionResult TJXScholarship() { return View(); }
+        public ActionResult BAM() { return View(); }
+
 
         private readonly DbContext _db = new ApplicationDbContext();
 
