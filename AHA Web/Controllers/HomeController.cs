@@ -67,6 +67,9 @@ namespace AHA_Web.Controllers
 
             return View();
         }
+
+        private readonly DbContext _db = new ApplicationDbContext();
+
         public ActionResult Calendar()
         {
             var scheduler = new DHXScheduler(this);
@@ -80,15 +83,16 @@ namespace AHA_Web.Controllers
 
             return View(scheduler);
         }
+
         public ContentResult Data(DateTime from, DateTime to)
         {
-            var apps = db.Event.Where(e => e.StartDate < to && e.EndDate >= from).ToList();
+            var apps = _db.Set<Event>().Where(e => e.Event_Start_Date < to && e.Event_End_Date >= from).ToList();
             return new SchedulerAjaxData(apps);
         }
 
         public ContentResult Data()
         {
-            var apps = db.Event.ToList();
+            var apps = _db.Set<Event>().ToList();
             return new SchedulerAjaxData(apps);
         }
 
@@ -102,19 +106,19 @@ namespace AHA_Web.Controllers
                 switch (action.Type)
                 {
                     case DataActionTypes.Insert:
-                        db.Event.Add(changedEvent);
-                        break;
-                    case DataActionTypes.Delete:
-                        db.Entry(changedEvent).State = EntityState.Deleted;
-                        break;
-                    default:// "update"  
-                        db.Entry(changedEvent).State = EntityState.Modified;
+                        Event EV = new Event();
+                        EV.Event_Start_Date = changedEvent.Event_Start_Date;
+                        EV.Event_End_Date = changedEvent.Event_End_Date;
+                        EV.Description = changedEvent.Description;
+                        _db.Set<Event>().Add(EV);
+                        _db.SaveChanges();
+                        
                         break;
                 }
-                db.SaveChanges();
-                action.TargetId = changedEvent.Id;
+                _db.SaveChanges();
+                action.TargetId = Convert.ToInt64(changedEvent.Event_ID);
             }
-            catch (Exception a)
+            catch (Exception)
             {
                 action.Type = DataActionTypes.Error;
             }
@@ -126,7 +130,7 @@ namespace AHA_Web.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _db.Dispose();
             }
             base.Dispose(disposing);
         }
