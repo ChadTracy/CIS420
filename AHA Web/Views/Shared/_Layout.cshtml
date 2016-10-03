@@ -9,15 +9,7 @@
 
 </head>
 <body>
-    <div id="fb-root"></div>
-    <script>
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.7";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+
 
     <div class="navbar navbar-inverse navbar-static-top">
         <div class="container">
@@ -59,13 +51,52 @@
     <div class="row">
         <div class="col-md-0 col-lg-1"></div>
         <div class="col-md-12 col-lg-10">
-            @if (IsSectionDefined("partyBox1") || IsSectionDefined("partyBox2"))
+            @if (IsSectionDefined("partyBox1") || IsSectionDefined("partyBox2") || IsSectionDefined("partyBox3"))
             {
                 <div class="container body-content container-fluid col-md-8">
                     @RenderBody()
                 </div>
 
                 <div class="container col-md-4">
+                    <div class="panel side-panel">
+                        <div id="myCarousel" class="carousel slide" style="width: inherit; height: 200px; margin: 0 auto">
+                            <!-- Indicators -->
+                            <ol class="carousel-indicators">
+                                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                <li data-target="#myCarousel" data-slide-to="1"></li>
+                                <li data-target="#myCarousel" data-slide-to="2"></li>
+                                <li data-target="#myCarousel" data-slide-to="3"></li>
+                            </ol>
+
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner" role="listbox">
+                                <div class="item active">
+                                    <p>“In Adelante everyone has a dream, everyone speaks the same language, and everyone is FAMILY” - Sabrina Lloret</p>
+                                </div>
+
+                                <div class="item">
+                                    <p>Quote 2</p>
+                                </div>
+
+                                <div class="item">
+                                    <p>Quote 3</p>
+                                </div>
+
+                                <div class="item">
+                                    <p>Quote 4</p>
+                                </div>
+                            </div>
+                            <!-- Left and right controls -->
+                            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
                     @if (IsSectionDefined("partyBox1")) { 
                         <div class="panel side-panel">
                             @RenderSection("partyBox1", false)
@@ -76,6 +107,13 @@
                     {
                         <div class="panel side-panel">
                             @RenderSection("partyBox2", false)
+                        </div>
+                        <br />
+                    }
+                    @if (IsSectionDefined("partyBox3"))
+                    {
+                        <div class="panel side-panel">
+                            @RenderSection("partyBox3")
                         </div>
                     }
                 </div>
@@ -150,5 +188,15 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <div id="fb-root"></div>
+    <script>
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.7";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
 </body>
 </html>
