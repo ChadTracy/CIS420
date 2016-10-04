@@ -4,74 +4,124 @@
     ViewBag.Title = "Programs";
 }
 
-<div class="panel">
-    <h1>Programs</h1>
-    <h5 style="text-align: left">
-        <b>1-Mentoring & Enrichment:</b> <br />
-        Saturday presentations, workshops and field trips which provide academic support, life skills development, 
-        community service, and career opportunities for students and families. Every Saturday at Buechel United Methodist Church/ 2817 Hikes Lane, Louisville, KY  40218.
-        <a>Click for 2016 Calendar Saturday.</a>
-        <br /><br />
-        <b>2-After School Tutoring and Homework Help</b><br />
-        Students improve academic standing through one-on-one tutoring, math challenges, and character development.  Your child must attend the school  to participate.
-        Thomas Jefferson MS - every Wednesday from 2:20-5pm. <a>Click for Spring 16 TJ</a>
-        Lassiter MS- every Thursday from 2:20-5pm. <a>Click for Spring 16 Lassiter</a>
-        <br /><br />
-        <b>3-College Readiness:</b> <br />
-        Study skills, ACT preparation, shadowing opportunities, college visits and summer “bridge” programs. 
-        We prepare students for college and careers through intensive individual and group support for juniors and seniors.
-        <br /><br />
-        <b>4-Ambassadors:</b> Elite leadership opportunity for students 2+ years in Adelante. <a>Click for Ambassador Guidelines</a>
-        <br /><br />
-        <b>5-TJX/Adelante Scholars:</b> Scholarship Program
-        <br /><br />
-        All programs include Parent Involvement: workshops, presentations, individual support 
-    </h5>
-</div>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Students & Parents";
+}
+<!--TODO-->
+<!--Panels-->
+<header>
+    <div class="jumbotron">
+      <center><h1>
+            <img src="../Images/program.png" style="height:auto; width:500px;" />
+        </h1></center>
 
-<div class="jumbotron">
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-            <li data-target="#myCarousel" data-slide-to="3"></li>
-        </ol>
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+                <li data-target="#myCarousel" data-slide-to="3"></li>
+                <li data-target="#myCarousel" data-slide-to="4"></li>
+                <li data-target="#myCarousel" data-slide-to="5"></li>
+            </ol>
 
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner" role="listbox">
-            <div class="item active">
-                <img src="~/Images/Programs/IMG_0883.jpg" alt="Group Picture" style="height:500px; width:850px;" />
-                <div class="carousel-caption">
-                    <p>
-                        Fun is one of the best ways to engage and enrich our Hispanic youth. 
-                        Our programming and activities are all designed around this concept and 
-                        provide personal, social, cultural, and educational development.
-                    </p>
+
+            <div class="carousel-inner" role="listbox">
+
+                <div class="item active">
+                    <center><img src="~/Images/1.jpg" alt="one" style="height:300px"></center>
                 </div>
-            </div>
 
-            <div class="item">
-                <img src="~/Images/Programs/Copy of IMG_0897.jpg" alt="Students at table" style="height:500px; width:850px;" />
-            </div>
-
-            <div class="item">
-                <img src="~/Images/Programs/Gene Weiss.jpg" alt="Gene Weis talks with students" style="height:500px; width:850px;" />
-                <div class="carousel-caption">
-                    <p>
-                        KHEAA Consultant Gene Weis talks with students about paying for college, 
-                        completing their FAFSA’s, etc.
-                    </p>
+                <div class="item">
+                    <center><img src="~/Images/2.jpg" alt="two" style="height:300px"></center>
                 </div>
-            </div> 
 
-            <div class="item">
-                <img src="~/Images/Programs/Money Matters Luis.jpg" alt="Gene Weis talking with students" style="height:500px; width:850px;" />
+                <div class="item">
+                    <center><img src="~/Images/6.jpg" alt="three" style="height:300px"></center>
+                </div>
+
+                <div class="item">
+                    <center><img src="~/Images/4.jpg" alt="four" style="height:300px"></center>
+                </div>
+
+                <div class="item">
+                    <center><img src="~/Images/SP_5.jpg" alt="five" style="height:300px"></center>
+                </div>
+
+                <div class="item">
+                    <center><img src="~/Images/6.jpg" alt="six" style="height:300px"></center>
+                </div>
+
+                <!--Left and Right Controls-->
+
             </div>
+            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+    </div>
+</header>
+<body>
+    <div class="row">
+        <div class="col-md-6">
+            <h2>History and Programs</h2>
+            <p>
+                Adelante Hispanic Achievers was created to address the challenges facing Louisville’s Hispanic youth and help them succeed in four critical areas: personal,
+                social, cultural, and educational. Adelante is a volunteer-based, non-profit, 501(C)3 organization that was founded in January 2004 by former JCPS school board
+                chair Stephen Imhoff and a core of community leaders who shared the belief that with support and resources, Louisville’s Hispanic students and their families could
+                have a bright future. It is the only organization in Jefferson County chartered to provide educational resources to Latino youth. Adelante serves 145 students and
+                their families per year, won the 2012 CNPE Pyramid Award for Excellence in Governance, and became a national Bright Spot in Hispanic Education in 2015.
+                <br /><br />
+                Adelante operates with two full time staff and a volunteer base with expertise in science, medicine, engineering, law, and education. Our partners provide tutoring,
+                mentoring, career exposure, college prep, data collection, accounting, and marketing. We have graduated five cohorts of students, all of whom attend the college of
+                his or her choice with scholarships. Our programs are provided free of charge.
+            </p>
+        </div>
+        <div class="col-md-3">
+            <h2>Our Programs:</h2>
+            <p>
+                1.	<a href="~/Home/MentoringEnrichment">Mentoring & Enrichment</a><br /><br />
+                2.	<a href="~Home/CollegeReadiness">College Readiness</a><br /><br />
+                3.	<a href="~Home/AST">After School Tutoring</a><br /><br />
+                4.	<a href="~Home/ParentInvolvement">Parent Involvement</a><br /><br />
+                5.	<a href="~Home/Ambassadors">Adelante Ambassadors</a><br /><br />
+                6.	<a href="~Home/TJXScholarship">TJX/Bick Hile Scholarship Program</a><br /><br />
+                7.	<a href="~Home/BAM">Bellarmine Academy Martes (BAM)</a><br /><br />
+
+            </p>
+        </div>
+        <div class="col-md-3">
+            <center>
+                <h2>Enrollment Forms</h2><br /><br />
+                <p style="text-align:center"><a class="btn btn-default" href="~/Files/Behavior%20contract%20%28english%29.doc">Behavior Contract</a></p> <br /><br />
+                <p style="text-align:center"><a class="btn btn-default" href="/Files/Behavior%20contract%20%28spanish%29.doc">Behavior Contract (Espanol)</a></p><br /><br />
+                <p style="text-align:center"><a class="btn btn-default" href="~/Files/Photo%20and%20Transportation%20Waiver.doc">Photo and Transportation Waiver</a></p>
+            </center>
+        </div>
+        <br /><br /><hr />
+    </div>
+    <br /><br /><hr />
+    <div class="row">
+        <div class="col-mid-12">
+            <h2>Criteria and Enrollment</h2><br /><br />
+            <p>
+                Adelante accepts Hispanic students who attend middle or high school in Jefferson County, KY and the surrounding area. Every student will be allowed to participate in
+                Adelante Hispanic Achievers’ programs provided that they follow the attendance and behavior code agreements outlined in this manual, and agree to academic and personal
+                growth. Parents are accountable for their child’s attendance and progress.
+            </p>
         </div>
     </div>
-</div>
+</body>
+
+
 
 @section partyBox1
 {

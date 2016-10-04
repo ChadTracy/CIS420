@@ -1,19 +1,27 @@
 ﻿body {
     padding-top: 0px;
     padding-bottom: -3px;
-    background-color: #E0DECF;
+    background-color: #f9efcb;
     font-family: "Lato Medium";
-    color: #24161B; 
+    color: #24151B; 
 }
 /*Declare font faces*/
 @font-face {
     font-family: "Lato Medium";
-    src: url("../fonts//Lato-Medium.ttf");
+    src: url('../fonts//Lato-Medium.ttf');
+}
+@font-face{
+    font-family: "Lato Semibold";
+    src: url("../fonts/Lato-Semibold.ttf");
+}
+@font-face{
+    font-family: "Lato Black";
+    src: url("../fonts/Lato-Black.ttf")
 }
 
 /* Side Panel CSS*/
 .panel{
-    background-color: #FAFAF0;
+    background-color: #99cccc;
     margin-top: 6px;
     margin-bottom:6px;
     padding: 5px;
@@ -25,8 +33,9 @@
     max-width: 540px;
 }
 
-.panel p, h1, h2, h3, h4, h5, h6{
+.panel h1, h2, h3, h4, h5, h6{
     text-align:center;
+    font-family: "Lato Black"
 }
 
 
@@ -42,9 +51,10 @@
 
 /*Tweak the jumbotron to use the light stone color for example purposes*/
 .jumbotron {
-    background-color: #FAFAF0;
+    background-color: #99cccc;
     margin-top: 10px;
     border-radius: 6px;
+    font-family: "Lato Black"
 }
 
 /*Container replacement class to allow better use of whitespace.*/
@@ -58,7 +68,7 @@ footer {
     width:100%;
     font-size: 8pt;
     line-height: 95%;
-    background-color: #FAFAF0;
+    background-color: #99cccc;
     overflow:hidden;
 }
 
@@ -77,7 +87,7 @@ footer {
 }
 /*Change Thematic break line color*/
 hr {
-    background-color: #89785E;
+    background-color: #DE2F0D;
     color: #89785E;
     border: none;
     height: 5px;
@@ -107,12 +117,14 @@ textarea {
 /*Override default boostrap navbar behavior and formatting*/
 
 .navbar .nav > li > a { /*Change navbar text color*/
-    color: #E0DECF;
+    color: #D90407;
+    font-family: 'Lato Semibold';
 }
 .navbar-inverse {
     min-height:50px; 
-    background-color: #24161B;
-    color: #ffffff;
+    background-color: #99cccc;
+    color: #D90407;
+    font-family:'Lato Black'
 }
 
 .navbar-brand {

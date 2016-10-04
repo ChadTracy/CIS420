@@ -25,7 +25,7 @@ namespace AHA_Web.Models
         [Key]
         [Display(Name = "Event ID")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Event_ID { get; set; }
+        public string Event_ID { get; set; }
 
         [Required]
         [MaxLength(100)]
