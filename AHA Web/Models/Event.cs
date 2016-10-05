@@ -25,7 +25,7 @@ namespace AHA_Web.Models
         [Key]
         [Display(Name = "Event ID")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public string Event_ID { get; set; }
+        public int Event_ID { get; set; }
 
         [Required]
         [MaxLength(100)]
@@ -47,7 +47,7 @@ namespace AHA_Web.Models
         [MaxLength(20)] 
         public string Event_Type { get; set; }
 
-        [Required]
+       
         [Display(Name = "Starting Date")]
         [DataType(DataType.Date, ErrorMessage ="Please Enter a Valid Date")]
         public DateTime? Event_Start_Date { get; set; }

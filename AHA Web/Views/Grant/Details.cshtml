@@ -1,0 +1,74 @@
+﻿@model AHA_Web.Models.Grant
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Grant</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Grantor.Organization)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Grantor.Organization)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Grant_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Grant_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Grant_Due_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Grant_Due_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Grant_Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Grant_Amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Grant_Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Grant_Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Grant_status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Grant_status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Author)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Author)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Grant_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
