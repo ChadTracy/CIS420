@@ -1,0 +1,69 @@
+﻿@model IEnumerable<AHA_Web.Models.Event>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Event_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Attendence_Cost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Event_Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Event_Start_Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Event_End_Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Event_Time)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Event_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Attendence_Cost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Event_Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Event_Start_Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Event_End_Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Event_Time)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Event_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Event_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Event_ID })
+        </td>
+    </tr>
+}
+
+</table>
