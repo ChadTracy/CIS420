@@ -3,25 +3,28 @@
 }
 
 <div class="jumbotron">
+    
     <div class="row">
-        <div class="col-md-3">
-            <br />
-            <a href="../Home/GetInvolved"><img src="../Images/vol.png" style="width:150px; height:150px; "/></a>
-            <br />
-            <br />
-            <br />
-                <!--Paypal API-->
-                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                    <input name="cmd" value="_s-xclick" type="hidden">
-                    <input name="hosted_button_id" value="PJCBKP6NDWHTL" type="hidden">
-                    <input src="../Images/donate.png" name="submit" alt="PayPal - The safer, easier way to pay online!" type="image" border="0" 
-                           style="width:150px; height:150px;">
-                </form>
-        </div>
-        <div class="col-md-9"><center>
+        <div class="col-md-12"><center>
             <h3>What's Adelante up to?</h3>
-            <iframe width="550" height="400" src="https://www.youtube.com/embed/78paBRSDm0U" frameborder="0" allowfullscreen></iframe>
+            <div class="container video-container">
+                <iframe src="https://www.youtube.com/embed/78paBRSDm0U" frameborder="0" allowfullscreen class="video"></iframe>
+            </div>
         </center></div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <a href="../Home/GetInvolved"><img src="../Images/vol.png" style="width:150px; height:150px; " /></a>
+        </div>
+        <div class="col-md-6">
+            <!--Paypal API-->
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                <input name="cmd" value="_s-xclick" type="hidden">
+                <input name="hosted_button_id" value="PJCBKP6NDWHTL" type="hidden">
+                <input src="../Images/donate.png" name="submit" alt="PayPal - The safer, easier way to pay online!" type="image" border="0"
+                       style="width:150px; height:150px;">
+            </form>
+        </div>
     </div>
 </div>
 
