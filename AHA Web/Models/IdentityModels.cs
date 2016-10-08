@@ -38,7 +38,6 @@ namespace AHA_Web.Models
          }
          public DbSet<AdelanteStaff> Staff { get; set; }
          public DbSet<BoardMember> BoardMember { get; set; }
-         public DbSet<Donation> Donation { get; set; }
          public DbSet<Donor> Donors { get; set; }
          public DbSet<DonorContact> Contact { get; set; }
          public DbSet<DonorsAttendence> DonorAttendence { get; set; }

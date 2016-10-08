@@ -195,7 +195,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Attendence\DonorsAttendenceController.cs" />
     <Compile Include="Controllers\Attendence\StudentAttendenceController.cs" />
-    <Compile Include="Controllers\BoardMembers\BoardMemberController.cs" />
+    <Compile Include="Controllers\Donors\BoardMembers\BoardMemberController.cs" />
     <Compile Include="Controllers\Donors\DonorContactController.cs" />
     <Compile Include="Controllers\Donors\DonorController.cs" />
     <Compile Include="Controllers\Events\EventController.cs" />
@@ -241,6 +241,8 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Scripts\mdb.js" />
+    <Content Include="Scripts\tether.js" />
     <Content Include="Scripts\dhtmlxScheduler\dhtmlxscheduler.css" />
     <Content Include="Scripts\dhtmlxScheduler\dhtmlxscheduler.js" />
     <Content Include="Scripts\dhtmlxScheduler\dhtmlxscheduler_classic.css" />
@@ -564,6 +566,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Content\mdb.css" />
     <Content Include="Views\UserPortal\AccountManagement.cshtml" />
     <Content Include="Views\UserPortal\ViewCalendar.cshtml" />
     <Content Include="Views\UserPortal\ViewGrants.cshtml" />
@@ -639,6 +642,7 @@
     <Content Include="Views\Grantor\Details.cshtml" />
     <Content Include="Views\Grantor\Edit.cshtml" />
     <Content Include="Views\Grantor\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
     <None Include="Views\UserPortal\Index.cshtml" />
     <None Include="Views\Shared\_UserPortalLayout.cshtml" />
     <Content Include="Views\UserPortal\_ViewStart.cshtml" />
@@ -652,7 +656,7 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_Layout-depreciated.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
