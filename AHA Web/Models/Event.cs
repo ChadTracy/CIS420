@@ -5,7 +5,7 @@ using DHTMLX.Scheduler;
 using DHTMLX.Scheduler.Data;
 using DHTMLX.Common;
 
-namespace AHA_Web.Models
+namespace AHA_web.Models
 {
     public partial class Event
     {

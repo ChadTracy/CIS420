@@ -31,6 +31,6 @@ namespace AHA_Web.Models
 
         public virtual Donor Donor { get; set; }
 
-        public virtual Event Event { get; set; }
+        public virtual Event Events { get; set; }
     }
 }

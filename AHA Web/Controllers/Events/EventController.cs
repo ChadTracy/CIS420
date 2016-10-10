@@ -1,127 +1,63 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.Linq;
-using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using AHA_Web.Models;
+using AHA_web.Models;
+using DHTMLX.Common;
+using DHTMLX.Scheduler;
+using DHTMLX.Scheduler.Data;
 
-namespace AHA_Web.Controllers.Events
+namespace AHA_web.Controllers
 {
     public class EventController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        //Refer to this link in order to set up the Calendar.
+        //http://scheduler-net.com/docs/simple-.net-mvc-application-with-scheduler.html#step_2_add_the_scheduler_reference
 
-        // GET: Event
+        public readonly AHA_Web.Models.ApplicationDbContext _db = new AHA_Web.Models.ApplicationDbContext();
+
         public ActionResult Index()
         {
-            return View(db.Events.ToList());
+            var scheduler = new DHXScheduler(this); //initializes dhtmlxScheduler
+            scheduler.LoadData = true;// allows loading data
+            scheduler.EnableDataprocessor = true;// enables DataProcessor in order to enable implementation CRUD operations
+            return View(scheduler);
         }
 
-        // GET: Event/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Data()
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Event @event = db.Events.Find(id);
-            if (@event == null)
-            {
-                return HttpNotFound();
-            }
-            return View(@event);
+            //events for loading to scheduler
+            return new SchedulerAjaxData(_db.Events);
         }
 
-        // GET: Event/Create
-        public ActionResult Create()
+        public ActionResult Save(Event updatedEvent, FormCollection formData)
         {
-            return View();
-        }
+            var action = new DataAction(formData);
 
-        // POST: Event/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Event_ID,Description,Event_Name,Attendence_Cost,Event_Type,Event_Start_Date,Event_End_Date,Event_Time")] Event @event)
-        {
-            if (ModelState.IsValid)
+            try
             {
-                db.Events.Add(@event);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                switch (action.Type)
+                {
+                    case DataActionTypes.Insert: // your Insert logic
+                        _db.Events.Add(updatedEvent);
+                        break;
+                    case DataActionTypes.Delete: // your Delete logic
+                        updatedEvent = _db.Events.SingleOrDefault(ev => ev.EventID == updatedEvent.EventID);
+                        _db.Events.Remove(updatedEvent);
+                        break;
+                    default:// "update" // your Update logic
+                        updatedEvent = _db.Events.SingleOrDefault(
+                        ev => ev.EventID == updatedEvent.EventID);
+                        UpdateModel(updatedEvent);
+                        break;
+                }
+                _db.SaveChanges();
+                action.TargetId = updatedEvent.EventID;
             }
-
-            return View(@event);
-        }
-
-        // GET: Event/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
+            catch (Exception e)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                action.Type = DataActionTypes.Error;
             }
-            Event @event = db.Events.Find(id);
-            if (@event == null)
-            {
-                return HttpNotFound();
-            }
-            return View(@event);
-        }
-
-        // POST: Event/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Event_ID,Description,Event_Name,Attendence_Cost,Event_Type,Event_Start_Date,Event_End_Date,Event_Time")] Event @event)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(@event).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(@event);
-        }
-
-        // GET: Event/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Event @event = db.Events.Find(id);
-            if (@event == null)
-            {
-                return HttpNotFound();
-            }
-            return View(@event);
-        }
-
-        // POST: Event/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Event @event = db.Events.Find(id);
-            db.Events.Remove(@event);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
+            return (new AjaxSaveResponse(action));
         }
     }
 }
