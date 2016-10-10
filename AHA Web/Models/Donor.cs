@@ -12,8 +12,6 @@ namespace AHA_Web.Models
 
         public Donor()
         {
-
-            Donations = new HashSet<Donation>();
             DonorContacts = new HashSet<DonorContact>();
             DonorsAttendences = new HashSet<DonorsAttendence>();
         }
@@ -66,7 +64,7 @@ namespace AHA_Web.Models
 
 
 
-        public virtual ICollection<Donation> Donations { get; set; }
+
 
         public virtual ICollection<DonorContact> DonorContacts { get; set; }
 

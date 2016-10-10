@@ -1,27 +1,37 @@
 ﻿@{
     ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="jumbotron">
+    
     <div class="row">
-        <div class="col-md-3">
-            <br />
-            <a href="../Home/GetInvolved"><img src="../Images/vol.png" style="width:150px; height:150px; "/></a>
-            <br />
-            <br />
-            <br />
+        <div class="col-md-12">
+            <center>
+                <h2>What's Adelante up to?</h2>
+                <div class="container video-container">
+                    <iframe src="https://www.youtube.com/embed/78paBRSDm0U" frameborder="0" allowfullscreen class="video"></iframe>
+                </div>
+            </center>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <center>
+                <a href="../Home/GetInvolved"><img src="../Images/vol.png" style="width:150px; height:150px; " /></a>
+            </center>
+        </div>
+        <div class="col-md-6">
+            <center>
                 <!--Paypal API-->
                 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
                     <input name="cmd" value="_s-xclick" type="hidden">
                     <input name="hosted_button_id" value="PJCBKP6NDWHTL" type="hidden">
-                    <input src="../Images/donate.png" name="submit" alt="PayPal - The safer, easier way to pay online!" type="image" border="0" 
+                    <input src="../Images/donate.png" name="submit" alt="PayPal - The safer, easier way to pay online!" type="image" border="0"
                            style="width:150px; height:150px;">
                 </form>
+            </center>
         </div>
-        <div class="col-md-9"><center>
-            <h3>What's Adelante up to?</h3>
-            <iframe width="550" height="400" src="https://www.youtube.com/embed/78paBRSDm0U" frameborder="0" allowfullscreen></iframe>
-        </center></div>
     </div>
 </div>
 
@@ -118,38 +128,24 @@
     </div>
 </div>
 
-@section partyBox1 {
-
-<div id="myCarousel" class="carousel slide" style="width: 300px; height: 150px; margin: 0 auto">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
-
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner">
-        <div class="item active">
-            <h4>Adelante students excel with an average GPA of 3.22, and overall school attendance of  97%!</h4>
-        </div>
-
-        <div class="item">
-            <h4>“In Adelante everyone has a dream, everyone speaks the same language, and everyone is FAMILY" - Sabrina Lloret</h4>
-        </div>
-
-        <div class="item">
-            <h4>Adelante graduates attend their college of choice on academic scholarships.</h4>
+@section pageMask
+{
+<div class="view overlay hm-black-strong">
+    <img src="~/Images/Copy of IMG_20150228_145936318_HDR.jpg" class="img-fluid " alt="">
+    <div class="mask flex-center">
+        <ul>
+            <li>
+                <h1 class="h1-responsive wow fadeInDown white-text" data-wow-delay="0.2s">Our Mission & Vision</h1>
+            </li>
+            <li>
+                <p class="wow fadeInDownBig white-text" >Adelante Hispanic Achievers’ mission is to inspire and empower Hispanic/Latino youth and their families to become self-sufficient, successful individuals who have the tools they need to achieve their dreams and participate as creative, educated world citizens.</p>
+            </li>
+            <li>
+                <a target="_blank" href="~/Files/Annual%20report%202015-2016%20.pdf" class="btn btn-danger btn-lg wow fadeInLeft" data-wow-delay="0.2s">Annual Report</a>
+                <a target="_blank" href="#" class="btn btn-default btn-lg wow fadeInRight" data-wow-delay="0.2s">Learn more</a>
+            </li>
+        </ul>
         </div>
     </div>
 </div>
-
-
-
-}
-
-@section partyBox2
-{
-<center>
-    <div class="fb-page" data-href="https://www.facebook.com/Adelante-Hispanic-Achievers-164080746962301/" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/Adelante-Hispanic-Achievers-164080746962301/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/Adelante-Hispanic-Achievers-164080746962301/">Adelante Hispanic Achievers</a></blockquote></div>
-</center>}
+}`

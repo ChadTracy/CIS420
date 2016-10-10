@@ -22,10 +22,15 @@ namespace AHA_Web
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
-
+            bundles.Add(new ScriptBundle("~/bundles/mdb").Include(
+                      "~/Scripts/mdb.js",
+                      "~/Scripts/tether.js"));
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+            bundles.Add(new StyleBundle("~/Content/mdb").Include(
+                     "~/Content/bootstrap.css",
+                     "~/Content/mdb.css"));
             bundles.Add(new StyleBundle("~/UPContent/css").Include(
                       "~/UPContent/bootstrap.css",
                       "~/UPContent/site.css",

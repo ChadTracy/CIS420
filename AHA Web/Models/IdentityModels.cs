@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using AHA_web.Models;
 
 namespace AHA_Web.Models
 {
@@ -38,7 +39,6 @@ namespace AHA_Web.Models
          }
          public DbSet<AdelanteStaff> Staff { get; set; }
          public DbSet<BoardMember> BoardMember { get; set; }
-         public DbSet<Donation> Donation { get; set; }
          public DbSet<Donor> Donors { get; set; }
          public DbSet<DonorContact> Contact { get; set; }
          public DbSet<DonorsAttendence> DonorAttendence { get; set; }

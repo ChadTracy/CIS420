@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using AHA_web.Models;
 
 namespace AHA_Web.Models
 {
@@ -31,6 +32,6 @@ namespace AHA_Web.Models
 
         public virtual Donor Donor { get; set; }
 
-        public virtual Event Event { get; set; }
+        public virtual Event Events { get; set; }
     }
 }

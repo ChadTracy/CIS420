@@ -1,0 +1,171 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Adelante Hispanic Achievers</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div id="fb-root"></div>
+    <script>
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.7";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+    <div class="carousel-control"></div>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $('.carousel').carousel({
+          interval: 400
+        })
+      });
+    </script>
+
+    <div class="navbar navbar-inverse navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav header-link">
+                    @*ActionLink(linkText, actionName, controllerName)*@
+                    
+                    <li>@Html.ActionLink("Adelante", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Get Involved <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Volunteer!", "GetInvolved", "Home")</li>
+                            <li>@Html.ActionLink("Donate or Become a Sponsor!", "Sponsors", "Home")</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Students <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Student of the Month", "StudentOfMonth", "Home")</li>
+                            <li>@Html.ActionLink("Programs", "Programs", "Home")</li>
+                        </ul>
+                    </li>
+                    <li>@Html.ActionLink("Contact Us", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("About Us", "About", "Home")</li>
+                    <li> @Html.ActionLink("Events","Index", "EVent")</li>
+                    
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-0 col-lg-1"></div>
+        <div class="col-md-12 col-lg-10">
+            @if (IsSectionDefined("partyBox1") || IsSectionDefined("partyBox2"))
+            {
+                <div class="container body-content container-fluid col-md-8">
+                    @RenderBody()
+                </div>
+
+                <div class="container col-md-4">
+                    @if (IsSectionDefined("partyBox1")) { 
+                        <div class="panel side-panel">
+                            @RenderSection("partyBox1", false)
+                        </div>
+                        <br />
+                    }
+                    @if (IsSectionDefined("partyBox2"))
+                    {
+                        <div class="panel side-panel">
+                            @RenderSection("partyBox2", false)
+                        </div>
+                    }
+                </div>
+            }
+            else
+            {
+                <div class="container body-content container-fluid">
+                    @RenderBody()
+                </div>
+            }
+        </div>
+        <div class="col-md-0 col-lg-1"></div>
+    </div>
+
+    <hr />
+    
+    <footer>
+        <div class="row">
+            <div class="col-md-6">
+
+                <div class="navbar-static-bottom">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav footer-link">
+                                @*ActionLink(linkText, actionName, controllerName)*@
+
+                                <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Get Involved <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li>@Html.ActionLink("Volunteer!", "GetInvolved", "Home")</li>
+                                        <li>@Html.ActionLink("Donate or Become a Sponsor!", "Sponsors", "Home")</li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Students <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li>@Html.ActionLink("Student of the Month", "StudentOfMonth", "Home")</li>
+                                        <li>@Html.ActionLink("Programs", "Programs", "Home")</li>
+                                    </ul>
+                                </li>
+                                <li>@Html.ActionLink("Contact Us", "Contact", "Home")</li>
+                                <li>@Html.ActionLink("About Us", "About", "Home")</li>
+                                <li> @Html.ActionLink("Events", "Calendar", "Home")</li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <br />
+                <p align="center"><b>Adelante’s Privacy Policy</b></p>
+                <p align="center">
+                    Adelante respects your privacy. We collect no information about you unless you
+                    choose to provide that information to us. We do not give, share, sell or transfer any personal
+                    information about you to any third parties. To prevent unauthorized access, maintain accuracy,
+                    and ensure the correct use of information, we have put in place appropriate physical, electronic,
+                    and administrative procedures to safeguard and secure any information that we collect.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    <script type="text/javascript">
+                    $(document).ready(function() {
+                    $('.carousel').carousel({
+                        interval: 4000
+                    })
+                    });
+    </script>
+</body>
+</html>
