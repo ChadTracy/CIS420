@@ -67,6 +67,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -230,6 +231,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Parent.cs" />
+    <Compile Include="Models\SchedulerModel.cs" />
     <Compile Include="Models\School.cs" />
     <Compile Include="Models\SchoolAttended.cs" />
     <Compile Include="Models\Student.cs" />
@@ -241,6 +243,8 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AHA Web.sln" />
+    <Content Include="dhxscheduler.sample.mvc3.readme.txt" />
     <Content Include="Scripts\mdb.js" />
     <Content Include="Scripts\tether.js" />
     <Content Include="Scripts\dhtmlxScheduler\dhtmlxscheduler.css" />
@@ -719,6 +723,9 @@
     <EmbeddedResource Include="Migrations\201609231726116_init.resx">
       <DependentUpon>201609231726116_init.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
