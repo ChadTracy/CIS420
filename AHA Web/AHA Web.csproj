@@ -245,6 +245,15 @@
   <ItemGroup>
     <Content Include="AHA Web.sln" />
     <Content Include="dhxscheduler.sample.mvc3.readme.txt" />
+    <Content Include="Images\Sponsor\BBB.jpg" />
+    <Content Include="Images\Sponsor\CFL.png" />
+    <Content Include="Images\Sponsor\GeneralElectric.png" />
+    <Content Include="Images\Sponsor\jcps.png" />
+    <Content Include="Images\Sponsor\LouisvilleSeal.png" />
+    <Content Include="Images\Sponsor\McDonalds.png" />
+    <Content Include="Images\Sponsor\StateFarm.jpg" />
+    <Content Include="Images\Sponsor\Tjx.png" />
+    <Content Include="Images\Sponsor\UPS.png" />
     <Content Include="Scripts\mdb.js" />
     <Content Include="Scripts\tether.js" />
     <Content Include="Scripts\dhtmlxScheduler\dhtmlxscheduler.css" />
