@@ -625,6 +625,11 @@
     <Content Include="Views\Event\Details.cshtml" />
     <Content Include="Views\Event\Edit.cshtml" />
     <Content Include="Views\Event\Index.cshtml" />
+    <Content Include="Views\Events\Create.cshtml" />
+    <Content Include="Views\Events\Delete.cshtml" />
+    <Content Include="Views\Events\Details.cshtml" />
+    <Content Include="Views\Events\Edit.cshtml" />
+    <Content Include="Views\Events\Index.cshtml" />
     <Content Include="Views\AdelanteStaff\Create.cshtml" />
     <Content Include="Views\AdelanteStaff\Delete.cshtml" />
     <Content Include="Views\AdelanteStaff\Details.cshtml" />
