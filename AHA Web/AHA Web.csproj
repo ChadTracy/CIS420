@@ -245,6 +245,15 @@
   <ItemGroup>
     <Content Include="AHA Web.sln" />
     <Content Include="dhxscheduler.sample.mvc3.readme.txt" />
+    <Content Include="Images\Sponsor\BBB.jpg" />
+    <Content Include="Images\Sponsor\cfl.png" />
+    <Content Include="Images\Sponsor\GeneralElectric.png" />
+    <Content Include="Images\Sponsor\jcps.png" />
+    <Content Include="Images\Sponsor\LouisvilleSeal.png" />
+    <Content Include="Images\Sponsor\McDonalds.png" />
+    <Content Include="Images\Sponsor\StateFarm.jpg" />
+    <Content Include="Images\Sponsor\Tjx.png" />
+    <Content Include="Images\Sponsor\UPS.png" />
     <Content Include="Scripts\mdb.js" />
     <Content Include="Scripts\tether.js" />
     <Content Include="Scripts\dhtmlxScheduler\dhtmlxscheduler.css" />
@@ -616,11 +625,6 @@
     <Content Include="Views\Event\Details.cshtml" />
     <Content Include="Views\Event\Edit.cshtml" />
     <Content Include="Views\Event\Index.cshtml" />
-    <Content Include="Views\Events\Create.cshtml" />
-    <Content Include="Views\Events\Delete.cshtml" />
-    <Content Include="Views\Events\Details.cshtml" />
-    <Content Include="Views\Events\Edit.cshtml" />
-    <Content Include="Views\Events\Index.cshtml" />
     <Content Include="Views\AdelanteStaff\Create.cshtml" />
     <Content Include="Views\AdelanteStaff\Delete.cshtml" />
     <Content Include="Views\AdelanteStaff\Details.cshtml" />
