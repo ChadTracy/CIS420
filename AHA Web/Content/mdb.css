@@ -6707,12 +6707,10 @@ p.lead {
   font-weight: 400;
   font-size: 1.5rem;
   margin-bottom: 0;
-  padding-left:1em;
 }
 
 .blockquote p {
   font-size: 1.1rem;
-  padding-left: 2em;
 }
 
 .bq-primary {
