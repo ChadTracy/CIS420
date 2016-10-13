@@ -50,13 +50,13 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#grant"><i class="fa fa-fw fa-arrows-v"></i> Grant Writing <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="grant" class="collapse">
                             <li>
-                                <a href="@Url.Action("ViewGrants", "UserPortal")">View Grants</a>
+                                @Html.ActionLink("View Grants", "ViewGrants", "Grant")
                             </li>
                             <li>
-                                <a href="@Url.Action("CreateGrant", "UserPortal")">Create Grant</a>
+                                @Html.ActionLink("Create Grant", "CreateGrant", "Grant")
                             </li>
                             <li>
-                                <a href="@Url.Action("EditGrants", "UserPortal")">Edit Grants</a>
+                                @Html.ActionLink("Edit Grants", "EditGrants", "Grant")
                             </li>
                         </ul>
                     </li>

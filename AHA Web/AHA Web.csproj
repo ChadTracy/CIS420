@@ -582,7 +582,7 @@
     <Content Include="Content\mdb.css" />
     <Content Include="Views\UserPortal\AccountManagement.cshtml" />
     <Content Include="Views\UserPortal\ViewCalendar.cshtml" />
-    <Content Include="Views\UserPortal\ViewGrants.cshtml" />
+    <Content Include="Views\Grant\ViewGrants.cshtml" />
     <Content Include="Views\Home\MentoringEnrichment.cshtml" />
     <Content Include="Views\Home\CollegeReadiness.cshtml" />
     <Content Include="Views\Home\AST.cshtml" />
@@ -699,8 +699,8 @@
     <Content Include="Views\Home\SendForm.php" />
     <Content Include="Views\UserPortal\CreateEvent.cshtml" />
     <Content Include="Views\UserPortal\EditEvents.cshtml" />
-    <Content Include="Views\UserPortal\EditGrants.cshtml" />
-    <Content Include="Views\UserPortal\CreateGrant.cshtml" />
+    <Content Include="Views\Grant\EditGrants.cshtml" />
+    <Content Include="Views\Grant\CreateGrant.cshtml" />
     <Content Include="Views\Volunteer\Create.cshtml" />
     <Content Include="Views\Volunteer\Delete.cshtml" />
     <Content Include="Views\Volunteer\Details.cshtml" />
