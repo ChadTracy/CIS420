@@ -582,6 +582,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Content\mdb.css" />
+    <Content Include="Views\Home\Bellarmine_Knights.png" />
     <Content Include="Views\UserPortal\AccountManagement.cshtml" />
     <Content Include="Views\UserPortal\ViewCalendar.cshtml" />
     <Content Include="Views\Grant\ViewGrants.cshtml" />
@@ -690,8 +691,8 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Home\Programs_depreciated.cshtml" />
     <Content Include="Views\Home\Programs.cshtml" />
-    <Content Include="Views\Home\Students.cshtml" />
     <Content Include="Views\Home\GetInvolved.cshtml" />
     <Content Include="Views\Home\Sponsors.cshtml" />
     <Content Include="Views\Home\StudentOfMonth.cshtml" />
