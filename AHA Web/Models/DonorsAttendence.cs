@@ -18,9 +18,8 @@ namespace AHA_Web.Models
 
         [Key]
         [Column(Order =1)]
-        [MaxLength(12), MinLength(12)]
         [Display(Name = "Event ID")]
-        public string Event_ID { get; set; }
+        public string EventID { get; set; }
 
         [DataType(DataType.Time,ErrorMessage ="Please Enter a Valid Time")]
         [Display(Name = "Sign In Time")]
