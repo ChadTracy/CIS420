@@ -12,10 +12,10 @@
         </h1>
         <ol class="breadcrumb">
             <li>
-                <i class="fa fa-fw fa-dashboard"></i> <a href="@Url.Action("Index", "UserPortal")"> Dashboard</a>
+                <i class="fa fa-fw fa-dashboard"></i> @Html.ActionLink("Dashboard", "Index", "UserPortal")
             </li>
             <li class="active">
-                <i class="fa fa-fw fa-bar-chart-o"></i> Grant Writing
+                <i class="fa fa-fw fa-bar-chart-o"></i> @Html.ActionLink("Grant Writing", "Index", "Grant")
             </li> 
             <li class="active">
                 <i class="fa fa-fw fa-bar-chart-o"></i> Create Grant
