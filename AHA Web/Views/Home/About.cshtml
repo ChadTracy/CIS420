@@ -3,36 +3,15 @@
     ViewBag.Title = "About Us";
 }
 
-<div class="jumbotron">
-    <center>
-    <h1>
-        <img src="../Images/about-us.png" />
-    </h1>
-    </center>
-    <p>“In Adelante everyone has a dream, everyone speaks the same language, and everyone is FAMILY” - Sabrina Lloret</p>
-    <p style="text-align:right"><a class="btn btn-default" href="~/Files/Annual%20report%202015-2016%20.pdf">2015-2016 Annual Report</a></p>
-    <p style="text-align:right"><a class="btn btn-default" href="~/Files/2014 990 Adelante Hispanic Achievers.pdf">990 Tax Exemption Form</a></p>
-</div>
-<!--
-    <p>
-        "Our goal is to guide our students and support their desire, hope, and ambition to be productive citizens in 
-        our community. Stephen Imhoff, Adelante Founder, Immediate Past President and former Board Chairman of 
-        Jefferson County Board of Education."
-    </p>
--->
 <!--
 <center>
     <div class="fb-page" data-href="https://www.facebook.com/Adelante-Hispanic-Achievers-164080746962301/" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/Adelante-Hispanic-Achievers-164080746962301/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/Adelante-Hispanic-Achievers-164080746962301/">Adelante Hispanic Achievers</a></blockquote></div>
 </center>
 }-->
+<div class="divider-new">
+    <h2 class="h2-responsive">Our History and Mission</h2>
+</div>
 <div class="row">
-    <div class="col-md-4">
-        <img class="img-responsive img-rounded" src="~/Images/1.jpg" />
-        <br />
-        <img class="img-responsive img-rounded" src="~/Images/2.jpg" />
-    </div>
-    <div class="col-md-8">
-        <h2>Our History and Mission</h2>
         <p>
             Our Louisville community has seen a 122% increase in the Hispanic/Latino population
             over the last decade, and its numbers continue to grow. This diverse Hispanic population
@@ -50,13 +29,55 @@
             Hispanic/Latino youth and families to achieve their dreams and contribute as creative
             and educated world citizens.
         </p>
-        <center>
-        <img class="img-responsive img-rounded" src="~/Images/13.jpg" style="height:300px; width:600px; " />
-        <p>2012 Award Winner-Pyramid Art of Excellence in Governance</p>
-        <p>Award from the Center for Non Profit Excellence</p>
-        </center>
     </div>
-    <hr />
+<div class="divider-new">
+    <h2 class="h2-responsive">Awards</h2>
+</div>
+<div class="row">
+    <div class="col-md-6 wow fadeIn">
+        <div class="card">
+            <!--Overlay Card-->
+            <!--Make fade over-->
+            <div class="view overlay hm-bluegrey-light">
+                <!-- Card header-->
+                <img class="img-fluid" src="~/Images/Governance.jpg" />
+                <!--Mouseover Mask Content-->
+                <div class="mask flex-center waves-effect waves-light">
+                </div>
+            </div>
+            <!-- Card Content-->
+            <div class="card-block">
+                <!-- Title-->
+                <h3 class="card-title">Pyramid Art of Excellence in Governance</h3>
+                <p>2012 Award Winner</p>
+                <!-- card text -->
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 wow fadeIn">
+        <div class="card">
+            <!--Overlay Card-->
+            <!--Make fade over-->
+            <div class="view overlay hm-bluegrey-light">
+                <!-- Card header-->
+                <img class="img-fluid" src="~/Images/CNPE_Logo_2.jpg" />
+                <!--Mouseover Mask Content-->
+                <div class="mask flex-center waves-effect waves-light">
+                </div>
+            </div>
+            <!-- Card Content-->
+            <div class="card-block">
+                <!-- Title-->
+                <h3 class="card-title">Center for Non-Profit Excellence</h3>
+                <p>2012 Award Recipient</p>
+                <!-- card text -->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="divider-new">
+    <h2 class="h2-responsive">Our Employees & Boards</h2>
+</div>
     <div class="row">
         <div class="col-md-6">
             <center>
@@ -85,6 +106,7 @@
             </center>
         </div>
     </div>
+<div class="row">
     <div class="col-md-6">
         <center>
             <h3>Advisory Board</h3>
@@ -105,9 +127,29 @@
             <p><b>Sonia Ruiz</b>, CFO, Adhawks Advertising & Public Relations, Inc. </p>
             <p><b>Kim Huston</b>, Traffic and Delivery Manager, Humana</p>
         </center>
+    </div></div>
+<hr/>
+<div class="row">
+    <div class="blockquote bq-primary">
+        <p class="bq-title">-Sabrina Lloret, Student</p>
+        <p>“In Adelante everyone has a dream, everyone speaks the same language, and everyone is FAMILY”</p>
+    </div>
+    <div class="blockquote bq-primary">
+        <p class="bq-title">-Stephen Imhoff, Adelante Founder, Immediate Past President and former Board Chairman of
+        Jefferson County Board of Education</p>
+        <p>“Our goal is to guide our students and support their desire, hope, and ambition to be productive citizens in
+        our community.”</p>
     </div>
 </div>
-<br />
-<div class="row">
-    <p><b>Adelante Hispanic Achievers, Inc. is a 501 (c) 3 non-profit organization based at Buechel United Methodist Church, 2817 Hikes Lane, Louisville, Kentucky, 40218</b></p>
-</div>
+@section pageMask
+{
+    <div class="row">
+        <div class="jumbotron text-center wow fadeIn">
+            <h2 class="h1-responsive wow fadeInDown" data-wow-delay="0.2s">About Us</h2>
+
+            <hr />
+            <a target="_blank" href="~/Files/Annual%20report%202015-2016%20.pdf" class="btn btn-danger btn-lg wow fadeInLeft" data-wow-delay="0.2s">Annual Report</a>
+            <a target="_blank" href="~/Files/2014 990 Adelante Hispanic Achievers.pdf" class="btn btn-default btn-lg wow fadeInRight" data-wow-delay="0.2s">990 Tax Exemption Form</a>
+        </div>
+    </div>
+}

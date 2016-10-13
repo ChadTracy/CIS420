@@ -245,6 +245,8 @@
   <ItemGroup>
     <Content Include="AHA Web.sln" />
     <Content Include="dhxscheduler.sample.mvc3.readme.txt" />
+    <Content Include="Images\CNPE_Logo_2.jpg" />
+    <Content Include="Images\Governance.jpg" />
     <Content Include="Images\Sponsor\BBB.jpg" />
     <Content Include="Images\Sponsor\cfl.png" />
     <Content Include="Images\Sponsor\GeneralElectric.png" />
