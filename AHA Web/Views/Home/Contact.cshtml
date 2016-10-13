@@ -25,11 +25,12 @@ closes a form used to "email me"*/
 						z-index: 200;
 						position: fixed;
 						left: 50%;
-						top: 60%;
+						top: 40%;
 						width: 60%;
 						overflow: auto;
 						padding: 0px 50px;
-						background: #E0DECF;
+						background: #FFFFFF;
+                        height:70%;
 					  }
 
 					  #modal_wrapper.overlay #modal_window {
@@ -41,72 +42,102 @@ closes a form used to "email me"*/
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Contact Us";
 }
-<center>
-<header>
-    <img src="../Images/ContactUs.png" />
-</header>
-</center>
-
 <body>
-    <h2>We'd love to hear from you!</h2>
+<div class="divider-new">
+    <h2 class="h2-responsive">Points of Contact</h2>
+</div>
 
-    <div class="col-md-4">
+    <div class="row">
+        <div class="col-md-6 wow fadeIn">
+            <div class="card">
+                <!--Simple Card-->
+                <!--Overlay without mask fixes size on empty card-->
+                <div class="view overlay hm-black-strong">
+                    <!-- Card header-->
+                    <img class="img-fluid" src="~/Images/IMG_2477.jpg" height="480" />
+                    <!-- Card Content-->
+                    <div class="mask flex-center waves-effect waves-light">
+                        <ul>
+                            <li>
+                                <p class="wow fadeInUp white-text">(502)-494-0353</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-block">
+                    <!-- Title-->
+                    <h2 class="card-title"><a href="mailto:maramaldonado@att.net">Mara Maldonado, Director</a></h2>
+                    <!-- card text -->
+                </div>
+            </div>
+            </div>
+        <div class="col-md-6 wow fadeIn">
+            <div class="card">
+                <!--Simple Card-->
+                <!--Overlay without mask fixes size on empty card-->
+                <div class="view overlay hm-black-strong">
+                    <!-- Card header-->
+                    <img class="img-fluid" src="~/Images/IMG_2477.jpg" height="480" />
+                    <!-- Card Content-->
+                    <div class="mask flex-center waves-effect waves-light">
+                        <ul>
+                            <li>
+                                <p class="wow fadeInUp white-text">(231)-649-1652</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-block">
+                    <!-- Title-->
+                    <h2 class="card-title"><a href="mailto:dustinjbishop@gmail.com">Dustin Bishop, Volunteer Director</a></h2>
+                    <!-- card text -->
+                </div>
+            </div>
+        </div>
+        </div><br/></br/><div class="row">
+        <div class="col-md-6 wow fadeIn">
+            <div class="card">
+                <!--Simple Card-->
+                <!--Overlay without mask fixes size on empty card-->
+                <div class="view overlay hm-black-strong">
+                    <!-- Card header-->
+                    <img class="img-fluid" src="~/Images/IMG_2477.jpg" height="480" />
+                    <!-- Card Content-->
+                    <div class="mask flex-center waves-effect waves-light">
+                        <ul>
+                            <li>
+                                <p class="wow fadeInUp white-text">(502)-649-6781</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-block">
+                    <!-- Title-->
+                    <h2 class="card-title"><a href="mailto:cefields90@gmail.com">Carol Fields, College Readiness Coach<</a></h2>
+                    <!-- card text -->
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 wow fadeIn">
+            <div class="card">
+                <!--Simple Card-->
+                <!--Overlay without mask fixes size on empty card-->
+                <div class="view overlay hm-black-strong">
+                    <!-- Card header-->
+                    <img class="img-fluid" src="~/Images/IMG_2477.jpg" height="480" />
+                    <!-- Card Content-->
+                    <div class="mask flex-center waves-effect waves-light">
+                    </div>
+                </div>
+                <div class="card-block">
+                    <!-- Title-->
+                    <h2 class="card-title"><a href="mailto:gerkemk@gmail.com">Morgan Gerke, Americorps VISTA</a></h2>
+                    <!-- card text -->
+                </div>
+            </div>
+        </div></div>
+ /div>
 
-        <p>
-            Mara Maldonado, Director<br />
-            (502)-494-0353   <a href="mailto:maramaldonado@att.net">Email Mara</a>
-        </p>
-
-        <p>
-            Dustin Bishop<br />
-            Volunteers/ Program Operations and Development<br />
-            (231) 649-1652 <a href="mailto:dustinjbishop@gmail.com">Email Dustin</a>
-        </p>
-
-        <p>
-            Carol Fields,  College Readiness Coach<br />
-            (502)-649-6781 <a href="mailto:cefields90@gmail.com">Email Carol</a>
-        </p>
-
-        <p>
-            Morgan Gerke,  Americorps VISTA <br />
-            <a href="mailto:gerkemk@gmail.com">Email Morgan</a>
-        </p>
-
-        <p>Alison Greer and Kelcey Robinson , UofL LALS Interns</p>
-
-        <!-- Email me changes form depending on screen size -->
-        <script language="JavaScript">
-									if ((screen.width>=1280) && (screen.height>=720))
-									{
-									    document.write("<button class='btn btn-default' id='modal_open'> Email me</button>");
-									}
-									else
-									{
-									    document.write("<a class='btn btn-default' href='mailto:nathanstopinski@gmail.com'> Email me</a>");
-									}
-        </script> 
-    </div>
-    <div class="col-md-4">
-
-        <div id="map" style="width:300px; height:300px;"></div>
-
-        <br />
-        <p>Adelante Hispanic Achievers
-<br />
-            2817 Hikes Lane
-<br />
-            Louisville, KY 40218
-<br />
-<br />
-            We are located in Buechel United Methodist Church on Hikes Lane between Goldsmith Lane and Furman Blvd.</p>
-
-    </div>
-    <div class="col-md-4">
-        <center>
-            <img src="../Images/4.jpg" style="width:450px; height:300px;" />
-        </center>
-    </div>
 </body>
 
 <!-- Email me Form -->
@@ -135,7 +166,7 @@ closes a form used to "email me"*/
                         <label for="copy">Email me a copy</label>
                     </div>
                     <div class="12u$">
-                        <textarea name="message" required id="message" placeholder="Enter your message" rows="6"></textarea>
+                        <textarea name="message" required id="message" placeholder="Enter your message, feel free to expand the text area if it looks a bit small." rows="6" ></textarea>
                     </div>
                     <!-- Google reCAPTCHA API -->
                     <div class="g-recaptcha" data-callback="recaptchaCallback" data-sitekey="6Lcd6wcUAAAAALyfSPaS1UOZADXj6eDcFNCgqcUa"></div>
@@ -156,29 +187,7 @@ closes a form used to "email me"*/
 
 
 <!---------------------------------------Scripts--------------------------------------->
-<script>
 
-      function initMap() {
-          var myLatLng = { lat: 38.207089, lng: -85.648307 };
-
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 16,
-          center: myLatLng
-        });
-
-        var marker = new google.maps.Marker({
-          position: myLatLng,
-          map: map,
-          title: 'Adelante Hispanic Achievers'
-        });
-      }
-</script> <!--Google Maps-->
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOzao4vmN7tapJrX8dfq-2hGfnLIxA6Zs&callback=initMap">
-    // Google Maps API
-    // API Key registered under quinnbanet359@gmail.com
-    // KEY - AIzaSyDOzao4vmN7tapJrX8dfq-2hGfnLIxA6Zs
-</script> <!--Google Maps-->
 <!--Google Recaptcha API-->
 <script src='https://www.google.com/recaptcha/api.js'></script>
 <script type="text/javascript" >							  // Original JavaScript code by Chirp Internet: www.chirp.com.au
@@ -261,3 +270,13 @@ closes a form used to "email me"*/
 							      document.getElementById("modal_feedback").attachEvent("onsubmit", checkForm);
 							      window.attachEvent("onload", modal_init);
 							  }</script> <!--Form Opener Helper-->
+
+@section pageMask{
+    <div class="row">
+    <div class="jumbotron text-center wow fadeIn">
+        <h2 class="h1-responsive wow fadeInDown" data-wow-delay="0.2s">Contact Us</h2>
+        <p class="wow fadeInDownBig">For general questions, messages & inquiries about Adelante, click below. Otherwise, individual contact information is posted below as well.</p>
+        <hr />
+        <a class='btn btn-default' href='mailto:nathanstopinski@gmail.com' id="modal_open"> Email me</a>
+    </div></div>
+}
