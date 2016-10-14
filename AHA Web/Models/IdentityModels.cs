@@ -48,19 +48,17 @@ namespace AHA_Web.Models
          public DbSet<BoardMember> BoardMember { get; set; }
          public DbSet<Donor> Donors { get; set; }
          public DbSet<DonorContact> Contact { get; set; }
-         public DbSet<DonorsAttendence> DonorAttendence { get; set; }
          public DbSet<Event> Events { get; set; }
          public DbSet<Grant> Grants { get; set; }
          public DbSet<Grantor> Grantors { get; set; }
         public DbSet<Parent> Parents { get; set; }
-        public DbSet<School> School { get; set; }
-         public DbSet<SchoolAttended> SchoolAttended { get; set; }
          public DbSet<Student> Students { get; set; }
          public DbSet<StudentAttendence> StudentAttendence { get; set; }
          public DbSet<StudentFamily> StudentFamily { get; set; }
          public DbSet<Volunteer> Volunteers { get; set; }
- 
+           
          public DbSet<VolunteerHistory> VolunteerHistory { get; set; }
-
+        public DbSet<Program> Programs { get; set; }
+        public DbSet<ProgramEnrollment> ProgramEnrollment { get; set; }
 }
 }
