@@ -213,3 +213,4 @@ ModelManifest.xml
 
 AHA Web/AHA Web.csproj
 *.csproj
+/AHA Web/Migrations
