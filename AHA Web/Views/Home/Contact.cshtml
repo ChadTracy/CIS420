@@ -31,7 +31,7 @@
             width: 60%;
             overflow: auto;
             padding: 0px 50px;
-            background: #3E4551;
+            background: #FFFFFF;
         }
 
         #modal_wrapper.overlay #modal_window {
@@ -125,9 +125,14 @@
                 <!--Overlay without mask fixes size on empty card-->
                 <div class="view overlay hm-black-strong">
                     <!-- Card header-->
-                    <img class="img-fluid" src="~/Images/IMG_2477.jpg" height="480" />
+                    <img class="img-fluid" src="~/Images/Morgan - VISTA.jpg" height="480" />
                     <!-- Card Content-->
                     <div class="mask flex-center waves-effect waves-light">
+                        <ul>
+                            <li>
+                                <p class="wow fadeInUp white-text">(608)-792-2766</p>
+                            </li>
+                        </ul>
                     </div>
                 </div>
                 <div class="card-block">
@@ -136,12 +141,10 @@
                     <!-- card text -->
                 </div>
             </div>
-        </div></div>
- </div>
-
-</body>
-    <div class="col-md-4">
-        <h2>Contact Us</h2>
+        </div></div><br/><br/>
+    <div class="row">
+        <div class="jumbotron">
+        <h2>Contact Us-temporary, will use the popup in I3</h2>
         @using (Html.BeginForm("Contact", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @id = "contact-form", role = "form" }))
         {
             @Html.ValidationSummary()
@@ -160,14 +163,16 @@
                 </div>
 
                 @* @Html.Recaptcha()
-                @Html.ValidationMessage("ReCaptcha") *@
+                    @Html.ValidationMessage("ReCaptcha") *@
                 <div class="button-wrapper">
                     <input type="submit" value="Send" name="submit" class="btn btn-success" id="submitBtn">
                     <input type="reset" value="Reset" name="MFReset" class="btn btn-danger">
                 </div>
             </fieldset>
         }
-    </div>
+    </div></div>
+</body>
+
 
     <!--Form to be-->
     <div id="modal_wrapper">
@@ -198,8 +203,8 @@
                 <div class="button-wrapper">
                     <!-- Google reCAPTCHA API -->
                     <!--<div class="g-recaptcha" data-theme="dark" data-callback="recaptchaCallback" data-sitekey="6Lcd6wcUAAAAALyfSPaS1UOZADXj6eDcFNCgqcUa"></div> -->
-                    <input type="submit" value="Send" name="submit" class="btn btn-success" id="submitBtn">
-                    <input type="reset" value="Reset" name="MFReset" class="btn btn-danger">
+                    <input type="submit" value="Send" name="submit" class="btn btn-primary" id="submitBtn">
+                    <input type="reset" value="Reset" name="MFReset" class="btn btn-warning">
                 </div>
             </form>
             </div>
@@ -311,6 +316,6 @@
         <h2 class="h1-responsive wow fadeInDown" data-wow-delay="0.2s">Contact Us</h2>
         <p class="wow fadeInDownBig">For general questions, messages & inquiries about Adelante, click below. Otherwise, individual contact information is posted below as well.</p>
         <hr />
-        <a class='btn btn-default' href='mailto:nathanstopinski@gmail.com' id="modal_open"> Email me</a>
+        <a class='btn btn-default' href='mailto:jamesericryg@gmail.com' id="modal_open"> Email me</a>
     </div></div>
 }

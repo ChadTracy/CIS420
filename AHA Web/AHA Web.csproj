@@ -99,6 +99,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="reCAPTCHA.MVC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\reCAPTCH.MVC.1.0.1\lib\net45\reCAPTCHA.MVC.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -285,8 +286,10 @@
   <ItemGroup>
     <Content Include="AHA Web.sln" />
     <Content Include="dhxscheduler.sample.mvc3.readme.txt" />
+    <Content Include="Images\Bellarmine_Knights.png" />
     <Content Include="Images\CNPE_Logo_2.jpg" />
     <Content Include="Images\Governance.jpg" />
+    <Content Include="Images\Morgan - VISTA.jpg" />
     <Content Include="Images\Sponsor\BBB.jpg" />
     <Content Include="Images\Sponsor\cfl.png" />
     <Content Include="Images\Sponsor\GeneralElectric.png" />
