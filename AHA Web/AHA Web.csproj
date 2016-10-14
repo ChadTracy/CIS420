@@ -234,7 +234,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\Attendence\DonorsAttendenceController.cs" />
     <Compile Include="Controllers\Attendence\StudentAttendenceController.cs" />
     <Compile Include="Controllers\Donors\BoardMembers\BoardMemberController.cs" />
     <Compile Include="Controllers\Donors\DonorContactController.cs" />
@@ -264,7 +263,6 @@
     <Compile Include="Models\BoardMember.cs" />
     <Compile Include="Models\Donor.cs" />
     <Compile Include="Models\DonorContact.cs" />
-    <Compile Include="Models\DonorsAttendence.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\Grant.cs" />
     <Compile Include="Models\MailViewModel.cs" />
@@ -272,9 +270,9 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Parent.cs" />
+    <Compile Include="Models\Program.cs" />
+    <Compile Include="Models\ProgramEnrollment.cs" />
     <Compile Include="Models\SchedulerModel.cs" />
-    <Compile Include="Models\School.cs" />
-    <Compile Include="Models\SchoolAttended.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\StudentAttendence.cs" />
     <Compile Include="Models\StudentFamily.cs" />
@@ -659,11 +657,6 @@
     <Content Include="Views\BoardMember\Details.cshtml" />
     <Content Include="Views\BoardMember\Edit.cshtml" />
     <Content Include="Views\BoardMember\Index.cshtml" />
-    <Content Include="Views\DonorsAttendence\Create.cshtml" />
-    <Content Include="Views\DonorsAttendence\Delete.cshtml" />
-    <Content Include="Views\DonorsAttendence\Details.cshtml" />
-    <Content Include="Views\DonorsAttendence\Edit.cshtml" />
-    <Content Include="Views\DonorsAttendence\Index.cshtml" />
     <Content Include="Views\StudentAttendence\Create.cshtml" />
     <Content Include="Views\StudentAttendence\Delete.cshtml" />
     <Content Include="Views\StudentAttendence\Details.cshtml" />
@@ -763,6 +756,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Controllers\Programs\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

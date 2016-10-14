@@ -13,7 +13,6 @@ namespace AHA_Web.Models
         public Student()
         {
 
-            SchoolAttendeds = new HashSet<SchoolAttended>();
             StudentAttendences = new HashSet<StudentAttendence>();
             StudentFamilies = new HashSet<StudentFamily>();
         }
@@ -68,13 +67,11 @@ namespace AHA_Web.Models
         [Required]
         public bool Ambassador { get; set; }
 
-
-
-        public virtual ICollection<SchoolAttended> SchoolAttendeds { get; set; }
-
+        public string School { get; set; }
 
         public virtual ICollection<StudentAttendence> StudentAttendences { get; set; }
 
+        public virtual ICollection<ProgramEnrollment> ProgramEnrollments { get; set; }
 
         public virtual ICollection<StudentFamily> StudentFamilies { get; set; }
     }
