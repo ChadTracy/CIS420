@@ -28,18 +28,6 @@ namespace AHA_Web.Controllers
         {
             return View();
         }
-        public ActionResult ViewGrants()
-        {
-            return View();
-        }
-        public ActionResult EditGrants()
-        {
-            return View();
-        }
-        public ActionResult CreateGrant()
-        {
-            return View();
-        }
 
     }
 }
