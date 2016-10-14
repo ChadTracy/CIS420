@@ -20,7 +20,7 @@ namespace AHA_Web.Models
         [Key]
         [Display(Name = "Event ID")]
         [Column(Order = 1)]
-        public string EventID { get; set; }
+        public string Program_ID { get; set; }
 
         [Required]
         [Display(Name = "Sign-in Time")]
@@ -32,7 +32,7 @@ namespace AHA_Web.Models
         [DataType(DataType.Time, ErrorMessage = "Please Enter a Valid Sign-Out Time")]
         public TimeSpan? Sign_Out_Time { get; set; }
 
-        public virtual Event Event { get; set; }
+        public virtual Program Program { get; set; }
 
         public virtual Student Student { get; set; }
     }

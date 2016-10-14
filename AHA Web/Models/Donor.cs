@@ -13,7 +13,7 @@ namespace AHA_Web.Models
         public Donor()
         {
             DonorContacts = new HashSet<DonorContact>();
-            DonorsAttendences = new HashSet<DonorsAttendence>();
+            
         }
 
         [Required]
@@ -61,13 +61,6 @@ namespace AHA_Web.Models
         [DataType(DataType.PhoneNumber, ErrorMessage= "Please Enter a Valid Phone Number")]
         public string Phone { get; set; }
 
-
-
-
-
-
         public virtual ICollection<DonorContact> DonorContacts { get; set; }
-
-        public virtual ICollection<DonorsAttendence> DonorsAttendences { get; set; }
     }
 }
