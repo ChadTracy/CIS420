@@ -242,6 +242,8 @@
     <Compile Include="Controllers\Grants\GrantController.cs" />
     <Compile Include="Controllers\Grants\GrantorController.cs" />
     <Compile Include="Controllers\Parents\ParentController.cs" />
+    <Compile Include="Controllers\Programs\ProgramController.cs" />
+    <Compile Include="Controllers\Programs\ProgramEnrollmentController.cs" />
     <Compile Include="Controllers\Staff\AdelanteStaffController.cs" />
     <Compile Include="Controllers\Students\StudentController.cs" />
     <Compile Include="Controllers\Students\StudentFamilyController.cs" />
@@ -253,9 +255,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201609231726116_init.cs" />
+    <Compile Include="Migrations\201610142319117_Initial.cs" />
     <Compile Include="Migrations\201609231726116_init.Designer.cs">
-      <DependentUpon>201609231726116_init.cs</DependentUpon>
+      <DependentUpon>201610142319117_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610142325189_InitialFixed.cs" />
+    <Compile Include="Migrations\201610142325189_InitialFixed.Designer.cs">
+      <DependentUpon>201610142325189_InitialFixed.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -696,6 +702,16 @@
     <Content Include="Views\Home\PrivacyPolicy.cshtml" />
     <Content Include="Views\Home\ThankYou.cshtml" />
     <Content Include="Views\Home\Error.cshtml" />
+    <Content Include="Views\Program\Create.cshtml" />
+    <Content Include="Views\Program\Delete.cshtml" />
+    <Content Include="Views\Program\Details.cshtml" />
+    <Content Include="Views\Program\Edit.cshtml" />
+    <Content Include="Views\Program\Index.cshtml" />
+    <Content Include="Views\ProgramEnrollment\Create.cshtml" />
+    <Content Include="Views\ProgramEnrollment\Delete.cshtml" />
+    <Content Include="Views\ProgramEnrollment\Details.cshtml" />
+    <Content Include="Views\ProgramEnrollment\Edit.cshtml" />
+    <Content Include="Views\ProgramEnrollment\Index.cshtml" />
     <None Include="Views\UserPortal\Index.cshtml" />
     <None Include="Views\Shared\_UserPortalLayout.cshtml" />
     <Content Include="Views\UserPortal\_ViewStart.cshtml" />
@@ -756,7 +772,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\Programs\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -767,12 +782,15 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201609231726116_init.resx">
-      <DependentUpon>201609231726116_init.cs</DependentUpon>
-    </EmbeddedResource>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <EmbeddedResource Include="Migrations\201609231726116_init.resx">
+      <DependentUpon>201610142319117_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610142325189_InitialFixed.resx">
+      <DependentUpon>201610142325189_InitialFixed.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
