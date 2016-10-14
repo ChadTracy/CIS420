@@ -1,4 +1,6 @@
-﻿<!------------------------Page Specific CSS and Links------------------------>
+﻿@*@using reCAPTCHA.MVC*@
+@model AHA.Models.MailViewModel
+<!------------------------Page Specific CSS and Links------------------------>
 <style type="text/css">
     #map {
         height: 300px;
@@ -6,38 +8,36 @@
     }
 </style> <!--CSS for Maps API-->
 <style type="text/css">
-/*This is a CSS that opens and
-closes a form used to "email me"*/
-					  #modal_wrapper.overlay:before {
-						content: " ";
-						width: 100%;
-						height: 100%;
-						position: fixed;
-						z-index: 100;
-						top: 0;
-						left: 0;
-						background: #000;
-						background: rgba(0,0,0,0.7);
-					  }
+        /*This is a CSS that opens and
+    closes a form used to "email me"*/
+        #modal_wrapper.overlay:before {
+            content: " ";
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            z-index: 100;
+            top: 0;
+            left: 0;
+            background: #000;
+            background: rgba(0,0,0,0.7);
+        }
 
-					  #modal_window {
-						display: none;
-						z-index: 200;
-						position: fixed;
-						left: 50%;
-						top: 40%;
-						width: 60%;
-						overflow: auto;
-						padding: 0px 50px;
-						background: #FFFFFF;
-                        height:70%;
-					  }
+        #modal_window {
+            display: none;
+            z-index: 200;
+            position: fixed;
+            left: 50%;
+            top: 60%;
+            width: 60%;
+            overflow: auto;
+            padding: 0px 50px;
+            background: #FFFFFF;
+        }
 
-					  #modal_wrapper.overlay #modal_window {
-						display: block;
-					  }
+        #modal_wrapper.overlay #modal_window {
+            display: block;
+        }
 </style> <!--CSS for Email Popup-->
-
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Contact Us";
@@ -125,9 +125,14 @@ closes a form used to "email me"*/
                 <!--Overlay without mask fixes size on empty card-->
                 <div class="view overlay hm-black-strong">
                     <!-- Card header-->
-                    <img class="img-fluid" src="~/Images/IMG_2477.jpg" height="480" />
+                    <img class="img-fluid" src="~/Images/Morgan - VISTA.jpg" height="480" />
                     <!-- Card Content-->
                     <div class="mask flex-center waves-effect waves-light">
+                        <ul>
+                            <li>
+                                <p class="wow fadeInUp white-text">(608)-792-2766</p>
+                            </li>
+                        </ul>
                     </div>
                 </div>
                 <div class="card-block">
@@ -136,62 +141,86 @@ closes a form used to "email me"*/
                     <!-- card text -->
                 </div>
             </div>
-        </div></div>
- </div>
+        </div></div><br/><br/>
+    <div class="row">
+        <div class="jumbotron">
+        <h2>Contact Us-temporary, will use the popup in I3</h2>
+        @using (Html.BeginForm("Contact", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @id = "contact-form", role = "form" }))
+        {
+            @Html.ValidationSummary()
+            <fieldset>
+                <div class="md-form">
+                    @Html.TextBoxFor(m => m.Name, new { @placeholder = "Name", @type = "text", @required = "true", @id = "form3", @class = "form-control" })
+                </div>
+                <div class="md-form">
+                    @Html.TextBoxFor(m => m.Email, new { @placeholder = "Email Address", @type = "email", @required = "true" })
+                </div>
+                <div class="md-form">
+                    @Html.TextBoxFor(m => m.Subject, new { @placeholder = "Subject", @type = "text" })
+                </div>
+                <div class="md-form">
+                    @Html.TextAreaFor(m => m.Messge, new { @placeholder = "Message", @required = "true" })
+                </div>
+
+                @* @Html.Recaptcha()
+                    @Html.ValidationMessage("ReCaptcha") *@
+                <div class="button-wrapper">
+                    <input type="submit" value="Send" name="submit" class="btn btn-success" id="submitBtn">
+                    <input type="reset" value="Reset" name="MFReset" class="btn btn-danger">
+                </div>
+            </fieldset>
+        }
+    </div></div>
+</body>
+
+
+    <!--Form to be-->
+    <div id="modal_wrapper">
+        <div id="modal_window">
+            <a href="#"><h3 style="text-align:right" id="modal_close"><img src="~/Images/close.svg" /></h3></a>
+            <form id="modal_feedback">
+                <!--Body-->
+                <div class="md-form">
+                    <input type="text" id="form3" class="form-control">
+                    <label for="form3">Name</label>
+                </div>
+
+                <div class="md-form">
+                    <input type="text" id="form2" class="form-control">
+                    <label for="form2">Email</label>
+                </div>
+
+                <div class="md-form">
+                    <input type="text" id="form32" class="form-control">
+                    <label for="form34">Subject</label>
+                </div>
+
+                <div class="md-form">
+                    <textarea type="text" id="form8" class="md-textarea"></textarea>
+                    <label for="form8">Message</label>
+                </div>
+
+                <div class="button-wrapper">
+                    <!-- Google reCAPTCHA API -->
+                    <!--<div class="g-recaptcha" data-theme="dark" data-callback="recaptchaCallback" data-sitekey="6Lcd6wcUAAAAALyfSPaS1UOZADXj6eDcFNCgqcUa"></div> -->
+                    <input type="submit" value="Send" name="submit" class="btn btn-primary" id="submitBtn">
+                    <input type="reset" value="Reset" name="MFReset" class="btn btn-warning">
+                </div>
+            </form>
+            </div>
+        </div>
 
 </body>
 
-<!-- Email me Form -->
-<section id="Form">
-    <div id="modal_wrapper">
-        <div id="modal_window">
-            <a href="#"><h3 style="text-align:right" id="modal_close"><img src="~/Images/close.svg"/></h3></a>
-            <h4>Email Me</h4>
-            <form action="SendForm.php" method="post" id="modal_feedback">
 
-                <div class="row uniform">
-                    <input type="hidden" name="subject" value="Form Submission" />
-                    <input type="hidden" name="redirect" value="ThankYou.cshtml" />
-
-                    <div class="6u 12u$(xsmall)">
-                        <input type="text" autofocus required name="name" placeholder="Name">
-                    </div>
-                    <div class="6u 12u$(xsmall)">
-                        <input type="text" required name="email" placeholder="Email" />
-                    </div>
-                    <div class="12u$">
-                        <input type="text" name="subject" placeholder="Subject" />
-                    </div>
-                    <div class="6u 12u$(small)">
-                        <input type="checkbox" id="copy" name="copy">
-                        <label for="copy">Email me a copy</label>
-                    </div>
-                    <div class="12u$">
-                        <textarea name="message" required id="message" placeholder="Enter your message, feel free to expand the text area if it looks a bit small." rows="6" ></textarea>
-                    </div>
-                    <!-- Google reCAPTCHA API -->
-                    <div class="g-recaptcha" data-callback="recaptchaCallback" data-sitekey="6Lcd6wcUAAAAALyfSPaS1UOZADXj6eDcFNCgqcUa"></div>
-                    <script language="JavaScript">
-												// if reCAPTCHA is verified, enable submitBtn
-												function recaptchaCallback() {
-												$('#submitBtn').removeAttr('disabled');
-												};
-                    </script>
-                    <ul class="actions">
-                        <input type="submit" name="submit" value="Send message" class="special" id="submitBtn" disabled />
-                    </ul>
-                    </div>
-            </form>
-        </div>
-    </div> <!-- #modal_window -->
-</section>
 
 
 <!---------------------------------------Scripts--------------------------------------->
 
 <!--Google Recaptcha API-->
 <script src='https://www.google.com/recaptcha/api.js'></script>
-<script type="text/javascript" >							  // Original JavaScript code by Chirp Internet: www.chirp.com.au
+<script type="text/javascript">
+							  // Original JavaScript code by Chirp Internet: www.chirp.com.au
     // Please acknowledge use of this code by including this header.
     // This script checks my form for validation before sending to server
 
@@ -216,7 +245,8 @@ closes a form used to "email me"*/
             return;
         }
     };</script> <!--Form Validation-->
-<script type="text/javascript">							  // Original JavaScript code by Chirp Internet: www.chirp.com.au
+<script type="text/javascript">
+							  // Original JavaScript code by Chirp Internet: www.chirp.com.au
     // Please acknowledge use of this code by including this header.
 
     var modal_init = function () {
@@ -264,13 +294,21 @@ closes a form used to "email me"*/
         }
 
     };</script> <!--Form Opener-->
-<script type="text/javascript">							  if (document.addEventListener) {
+<script type="text/javascript">
+							  if (document.addEventListener) {
 							      document.getElementById("modal_feedback").addEventListener("submit", checkForm, false);
 							      document.addEventListener("DOMContentLoaded", modal_init, false);
 							  } else {
 							      document.getElementById("modal_feedback").attachEvent("onsubmit", checkForm);
 							      window.attachEvent("onload", modal_init);
 							  }</script> <!--Form Opener Helper-->
+<script language="JavaScript">
+												// if reCAPTCHA is verified, enable submitBtn
+												function recaptchaCallback() {
+												$('#submitBtn').removeAttr('disabled');
+												};
+</script> <!--Recaptcha Button Re-Enabler-->
+
 
 @section pageMask{
     <div class="row">
@@ -278,6 +316,6 @@ closes a form used to "email me"*/
         <h2 class="h1-responsive wow fadeInDown" data-wow-delay="0.2s">Contact Us</h2>
         <p class="wow fadeInDownBig">For general questions, messages & inquiries about Adelante, click below. Otherwise, individual contact information is posted below as well.</p>
         <hr />
-        <a class='btn btn-default' href='mailto:nathanstopinski@gmail.com' id="modal_open"> Email me</a>
+        <a class='btn btn-default' href='mailto:jamesericryg@gmail.com' id="modal_open"> Email me</a>
     </div></div>
 }
