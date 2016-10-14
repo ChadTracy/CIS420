@@ -654,6 +654,7 @@
     <Content Include="Views\Grantor\Edit.cshtml" />
     <Content Include="Views\Grantor\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\PrivacyPolicy.cshtml" />
     <None Include="Views\UserPortal\Index.cshtml" />
     <None Include="Views\Shared\_UserPortalLayout.cshtml" />
     <Content Include="Views\UserPortal\_ViewStart.cshtml" />
