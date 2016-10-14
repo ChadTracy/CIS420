@@ -17,8 +17,8 @@ namespace AHA_Web.Controllers.Grants
         // GET: Grant
         public ActionResult Index()
         {
-            var grants = db.Grants.Include(g => g.Grantor);
-            return View(grants.ToList());
+            //var grants = db.Grants.Include(g => g.Grantor);
+            return View(); //View(grants.ToList());
         }
 
         // GET: Grant/Details/5
@@ -127,6 +127,21 @@ namespace AHA_Web.Controllers.Grants
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult CreateGrant()
+        {
+            return View();
+        }
+
+        public ActionResult EditGrants()
+        {
+            return View();
+        }
+
+        public ActionResult ViewGrants()
+        {
+            return View();
         }
     }
 }

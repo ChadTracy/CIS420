@@ -64,6 +64,12 @@ namespace AHA_Web.Controllers
         {
             return View();
         }
+
+        public ActionResult PrivacyPolicy()
+        {
+            return View();
+        }
+
         public ActionResult CollegeReadiness() { return View(); }
         public ActionResult AST() { return View(); }
         public ActionResult ParentInvolvement() { return View(); }

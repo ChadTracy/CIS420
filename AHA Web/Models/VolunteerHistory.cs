@@ -20,10 +20,9 @@ namespace AHA_Web.Models
 
         [Key]
         [Display(Name = "Event ID")]
-        [MaxLength(12),MinLength(12)]
         [Column(Order = 1)]
         [Required]
-        public string Event_ID { get; set; }
+        public string EventID { get; set; }
 
         [Required]
         [Display(Name = "Hours Worked")]
