@@ -701,6 +701,8 @@
     <Content Include="Views\Grantor\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\PrivacyPolicy.cshtml" />
+    <Content Include="Views\Home\ThankYou.cshtml" />
+    <Content Include="Views\Home\Error.cshtml" />
     <None Include="Views\UserPortal\Index.cshtml" />
     <None Include="Views\Shared\_UserPortalLayout.cshtml" />
     <Content Include="Views\UserPortal\_ViewStart.cshtml" />
@@ -744,8 +746,6 @@
     <Content Include="Views\Home\Sponsors.cshtml" />
     <Content Include="Views\Home\StudentOfMonth.cshtml" />
     <Content Include="Views\Home\Calendar.cshtml" />
-    <Content Include="Views\Home\ThankYou.cshtml" />
-    <Content Include="Views\Home\Error.cshtml" />
     <Content Include="Views\UserPortal\CreateEvent.cshtml" />
     <Content Include="Views\UserPortal\EditEvents.cshtml" />
     <Content Include="Views\Grant\EditGrants.cshtml" />

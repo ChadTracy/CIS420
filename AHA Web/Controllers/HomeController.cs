@@ -104,12 +104,14 @@ RequiredMessage = "The captcha field is required.")] */
             {
                 MailMessage mail = new MailMessage();
                 mail.To.Add("ahawebconfig@gmail.com");
-                Model.Email = mail.From.Address;
-                Model.Name = mail.From.DisplayName;
-                mail.Subject = Model.Subject;
+                MailAddress from = new MailAddress(Model.Email);
+                mail.From = from;
                 string Body = Model.Messge;
-                mail.Body = Body;
+                mail.Body += "Name: "; mail.Body += Model.Name; mail.Body += Environment.NewLine;
+                mail.Body += "E-mail Address: ";  mail.Body += Model.Email; mail.Body += Environment.NewLine;
+                mail.Body += Body;
                 mail.IsBodyHtml = true;
+                mail.Subject = Model.Subject;
                 SmtpClient smtp = new SmtpClient();
                 smtp.Host = "smtp.gmail.com";
                 smtp.Port = 587;
@@ -118,11 +120,11 @@ RequiredMessage = "The captcha field is required.")] */
                 ("AHAWebConfig@gmail.com", "ahawebconfig123"); // ("user", "pass");
                 smtp.EnableSsl = true;
                 smtp.Send(mail);
-                return View("ThankYou"); // TODO: make thank you page
+                return View("~/Views/Home/ThankYou.cshtml"); // TODO: make thank you page
             }
             else
             {
-                return View("Error"); //TODO: make error page
+                return View("~/Views/Home/Error.cshtml"); //TODO: make error page
             }
 
         }
