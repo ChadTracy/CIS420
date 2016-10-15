@@ -7548,6 +7548,7 @@ label {
   border-radius: 0;
   margin-top: 0.2rem;
   margin-bottom: 1rem;
+  height:50px;
 }
 
 .form-control:focus {

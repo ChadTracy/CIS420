@@ -90,6 +90,13 @@ namespace AHA_Web.Models
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
+        [Required]
+        [StringLength(20)]
+        [Display(Name = "Account Type")]
+        public string AccountType { get; set; }
+        
+
+
     }
 
     public class ResetPasswordViewModel

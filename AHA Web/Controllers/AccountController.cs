@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using AHA_Web.Models;
+using System.Web.Security;
 
 namespace AHA_Web.Controllers
 {
@@ -139,6 +140,7 @@ namespace AHA_Web.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            ViewBag.AccountType = new SelectList(new[] { "Admin", "Staff", "BoardMember","Donor", "Volunteer", "Student", "Parent", "Quarantine" });
             return View();
         }
 
@@ -151,7 +153,7 @@ namespace AHA_Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName=model.FirstName, LastName=model.LastName  };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName=model.FirstName, LastName=model.LastName, AccountType=model.AccountType  };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
