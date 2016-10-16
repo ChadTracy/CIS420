@@ -116,6 +116,13 @@ namespace AHA_Web.Models
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
     }
+    
+    public class EditBirthDateViewModel
+    {
+        [Required]
+        [Display(Name = "Date of Birth")]
+        public DateTime BirthDate { get; set; }
+    }
 
     public class ResetPasswordViewModel
     {

@@ -46,7 +46,7 @@
         manager.UpdateAsync(currentUser); //Updates the manager
         var ctx = store.Context; //get the current db context
         ctx.SaveChanges(); //save the changes made to the db */
-
+        <h3>Contact Information</h3>
         using (Html.BeginForm("EditName", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" })) //Needs a task in AccountController for Editing name
         {
             @Html.AntiForgeryToken()
@@ -73,6 +73,27 @@
                 </div>
             </div>
         }
+
+        <h3>Other Personal Information</h3>
+        using (Html.BeginForm("EditBirthDate", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+            <div class="form-group">
+                <div class="col-md-2 control-label">
+                    Birth Date:
+                </div>
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.BirthDate, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" class="btn btn-default" value="Change Birth Date" />
+                </div>
+            </div>
+        }
+
 
     }
 }

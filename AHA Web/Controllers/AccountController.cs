@@ -137,7 +137,7 @@ namespace AHA_Web.Controllers
         }
 
         //
-        // POST: /Account/Register
+        // POST: 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> EditName(EditNameViewModel model)
@@ -160,6 +160,29 @@ namespace AHA_Web.Controllers
                 }
             }
             //If you get here, you're toast
+            return View(model);
+        }
+
+        //
+        //Post: 
+        public async Task<ActionResult> EditBirthDate(EditBirthDateViewModel model)
+        {
+            if(ModelState.IsValid)
+            {
+                var store = new UserStore<ApplicationUser>(new ApplicationDbContext());
+                var manager = new UserManager<ApplicationUser>(store);
+                var currentUser = manager.FindById(User.Identity.GetUserId());
+                currentUser.BirthDate = model.BirthDate;
+
+                var result = manager.UpdateAsync(currentUser);
+                if(result.IsCompleted)
+                {
+                    var ctx = store.Context; //get the current db context
+                    ctx.SaveChanges(); //save the changes made to the db 
+                    return RedirectToAction("Index", "UserPortal");
+                }
+            }
+            //If you get here, youre too young to change your birthdate
             return View(model);
         }
 
