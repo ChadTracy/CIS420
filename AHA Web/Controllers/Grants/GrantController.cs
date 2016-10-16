@@ -129,11 +129,6 @@ namespace AHA_Web.Controllers.Grants
             base.Dispose(disposing);
         }
 
-        public ActionResult CreateGrant()
-        {
-            return View();
-        }
-
         public ActionResult EditGrants()
         {
             return View();
