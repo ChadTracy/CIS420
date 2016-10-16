@@ -20,4 +20,7 @@
     </div>
 </div>
 <!--Body-->
-    <p>Text</p>
+@if (Request.IsAuthenticated)
+{
+    <p><b>Password Options: </b>@Html.ActionLink("Change your password", "../Manage/ChangePassword")</p>
+}

@@ -1,4 +1,7 @@
-﻿@{
+﻿@using Microsoft.AspNet.Identity;
+@using Microsoft.AspNet.Identity.EntityFramework;
+@using AHA_Web.Models;
+@{
     ViewBag.Title = "User Portal";
     Layout = "~/Views/Shared/_UserPortalLayout.cshtml";
 }
@@ -7,8 +10,8 @@
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">
-            User Portal
-            <small>Subheading</small>
+            Dashboard
+            <small>Account Information</small>
         </h1>
         <ol class="breadcrumb">
             <li>
@@ -24,4 +27,16 @@
     </div>
 </div>
 <!--Body-->
-    <p>Text</p>
+@{ 
+    if(Request.IsAuthenticated)
+    {
+        var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+        var currentUser = manager.FindById(User.Identity.GetUserId());
+        <p><b>E-mail / Username:</b> @currentUser.UserName</p>
+        <p><b>Name:</b> @currentUser.FirstName @currentUser.LastName</p>
+        <p><b>Date of Birth: </b>@currentUser.BirthDate.Month/@currentUser.BirthDate.Day/@currentUser.BirthDate.Year</p>
+        <p><b>Account Type:</b> @currentUser.AccountType</p><hr />
+        <h2>Account Management:</h2>
+        <b>Password Options: </b><a href="~/Manage/ChangePassword" class="btn btn-success">Change Password</a>
+    }
+}

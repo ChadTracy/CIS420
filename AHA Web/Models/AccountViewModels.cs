@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace AHA_Web.Models
@@ -94,6 +95,10 @@ namespace AHA_Web.Models
         [StringLength(20)]
         [Display(Name = "Account Type")]
         public string AccountType { get; set; }
+
+        [Required]
+        [Display(Name = "Date of Birth")]
+        public DateTime BirthDate { get; set; }
         
 
 
