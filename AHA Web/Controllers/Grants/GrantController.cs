@@ -141,7 +141,8 @@ namespace AHA_Web.Controllers.Grants
 
         public ActionResult ViewGrants()
         {
-            return View();
+            var grants = db.Grants.Include(g => g.Grantor);
+            return View(grants);
         }
     }
 }
