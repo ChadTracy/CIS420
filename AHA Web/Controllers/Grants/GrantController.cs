@@ -17,8 +17,8 @@ namespace AHA_Web.Controllers.Grants
         // GET: Grant
         public ActionResult Index()
         {
-            //var grants = db.Grants.Include(g => g.Grantor);
-            return View(); //View(grants.ToList());
+            var grants = db.Grants.Include(g => g.Grantor);
+            return View(grants);
         }
 
         // GET: Grant/Details/5

@@ -29,32 +29,18 @@
                     <li>
                         <a href="@Url.Action("Index", "UserPortal")"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
-                    <!--Dropdown links-->
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#calendar"><i class="fa fa-fw fa-arrows-v"></i> Calendar Management <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="calendar" class="collapse">
-                            <li>
-                                <a href="@Url.Action("ViewCalendar", "UserPortal")">View Calendar</a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("CreateEvent", "UserPortal")">Create Event</a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("EditEvents", "UserPortal")">Edit Events</a>
-                            </li>
-                        </ul>
+                        <a href="@Url.Action("Index", "Event")"><i class="fa fa-fw fa-table"></i> View Calendar</a>
                     </li>
+                    <!--Dropdown links-->
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#grant"><i class="fa fa-fw fa-arrows-v"></i> Grant Writing <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="grant" class="collapse">
                             <li>
-                                @Html.ActionLink("View Grants", "ViewGrants", "Grant")
+                                @Html.ActionLink("Grants", "Index", "Grant")
                             </li>
                             <li>
-                                @Html.ActionLink("Create Grant", "CreateGrant", "Grant")
-                            </li>
-                            <li>
-                                @Html.ActionLink("Edit Grants", "EditGrants", "Grant")
+                                @Html.ActionLink("Grantor", "Index", "Grantor")
                             </li>
                         </ul>
                     </li>

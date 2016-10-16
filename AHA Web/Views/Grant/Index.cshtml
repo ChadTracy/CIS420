@@ -1,43 +1,38 @@
-﻿@*@model IEnumerable<AHA_Web.Models.Grant>*@
-
+﻿@model IEnumerable<AHA_Web.Models.Grant>
 @{
-    ViewBag.Title = "Grants";
+    ViewBag.Title = "User Portal";
     Layout = "~/Views/Shared/_UserPortalLayout.cshtml";
 }
-
 <!--Header/Breadcrumb-->
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Grant Writing</h1>
+        <h1 class="page-header">
+            Grant Writing
+            <small>View Grants</small>
+        </h1>
         <ol class="breadcrumb">
             <li>
                 <i class="fa fa-fw fa-dashboard"></i> @Html.ActionLink("Dashboard", "Index", "UserPortal")
             </li>
             <li class="active">
-                <i class="fa fa-fw fa-bar-chart-o"></i> Grant Writing
+                <i class="fa fa-fw fa-bar-chart-o"></i> @Html.ActionLink("Grant Writing", "Index", "Grant")
+            </li>
+            <li class="active">
+                <i class="fa fa-fw fa-bar-chart-o"></i> View Grants
             </li>
         </ol>
     </div>
 </div>
+@Html.ActionLink("Create a Grant", "Create")
 <!--Body-->
-<a class="btn btn-danger" href=@Url.Action("CreateGrant", "Grant") role="button">Create Grant</a>
-<br /><br />
-<a class="btn btn-danger" href=@Url.Action("EditGrants", "Grant") role="button">Edit Grants</a>
-<br /><br />
-<a class="btn btn-danger" href=@Url.Action("ViewGrants", "Grant") role="button">View Grants</a>
-
-@*<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<!--Grant_ID,Grantor_ID,Grant_Name,Grant_Due_Date,Grant_Amount,Grant_Type,Grant_status,Author-->
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Grantor.Organization)
+            @Html.DisplayNameFor(model => model.Grant_ID)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Grant_Name)
+            @Html.DisplayNameFor(model => model.Grantor)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Grant_Due_Date)
@@ -54,38 +49,37 @@
         <th>
             @Html.DisplayNameFor(model => model.Author)
         </th>
-        <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Grantor.Organization)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Grant_Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Grant_Due_Date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Grant_Amount)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Grant_Type)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Grant_status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Author)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Grant_ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Grant_ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Grant_ID })
-        </td>
-    </tr>
-}
-
-</table>*@
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Grant_ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Grantor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Grant_Due_Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Grant_Amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Grant_Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Grant_status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                    @Html.ActionLink("Delete", "Delete", new { id=item.Grant_ID }) |
+                    @Html.ActionLink("Edit", "Edit", new { id=item.Grant_ID }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.Grant_ID })
+                </td>
+        </tr>
+    }
+</table>
