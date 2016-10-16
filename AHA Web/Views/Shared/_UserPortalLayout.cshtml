@@ -51,10 +51,24 @@
                                 @Html.ActionLink("View Grants", "ViewGrants", "Grant")
                             </li>
                             <li>
-                                @Html.ActionLink("Create Grant", "CreateGrant", "Grant")
+                                @Html.ActionLink("Create Grant", "Create", "Grant")
                             </li>
                             <li>
                                 @Html.ActionLink("Edit Grants", "EditGrants", "Grant")
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#grantor"><i class="fa fa-fw fa-arrows-v"></i> Grantors <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="grantor" class="collapse">
+                            <li>
+                                @Html.ActionLink("Create Grantor", "Create", "Grantor")
+                            </li>
+                            <li>
+                                @Html.ActionLink("View Grantors", "Index", "Grantor")
+                            </li>
+                            <li>
+                                @Html.ActionLink("Edit Grantors", "Edit", "Grantor")
                             </li>
                         </ul>
                     </li>
