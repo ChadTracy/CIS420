@@ -234,7 +234,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\Attendence\StudentAttendenceController.cs" />
+    <Compile Include="Controllers\Attendance\StudentAttendenceController.cs" />
+    <Compile Include="Controllers\Attendance\Attendance.cs" />
     <Compile Include="Controllers\Donors\BoardMembers\BoardMemberController.cs" />
     <Compile Include="Controllers\Donors\DonorContactController.cs" />
     <Compile Include="Controllers\Donors\DonorController.cs" />
@@ -271,6 +272,7 @@
     <Compile Include="Models\Program.cs" />
     <Compile Include="Models\ProgramEnrollment.cs" />
     <Compile Include="Models\SchedulerModel.cs" />
+    <Compile Include="Models\Attendance.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\StudentAttendence.cs" />
     <Compile Include="Models\StudentFamily.cs" />
@@ -740,6 +742,11 @@
     <Content Include="Views\ProgramEnrollment\Details.cshtml" />
     <Content Include="Views\ProgramEnrollment\Edit.cshtml" />
     <Content Include="Views\ProgramEnrollment\Index.cshtml" />
+    <Content Include="Views\Attendance\Create.cshtml" />
+    <Content Include="Views\Attendance\Delete.cshtml" />
+    <Content Include="Views\Attendance\Details.cshtml" />
+    <Content Include="Views\Attendance\Edit.cshtml" />
+    <Content Include="Views\Attendance\Index.cshtml" />
     <None Include="Views\UserPortal\Index.cshtml" />
     <None Include="Views\Shared\_UserPortalLayout.cshtml" />
     <Content Include="Views\UserPortal\_ViewStart.cshtml" />
