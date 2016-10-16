@@ -27,14 +27,14 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="@Url.Action("Index", "UserPortal")"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                        <a href="@Url.Action("Index", "UserPortal")">Dashboard</a>
                     </li>
                     <li>
-                        <a href="@Url.Action("Index", "Event")"><i class="fa fa-fw fa-table"></i> View Calendar</a>
+                        <a href="@Url.Action("Index", "Event")">View Calendar</a>
                     </li>
                     <!--Dropdown links-->
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#grant"><i class="fa fa-fw fa-arrows-v"></i> Grant Writing <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#grant">- Grant Writing</a>
                         <ul id="grant" class="collapse">
                             <li>
                                 @Html.ActionLink("Grants", "Index", "Grant")
@@ -45,7 +45,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#staff"><i class="fa fa-fw fa-arrows-v"></i> Programs <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#staff">- Programs</a>
                         <ul id="staff" class="collapse">
                             <li>
                                 <a href="@Url.Action("Index", "Program")">Program Management</a>
