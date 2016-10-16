@@ -13,18 +13,15 @@ namespace AHA_Web.Models
         [Key]
         [Required]
         [Display(Name = "Grant ID")]
-        [MinLength(12),MaxLength(12)]
-        public string Grant_ID { get; set; }
-
-        [ForeignKey("Grantor")]
+        public int Grant_ID { get; set; }
+        
         [Required]
         [Display(Name = "Grantor ID")]
-        [MinLength(5),MaxLength(5)]
         public string Grantor_ID { get; set; }
 
         [Required]
         [Display(Name = "Grant Name")]
-        [MaxLength(40)] 
+        [MaxLength(100)] 
         public string Grant_Name { get; set; }
 
         [DataType(DataType.Date, ErrorMessage = "Please Enter a Valid Date")]
@@ -41,6 +38,8 @@ namespace AHA_Web.Models
 
 
         public string Author { get; set; }
+
+        public string File_Link { get; set; }
 
         public virtual Grantor Grantor { get; set; }
     }

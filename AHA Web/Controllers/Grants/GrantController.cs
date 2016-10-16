@@ -48,13 +48,13 @@ namespace AHA_Web.Controllers.Grants
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Grant_ID,Grantor_ID,Grant_Name,Grant_Due_Date,Grant_Amount,Grant_Type,Grant_status,Author")] Grant grant)
+        public ActionResult Create([Bind(Include = "Grantor_ID,Grant_Name,Grant_Due_Date,Grant_Amount,Grant_Type,Grant_status,Author")] Grant grant)
         {
             if (ModelState.IsValid)
             {
                 db.Grants.Add(grant);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("ViewGrants");
             }
 
             ViewBag.Grantor_ID = new SelectList(db.Grantors, "Grantor_ID", "Organization", grant.Grantor_ID);

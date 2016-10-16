@@ -17,7 +17,6 @@ namespace AHA_Web.Models
 
         [Key]
         [Required] 
-        [MaxLength(5),MinLength(5)]
         [Display(Name = "Grantor ID")]
         public string Grantor_ID { get; set; }
 
