@@ -191,7 +191,6 @@ namespace AHA_Web.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            ViewBag.AccountType = new SelectList(new[] { "Admin", "Staff", "BoardMember","Donor", "Volunteer", "Student", "Parent", "Quarantine" });
             return View();
         }
 
