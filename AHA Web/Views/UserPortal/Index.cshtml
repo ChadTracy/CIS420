@@ -1,6 +1,7 @@
 ﻿@using Microsoft.AspNet.Identity;
 @using Microsoft.AspNet.Identity.EntityFramework;
 @using AHA_Web.Models;
+@model AHA_Web.Models.ApplicationUser
 @{
     ViewBag.Title = "User Portal";
     Layout = "~/Views/Shared/_UserPortalLayout.cshtml";
@@ -30,13 +31,48 @@
 @{ 
     if(Request.IsAuthenticated)
     {
-        var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+        var store = new UserStore<ApplicationUser>(new ApplicationDbContext());
+        var manager = new UserManager<ApplicationUser>(store);
         var currentUser = manager.FindById(User.Identity.GetUserId());
         <p><b>E-mail / Username:</b> @currentUser.UserName</p>
         <p><b>Name:</b> @currentUser.FirstName @currentUser.LastName</p>
         <p><b>Date of Birth: </b>@currentUser.BirthDate.Month/@currentUser.BirthDate.Day/@currentUser.BirthDate.Year</p>
         <p><b>Account Type:</b> @currentUser.AccountType</p><hr />
         <h2>Account Management:</h2>
-        <b>Password Options: </b><a href="~/Manage/ChangePassword" class="btn btn-success">Change Password</a>
+        <b>Password Options: </b><a href="~/Manage/ChangePassword" class="btn btn-success">Change Password</a><hr/>
+        <h2>Update Personal Information:</h2>
+
+        /*currentUser.FirstName = "Jim"; Allows you to change current user field
+        manager.UpdateAsync(currentUser); //Updates the manager
+        var ctx = store.Context; //get the current db context
+        ctx.SaveChanges(); //save the changes made to the db */
+
+        using (Html.BeginForm("EditName", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" })) //Needs a task in AccountController for Editing name
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+            <div class="form-group">
+                <div class="col-md-2 control-label">
+                    First Name: 
+                </div>
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-2 control-label">
+                    Last Name:
+                </div>
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" class="btn btn-default" value="Change Name" />
+                </div>
+            </div>
+        }
+
     }
 }

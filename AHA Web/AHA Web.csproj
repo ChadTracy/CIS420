@@ -740,6 +740,7 @@
     <Content Include="Views\ProgramEnrollment\Details.cshtml" />
     <Content Include="Views\ProgramEnrollment\Edit.cshtml" />
     <Content Include="Views\ProgramEnrollment\Index.cshtml" />
+    <Content Include="Views\Account\EditName.cshtml" />
     <None Include="Views\UserPortal\Index.cshtml" />
     <None Include="Views\Shared\_UserPortalLayout.cshtml" />
     <Content Include="Views\UserPortal\_ViewStart.cshtml" />
