@@ -62,6 +62,21 @@ namespace AHA_Web.Controllers
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
+        public ActionResult UserList()
+        {
+            var applicationDbContext = HttpContext.GetOwinContext().Get<ApplicationDbContext>();
+            var users = from u in applicationDbContext.Users
+                        select new
+                        {
+                            u.Email,
+                            FirstName = u.FirstName,
+                            LastName = u.LastName,
+                            AccountType = u.AccountType
+                        };
+
+            // users is anonymous type, map it to a Model 
+            return View(users);
+        }
 
         //
         // POST: /Account/Login
