@@ -306,6 +306,7 @@
     <Content Include="Images\close.svg" />
     <Content Include="Images\CNPE_Logo_2.jpg" />
     <Content Include="Images\ContactUs.png" />
+    <Content Include="Images\Copy of 100.jpg" />
     <Content Include="Images\Copy of CIS Art Day.jpg" />
     <Content Include="Images\Copy of CIS ball game.jpg" />
     <Content Include="Images\Copy of CIS Kayla Pine Mtn.jpg" />
@@ -325,11 +326,14 @@
     <Content Include="Images\Copy of IMG_2465.JPG" />
     <Content Include="Images\donate.png" />
     <Content Include="Images\donate2.png" />
+    <Content Include="Images\Dustin.jpg" />
+    <Content Include="Images\DustinHS.jpg" />
     <Content Include="Images\GI_1.jpg" />
     <Content Include="Images\GI_2.JPG" />
     <Content Include="Images\GI_3.jpg" />
     <Content Include="Images\Governance.jpg" />
     <Content Include="Images\IMG_2477.jpg" />
+    <Content Include="Images\MaraHS.jpg" />
     <Content Include="Images\Morgan - VISTA.jpg" />
     <Content Include="Images\New Adelantelogo2015 smaller copy.png" />
     <Content Include="Images\New.jpg" />
