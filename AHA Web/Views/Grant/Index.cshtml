@@ -1,0 +1,85 @@
+﻿@model IEnumerable<AHA_Web.Models.Grant>
+@{
+    ViewBag.Title = "User Portal";
+    Layout = "~/Views/Shared/_UserPortalLayout.cshtml";
+}
+<!--Header/Breadcrumb-->
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            Grant Writing
+            <small>View Grants</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li>
+                @Html.ActionLink("Dashboard", "Index", "UserPortal")
+            </li>
+            <li class="active">
+                @Html.ActionLink("Grant Writing", "Index", "Grant")
+            </li>
+            <li class="active">
+                View Grants
+            </li>
+        </ol>
+    </div>
+</div>
+@Html.ActionLink("Create a Grant", "Create")
+<!--Body-->
+<!--Grant_ID,Grantor_ID,Grant_Name,Grant_Due_Date,Grant_Amount,Grant_Type,Grant_status,Author-->
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Grant_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Grantor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Grant_Due_Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Grant_Amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Grant_Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Grant_status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Author)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Grant_ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Grantor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Grant_Due_Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Grant_Amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Grant_Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Grant_status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                    @Html.ActionLink("Delete", "Delete", new { id=item.Grant_ID }) |
+                    @Html.ActionLink("Edit", "Edit", new { id=item.Grant_ID }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.Grant_ID })
+                </td>
+        </tr>
+    }
+</table>

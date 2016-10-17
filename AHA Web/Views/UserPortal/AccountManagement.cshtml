@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "User Portal";
+    Layout = "~/Views/Shared/_UserPortalLayout.cshtml";
+}
+
+<!--Header/Breadcrumb-->
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            Account Management
+        </h1>
+        <ol class="breadcrumb">
+            <li>
+                <i class="fa fa-fw fa-dashboard"></i> <a href="@Url.Action("Index", "UserPortal")"> Dashboard</a>
+            </li>
+            <li class="active">
+                <i class="fa fa-fw fa-desktop"></i> Account Management
+            </li> 
+         </ol>
+    </div>
+</div>
+<!--Body-->
+@if (Request.IsAuthenticated)
+{
+    <p><b>Password Options: </b>@Html.ActionLink("Change your password", "../Manage/ChangePassword")</p>
+}

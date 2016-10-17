@@ -1,17 +1,321 @@
-﻿@{
-    ViewBag.Title = "Contact";
+﻿@*@using reCAPTCHA.MVC*@
+@model AHA.Models.MailViewModel
+<!------------------------Page Specific CSS and Links------------------------>
+<style type="text/css">
+    #map {
+        height: 300px;
+        width: 100%;
+    }
+</style> <!--CSS for Maps API-->
+<style type="text/css">
+        /*This is a CSS that opens and
+    closes a form used to "email me"*/
+        #modal_wrapper.overlay:before {
+            content: " ";
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            z-index: 100;
+            top: 0;
+            left: 0;
+            background: #000;
+            background: rgba(0,0,0,0.7);
+        }
+
+        #modal_window {
+            display: none;
+            z-index: 200;
+            position: fixed;
+            left: 50%;
+            top: 60%;
+            width: 60%;
+            overflow: auto;
+            padding: 0px 50px;
+            background: #FFFFFF;
+        }
+
+        #modal_wrapper.overlay #modal_window {
+            display: block;
+        }
+</style> <!--CSS for Email Popup-->
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Contact Us";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+<body>
+<div class="divider-new">
+    <h2 class="h2-responsive">Points of Contact</h2>
+</div>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+    <div class="row">
+        <div class="col-md-6 wow fadeIn">
+            <div class="card">
+                <!--Simple Card-->
+                <!--Overlay without mask fixes size on empty card-->
+                <div class="view overlay hm-black-strong">
+                    <!-- Card header-->
+                    <img class="img-fluid" src="~/Images/Mara2.jpg" height="480" />
+                    <!-- Card Content-->
+                    <div class="mask flex-center waves-effect waves-light">
+                        <ul>
+                            <li>
+                                <p class="wow fadeInUp white-text">(502)-494-0353</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-block">
+                    <!-- Title-->
+                    <h2 class="card-title"><a href="mailto:maramaldonado@att.net">Mara Maldonado, Director</a></h2>
+                    <!-- card text -->
+                </div>
+            </div>
+            </div>
+        <div class="col-md-6 wow fadeIn">
+            <div class="card">
+                <!--Simple Card-->
+                <!--Overlay without mask fixes size on empty card-->
+                <div class="view overlay hm-black-strong">
+                    <!-- Card header-->
+                    <img class="img-fluid" src="~/Images/Dustin2.jpg" height="480" />
+                    <!-- Card Content-->
+                    <div class="mask flex-center waves-effect waves-light">
+                        <ul>
+                            <li>
+                                <p class="wow fadeInUp white-text">(231)-649-1652</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-block">
+                    <!-- Title-->
+                    <h2 class="card-title"><a href="mailto:dustinjbishop@gmail.com">Dustin Bishop, Volunteer Director</a></h2>
+                    <!-- card text -->
+                </div>
+            </div>
+        </div>
+        </div><br/></br/>
+    <div class="row">
+        <div class="col-md-6 wow fadeIn">
+            <div class="card">
+                <!--Simple Card-->
+                <!--Overlay without mask fixes size on empty card-->
+                <div class="view overlay hm-black-strong">
+                    <!-- Card header-->
+                    <img class="img-fluid" src="~/Images/IMG_2477.jpg" height="480" />
+                    <!-- Card Content-->
+                    <div class="mask flex-center waves-effect waves-light">
+                        <ul>
+                            <li>
+                                <p class="wow fadeInUp white-text">(502)-649-6781</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-block">
+                    <!-- Title-->
+                    <h2 class="card-title"><a href="mailto:cefields90@gmail.com">Carol Fields, College Readiness Coach</a></h2>
+                    <!-- card text -->
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 wow fadeIn">
+            <div class="card">
+                <!--Simple Card-->
+                <!--Overlay without mask fixes size on empty card-->
+                <div class="view overlay hm-black-strong">
+                    <!-- Card header-->
+                    <img class="img-fluid" src="~/Images/Morgan - VISTA.jpg" height="480" />
+                    <!-- Card Content-->
+                    <div class="mask flex-center waves-effect waves-light">
+                        <ul>
+                            <li>
+                                <p class="wow fadeInUp white-text">(608)-792-2766</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-block">
+                    <!-- Title-->
+                    <h2 class="card-title"><a href="mailto:gerkemk@gmail.com">Morgan Gerke, Americorps VISTA</a></h2>
+                    <!-- card text -->
+                </div>
+            </div>
+        </div></div><br/><br/>
+    <div class="row">
+        <div class="jumbotron">
+        <h2>Contact Us-temporary, will use the popup in I3</h2>
+        @using (Html.BeginForm("Contact", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @id = "contact-form", role = "form" }))
+        {
+            @Html.ValidationSummary()
+            <fieldset>
+                <div class="md-form">
+                    @Html.TextBoxFor(m => m.Name, new { @placeholder = "Name", @type = "text", @required = "true", @id = "form3", @class = "form-control" })
+                </div>
+                <div class="md-form">
+                    @Html.TextBoxFor(m => m.Email, new { @placeholder = "Email Address", @type = "email", @required = "true" })
+                </div>
+                <div class="md-form">
+                    @Html.TextBoxFor(m => m.Subject, new { @placeholder = "Subject", @type = "text" })
+                </div>
+                <div class="md-form">
+                    @Html.TextAreaFor(m => m.Messge, new { @placeholder = "Message", @required = "true" })
+                </div>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+                @* @Html.Recaptcha()
+                    @Html.ValidationMessage("ReCaptcha") *@
+                <div class="button-wrapper">
+                    <input type="submit" value="Send" name="submit" class="btn btn-success" id="submitBtn">
+                    <input type="reset" value="Reset" name="MFReset" class="btn btn-danger">
+                </div>
+            </fieldset>
+        }
+    </div></div>
+</body>
+
+
+    <!--Form to be-->
+    <div id="modal_wrapper">
+        <div id="modal_window">
+            <a href="#"><h3 style="text-align:right" id="modal_close"><img src="~/Images/close.svg" /></h3></a>
+            <form id="modal_feedback">
+                <!--Body-->
+                <div class="md-form">
+                    <input type="text" id="form3" class="form-control">
+                    <label for="form3">Name</label>
+                </div>
+
+                <div class="md-form">
+                    <input type="text" id="form2" class="form-control">
+                    <label for="form2">Email</label>
+                </div>
+
+                <div class="md-form">
+                    <input type="text" id="form32" class="form-control">
+                    <label for="form34">Subject</label>
+                </div>
+
+                <div class="md-form">
+                    <textarea type="text" id="form8" class="md-textarea"></textarea>
+                    <label for="form8">Message</label>
+                </div>
+
+                <div class="button-wrapper">
+                    <!-- Google reCAPTCHA API -->
+                    <!--<div class="g-recaptcha" data-theme="dark" data-callback="recaptchaCallback" data-sitekey="6Lcd6wcUAAAAALyfSPaS1UOZADXj6eDcFNCgqcUa"></div> -->
+                    <input type="submit" value="Send" name="submit" class="btn btn-primary" id="submitBtn">
+                    <input type="reset" value="Reset" name="MFReset" class="btn btn-warning">
+                </div>
+            </form>
+            </div>
+        </div>
+
+</body>
+
+
+
+
+<!---------------------------------------Scripts--------------------------------------->
+
+<!--Google Recaptcha API-->
+<script src='https://www.google.com/recaptcha/api.js'></script>
+<script type="text/javascript">
+							  // Original JavaScript code by Chirp Internet: www.chirp.com.au
+    // Please acknowledge use of this code by including this header.
+    // This script checks my form for validation before sending to server
+
+    var checkForm = function (e) {
+        var form = (e.target) ? e.target : e.srcElement;
+        if (form.name.value == "") {
+            alert("Please enter your Name");
+            form.name.focus();
+            e.preventDefault ? e.preventDefault() : e.returnValue = false;
+            return;
+        }
+        if (form.email.value == "") {
+            alert("Please enter a valid Email address");
+            form.email.focus();
+            e.preventDefault ? e.preventDefault() : e.returnValue = false;
+            return;
+        }
+        if (form.message.value == "") {
+            alert("Please enter your comment or question in the Message box");
+            form.message.focus();
+            e.preventDefault ? e.preventDefault() : e.returnValue = false;
+            return;
+        }
+    };</script> <!--Form Validation-->
+<script type="text/javascript">
+							  // Original JavaScript code by Chirp Internet: www.chirp.com.au
+    // Please acknowledge use of this code by including this header.
+
+    var modal_init = function () {
+
+        var modalWrapper = document.getElementById("modal_wrapper");
+        var modalWindow = document.getElementById("modal_window");
+
+        var openModal = function (e) {
+            modalWrapper.className = "overlay";
+            var overflow = modalWindow.offsetHeight - document.documentElement.clientHeight;
+            if (overflow > 0) {
+                modalWindow.style.maxHeight = (parseInt(window.getComputedStyle(modalWindow).height) - overflow) + "px";
+            }
+            modalWindow.style.marginTop = (-modalWindow.offsetHeight) / 2 + "px";
+            modalWindow.style.marginLeft = (-modalWindow.offsetWidth) / 2 + "px";
+            e.preventDefault ? e.preventDefault() : e.returnValue = false;
+        };
+
+        var closeModal = function (e) {
+            modalWrapper.className = "";
+            e.preventDefault ? e.preventDefault() : e.returnValue = false;
+        };
+
+        var clickHandler = function (e) {
+            if (!e.target) e.target = e.srcElement;
+            if (e.target.tagName == "DIV") {
+                if (e.target.id != "modal_window") closeModal(e);
+            }
+        };
+
+        var keyHandler = function (e) {
+            if (e.keyCode == 27) closeModal(e);
+        };
+
+        if (document.addEventListener) {
+            document.getElementById("modal_open").addEventListener("click", openModal, false);
+            document.getElementById("modal_close").addEventListener("click", closeModal, false);
+            document.addEventListener("click", clickHandler, false);
+            document.addEventListener("keydown", keyHandler, false);
+        } else {
+            document.getElementById("modal_open").attachEvent("onclick", openModal);
+            document.getElementById("modal_close").attachEvent("onclick", closeModal);
+            document.attachEvent("onclick", clickHandler);
+            document.attachEvent("onkeydown", keyHandler);
+        }
+
+    };</script> <!--Form Opener-->
+<script type="text/javascript">
+							  if (document.addEventListener) {
+							      document.getElementById("modal_feedback").addEventListener("submit", checkForm, false);
+							      document.addEventListener("DOMContentLoaded", modal_init, false);
+							  } else {
+							      document.getElementById("modal_feedback").attachEvent("onsubmit", checkForm);
+							      window.attachEvent("onload", modal_init);
+							  }</script> <!--Form Opener Helper-->
+<script language="JavaScript">
+												// if reCAPTCHA is verified, enable submitBtn
+												function recaptchaCallback() {
+												$('#submitBtn').removeAttr('disabled');
+												};
+</script> <!--Recaptcha Button Re-Enabler-->
+
+
+@section pageMask{
+    <div class="row">
+    <div class="jumbotron text-center wow fadeIn">
+        <h2 class="h1-responsive wow fadeInDown" data-wow-delay="0.2s">Contact Us</h2>
+        <p class="wow fadeInDownBig">For general questions, messages & inquiries about Adelante, click below. Otherwise, individual contact information is posted below as well.</p>
+        <hr />
+        <a class='btn btn-default' href='mailto:jamesericryg@gmail.com' id="modal_open"> Email me</a>
+    </div></div>
+}

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace AHA_Web.Models
@@ -79,6 +80,48 @@ namespace AHA_Web.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [StringLength(20)]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [StringLength(35)]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+
+        [Required]
+        [StringLength(20)]
+        [Display(Name = "Account Type")]
+        public string AccountType { get; set; }
+
+        [Required]
+        [Display(Name = "Date of Birth")]
+        public DateTime BirthDate { get; set; }
+        
+
+
+    }
+    public class EditNameViewModel
+    {
+
+        [Required]
+        [StringLength(20)]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [StringLength(35)]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+    }
+    
+    public class EditBirthDateViewModel
+    {
+        [Required]
+        [Display(Name = "Date of Birth")]
+        public DateTime BirthDate { get; set; }
     }
 
     public class ResetPasswordViewModel

@@ -1,26 +1,65 @@
 ﻿body {
     padding-top: 0px;
     padding-bottom: -3px;
-    background-color: #E0DECF;
+    background-color: #f9efcb;
     font-family: "Lato Medium";
-    color: #24161B; 
+    color: #24151B; 
 }
 /*Declare font faces*/
 @font-face {
     font-family: "Lato Medium";
-    src: url("../fonts//Lato//Lato-Medium.ttf");
+    src: url('../fonts//Lato-Medium.ttf');
 }
+@font-face{
+    font-family: "Lato Semibold";
+    src: url("../fonts/Lato-Semibold.ttf");
+}
+@font-face{
+    font-family: "Lato Black";
+    src: url("../fonts/Lato-Black.ttf")
+}
+
+/* Side Panel CSS*/
+.panel{
+    background-color: #99cccc;
+    margin-top: 6px;
+    margin-bottom:6px;
+    padding: 5px;
+    border-radius: 6px;
+}
+
+.side-panel{
+    min-width: 340px; /* Widths set with px so the FB pane fits*/
+    max-width: 540px;
+}
+
+.panel h1, h2, h3, h4, h5, h6{
+    text-align:center;
+    font-family: "Lato Black"
+}
+
+
+/*Align fb Page, needs centering/resizing*/
+.fb-page{
+    margin-left: 2%;
+    min-width: 180px;
+    max-width:500px;
+    margin-top: 2%;
+    border-radius:6px;
+}
+
 
 /*Tweak the jumbotron to use the light stone color for example purposes*/
 .jumbotron {
-    background-color: #FAFAF0;
+    background-color: #99cccc;
     margin-top: 10px;
     border-radius: 6px;
+    font-family: "Lato Black"
 }
 
 /*Container replacement class to allow better use of whitespace.*/
 .container-fluid{
-    max-width: 90%;
+    max-width: 85%;
     padding-left: 10%;
 }
 
@@ -29,7 +68,7 @@ footer {
     width:100%;
     font-size: 8pt;
     line-height: 95%;
-    background-color: #FAFAF0;
+    background-color: #99cccc;
     overflow:hidden;
 }
 
@@ -38,12 +77,17 @@ footer {
 .col-md-4{
     padding-top:5px;
 }
+
+.col-md-4 collapse{
+
+}
+
 .row{
     padding: 5px;
 }
 /*Change Thematic break line color*/
 hr {
-    background-color: #89785E;
+    background-color: #DE2F0D;
     color: #89785E;
     border: none;
     height: 5px;
@@ -73,20 +117,22 @@ textarea {
 /*Override default boostrap navbar behavior and formatting*/
 
 .navbar .nav > li > a { /*Change navbar text color*/
-    color: #E0DECF;
+    color: #D90407;
+    font-family: 'Lato Semibold';
 }
 .navbar-inverse {
     min-height:50px; 
-    background-color: #24161B;
-    color: #ffffff;
+    background-color: #99cccc;
+    color: #D90407;
+    font-family:'Lato Black'
 }
 
 .navbar-brand {
     background: url('../Images/New Adelantelogo2015 smaller copy.png') no-repeat;
-    background-size: 150px, 50px;
+    background-size: 165px, 60px;
     background-position: center;
     vertical-align: middle;
-    width: 170px;
+    width: 200px;
     font-size: 0px;
     
 }
@@ -99,17 +145,24 @@ textarea {
     width: 100%;
 }
 
-/* Will be used later to align navbar to center, currently results in navbar-right wrapping under
-.navbar-nav {
-    float: none;
-    margin: 0 auto;
-    display: table;
-    table-layout: fixed;
-
+.scheduler_container {
+    width: 100%;
+    height: 600px;
+    border: 1px solid #aeaeae;
+    
 }
 
-.navbar-right {
-    float: right !important;
-
+.video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
-*/
+
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+}

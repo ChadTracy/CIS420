@@ -9,6 +9,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using AHA_Web.Models;
+using System.Web.Security;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace AHA_Web.Controllers
 {
@@ -59,6 +61,21 @@ namespace AHA_Web.Controllers
         {
             ViewBag.ReturnUrl = returnUrl;
             return View();
+        }
+        public ActionResult UserList()
+        {
+            var applicationDbContext = HttpContext.GetOwinContext().Get<ApplicationDbContext>();
+            var users = from u in applicationDbContext.Users
+                        select new
+                        {
+                            u.Email,
+                            FirstName = u.FirstName,
+                            LastName = u.LastName,
+                            AccountType = u.AccountType
+                        };
+
+            // users is anonymous type, map it to a Model 
+            return View(users);
         }
 
         //
@@ -135,10 +152,61 @@ namespace AHA_Web.Controllers
         }
 
         //
+        // POST: 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> EditName(EditNameViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var store = new UserStore<ApplicationUser>(new ApplicationDbContext());
+                var manager = new UserManager<ApplicationUser>(store);
+                var currentUser = manager.FindById(User.Identity.GetUserId());
+                currentUser.FirstName = model.FirstName;
+                currentUser.LastName = model.LastName;
+
+
+                var result = manager.UpdateAsync(currentUser);
+                if(result.IsCompleted)
+                {
+                    var ctx = store.Context; //get the current db context
+                    ctx.SaveChanges(); //save the changes made to the db 
+                    return RedirectToAction("Index", "UserPortal");
+                }
+            }
+            //If you get here, you're toast
+            return View(model);
+        }
+
+        //
+        //Post: 
+        public async Task<ActionResult> EditBirthDate(EditBirthDateViewModel model)
+        {
+            if(ModelState.IsValid)
+            {
+                var store = new UserStore<ApplicationUser>(new ApplicationDbContext());
+                var manager = new UserManager<ApplicationUser>(store);
+                var currentUser = manager.FindById(User.Identity.GetUserId());
+                currentUser.BirthDate = model.BirthDate;
+
+                var result = manager.UpdateAsync(currentUser);
+                if(result.IsCompleted)
+                {
+                    var ctx = store.Context; //get the current db context
+                    ctx.SaveChanges(); //save the changes made to the db 
+                    return RedirectToAction("Index", "UserPortal");
+                }
+            }
+            //If you get here, youre too young to change your birthdate
+            return View(model);
+        }
+
+        //
         // GET: /Account/Register
         [AllowAnonymous]
         public ActionResult Register()
         {
+            ViewBag.AccountType = new SelectList(new[] { "Admin", "Staff", "BoardMember","Donor", "Volunteer", "Student", "Parent", "Quarantine" });
             return View();
         }
 
@@ -151,7 +219,7 @@ namespace AHA_Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName=model.FirstName, LastName=model.LastName, AccountType=model.AccountType, BirthDate=model.BirthDate  };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -367,7 +435,7 @@ namespace AHA_Web.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email,  };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {

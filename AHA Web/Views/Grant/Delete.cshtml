@@ -1,0 +1,98 @@
+﻿@model AHA_Web.Models.Grant
+
+@{
+    ViewBag.Title = "Grants";
+    Layout = "~/Views/Shared/_UserPortalLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            Grant Writing
+            <small>Delete Grant</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li>
+                @Html.ActionLink("Dashboard", "Index", "UserPortal")
+            </li>
+            <li class="active">
+                @Html.ActionLink("Grant Writing", "Index", "Grant")
+            </li>
+            <li class="active">
+                Delete a Grant
+            </li>
+        </ol>
+    </div>
+</div>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Grantor.Organization)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Grantor.Organization)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Grant_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Grant_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Grant_Due_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Grant_Due_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Grant_Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Grant_Amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Grant_Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Grant_Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Grant_status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Grant_status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Author)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Author)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

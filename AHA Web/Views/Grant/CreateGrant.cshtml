@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "User Portal";
+    Layout = "~/Views/Shared/_UserPortalLayout.cshtml";
+}
+
+<!--Header/Breadcrumb-->
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            Grant Writing
+            <small>Create Grant</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li>
+                @Html.ActionLink("Dashboard", "Index", "UserPortal")
+            </li>
+            <li class="active">
+                @Html.ActionLink("Grant Writing", "Index", "Grant")
+            </li> 
+            <li class="active">
+                Create Grant
+            </li> 
+         </ol>
+    </div>
+</div>
+<!--Body-->
+    <p>Text</p> 

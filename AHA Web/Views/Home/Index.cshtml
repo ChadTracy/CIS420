@@ -1,55 +1,114 @@
 ﻿@{
     ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+    <div class="row">
+        <div class="col-md-6 wow fadeIn">
+            <div class="card"> <!--Simple Card-->
+                <!--Overlay without mask fixes size on empty card-->
+                <div class="view overlay hm-black-strong">
+                    <!-- Card header-->
+                    <img class="img-fluid" src="~/Images/IMG_2477.jpg" height="480" />
+                    <!-- Card Content-->
+                    <div class="mask flex-center waves-effect waves-light">
+                        <ul>
+                            <li>
+                                <h1 class="h1-responsive wow fadeInUp white-text">Goals of Adelante</h1>
+                            </li>
+                            <li>
+                                <p class="wow fadeInUp white-text">To guide Hispanic youth to set & meet high educational, personal and career goals, and surround them with a network of supportive adults including leaders, mentors, tutors, community leaders, and other role-models</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                    <div class="card-block">
+                        <!-- Title-->
+                        <h2 class="card-title">Our goals</h2>
+                        <!-- card text -->
+                        <p class="card-text">Mouse over the image above for details on goals for our students</p>
+                    </div>
+                </div>
+    </div>
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+        <div class="col-md-6 wow fadeIn">
+            <div class="card"> <!--Overlay Card-->
+                <!--Make fade over-->
+                <div class="view overlay hm-black-strong">
+                <!-- Card header-->
+                <img class="img-fluid" src="~/Images/Copy of IMG_1903.jpg"/>
+                 <!--Mouseover Mask Content-->
+                 <div class="mask flex-center waves-effect waves-light">
+                     <ul>
+                        <li>
+                        <h1 class="h1-responsive wow fadeInUp white-text">Student Programs</h1>
+                        </li>
+                         <li>
+                             <p class="wow fadeInUp white-text">Adelante offers a number of programs to help your child achieve success.</p>
+                        </li>
+                         <li>
+                             <a target="_blank" href="~/Home/Programs" class="btn btn-default btn-lg wow fadeInRight" data-wow-delay="0.2s">Learn more</a>
+                         </li>
+                     </ul>
+                 </div>
+                </div>
+                <!-- Card Content-->
+                <div class="card-block">
+                    <!-- Title-->
+                    <h2 class="card-title">What we offer</h2>
+                    <!-- card text -->
+                    <p class="card-text">Take a look at our programs to see what we offer.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="divider-new">
+    <h2 class="h2-responsive">How can I help?</h2>
+</div>
+<div class="row">
+    <div class="jumbotron text-center wow fadeIn">
+        <h2 class="h1-responsive wow fadeInDown" data-wow-delay="0.2s">Contributing to Adelante</h2>
+        <p class="wow fadeInDownBig">Adelante Hispanic Achievers relies on volunteers and donors to continue serving the community. Please consider donating or signing up for a volunteer event to support us.</p>
+        <hr />
+        <a target="_blank" href="~/Home/GetInvolved" class="btn btn-primary btn-lg wow fadeInLeft" data-wow-delay="0.2s">Get Involved</a>
+        <a target="_blank" href="#" class="btn btn-warning btn-lg wow fadeInRight" data-wow-delay="0.2s">Donate</a>
+    </div>
+</div>
+
+<div class="divider-new">
+    <h2 class="h2-responsive">Our Objectives</h2>
 </div>
 
 <div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    <div class="col-md-6">
+            <p> 1.	All students graduate college and career ready. <br /><br />
+                2.	All students in Mentoring & Enrichment program have increased exposure to college and career options. <br /><br />
+                3.	All students in After School Tutoring program meet JCPS district standards for their grade in reading, English, and math. <br /><br />
+                4.	Students in After School Tutoring programs will improve unsatisfactory grades to position themselves for acceptance into top high schools in the county. <br /><br />
+                5.	Students in After School Tutoring programs will improve communication skills through weekly group discussions and writing prompts. <br /><br />
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    <div class="col-md-6">
+                6.	Students will have positive views of their future and achievements. <br /><br />
+                7.	Students will set and work toward high educational, personal, and career goals. <br /><br />
+                8.	Students in the Mentoring & Enrichment program will understand the value of service learning and of giving back to the community. <br /><br />
+                9.	Students in our Mentoring & Enrichment program will have a richer understanding of both their own and other cultures. <br /><br />
+                10.	Ambassadors will have increased leadership opportunities both within our programs and in the Louisville community. <br /><br />
+</p>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+
+
+@section pageMask
+{
+<div class="row">
+    <div class="jumbotron text-center wow fadeIn">
+                <h2 class="h1-responsive wow fadeInDown" data-wow-delay="0.2s">Our Mission & Vision</h2>
+                <p class="wow fadeInDownBig" >Adelante Hispanic Achievers’ mission is to inspire and empower Hispanic/Latino youth and their families to become self-sufficient, successful individuals who have the tools they need to achieve their dreams and participate as creative, educated world citizens.</p>
+                <hr />
+                <a target="_blank" href="~/Files/Annual%20report%202015-2016%20.pdf" class="btn btn-danger btn-lg wow fadeInLeft" data-wow-delay="0.2s">Annual Report</a>
+                <a target="_blank" href="~/Home/About" class="btn btn-default btn-lg wow fadeInRight" data-wow-delay="0.2s">Learn more</a>
+    </div>
+    <div class="divider-new">
+        <h2 class="h2-responsive">What is Adelante?</h2>
     </div>
 </div>
-
-@section partyBox1 {
-    <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Morbi quis lectus nisi. Donec justo massa, sodales nec massa a,
-        lobortis imperdiet purus. Quisque dignissim turpis velit. Phasellus pulvinar enim in ex vulputate
-        efficitur quis vitae lorem. Suspendisse sed velit eget est accumsan ornare nec laoreet nisl.
-        Proin id dolor tincidunt, mollis turpis et, semper nisl. Aliquam erat volutpat.
-    </p>
-}
-
-@section partyBox2
-{
-    <p>
-        Fusce risus velit, aliquam sit amet placerat vitae, consequat in metus.
-        Nulla dapibus cursus ipsum, pulvinar auctor sapien feugiat vitae. Nunc eget felis quam.
-        Phasellus nunc quam, euismod aliquam eros ac, pretium pharetra nisi. Praesent et metus
-        et ante vehicula maximus sed nec ante. In hac habitasse platea dictumst. Nullam eu nulla metus.
-        Donec lacinia molestie hendrerit. Aliquam et congue ligula. Cras tempus, ante id facilisis condimentum,
-        odio urna bibendum nisi, eu tempor eros sem eu nibh. Nunc quis massa tortor. Aenean eget elit lectus.
-        Nam non ex orci. Sed sagittis orci dui, a facilisis nulla pellentesque suscipit. Morbi et suscipit elit.
-        Pellenesque in lacus non est mattis ornare.
-    </p>
 }

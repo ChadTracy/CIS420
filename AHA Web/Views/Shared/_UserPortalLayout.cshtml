@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/UPContent/css")
+    @Styles.Render("~/Content/bootstrap")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <!-- Top Menu Items -->
+           @Html.Partial("_LoginPartial")
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li>
+                        <a href="@Url.Action("Index", "UserPortal")">Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index", "Event")">View Calendar</a>
+                    </li>
+                    <!--Dropdown links-->
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#grant">- Grant Writing</a>
+                        <ul id="grant" class="collapse">
+                            <li>
+                                @Html.ActionLink("Grants", "Index", "Grant")
+                            </li>
+                            <li>
+                                @Html.ActionLink("Grantor", "Index", "Grantor")
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#staff">- Programs</a>
+                        <ul id="staff" class="collapse">
+                            <li>
+                                <a href="@Url.Action("Index", "Program")">Program Management</a>
+                            </li>
+                            <li>
+                                <a href="#">Program Enrollment</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("index", "MailChimp")">MailChimp Lists</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!--Body Content-->
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
