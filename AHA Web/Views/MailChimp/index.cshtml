@@ -1,0 +1,64 @@
+﻿@model AHA_web.Models.MailChimp
+@using System;
+@using System.Globalization;
+@using System.Linq;
+@using System.Security.Claims;
+@using System.Threading.Tasks;
+@using System.Web;
+@using System.Web.Mvc;
+@using Microsoft.AspNet.Identity;
+@using Microsoft.AspNet.Identity.Owin;
+@using Microsoft.Owin.Security;
+@using AHA_Web.Models;
+@using System.Web.Security;
+@using Microsoft.AspNet.Identity.EntityFramework;
+@{
+    ViewBag.Title = "MailChimp";
+    Layout = "~/Views/Shared/_UserPortalLayout.cshtml";
+}
+<!--Header/Breadcrumb-->
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            Generate User List for Mailchimp Import-Needs Parse by Role
+            <small>Mailchimp Lists</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li>
+                <a href="@Url.Action("Index", "UserPortal")"> Dashboard</a>
+            </li>
+            <li class="active">
+                Mailchimp Lists
+            </li>
+        </ol>
+    </div>
+</div>
+<h3>How to use this:</h3> 
+<p>Copy the rows you want, and paste them into a MailChimp Subscriber List, selecting the option 'Copy/Paste from File', then add the two unnamed columns it asks for.</p>
+<!--Body-->
+<table class="table">
+    <tr><th>
+        Email
+    </th>
+    <th>
+        First Name
+    </th>
+    <th>
+        Last Name
+    </th>
+    </tr>
+    @{
+        ApplicationDbContext db = new ApplicationDbContext();
+        var users = db.Users;
+        foreach(var v in users)
+        {
+            <tr>
+                <td>@v.Email</td>
+                <td>@v.FirstName</td>
+                <td>@v.LastName</td>
+            </tr>
+        }
+    }
+</table>
+
+

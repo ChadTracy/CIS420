@@ -19,8 +19,7 @@ namespace AHA_Web.Controllers
         // GET: MailChimp
         public ActionResult Index()
         {
-            var users = db.Users;
-            return View(users);
+            return View();
         }
     }
 }
