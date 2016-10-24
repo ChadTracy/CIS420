@@ -11,6 +11,7 @@ using DHTMLX.Scheduler.Data;
 using DHTMLX.Common;
 using reCAPTCHA.MVC;
 using AHA.Models;
+using AHA_web.Models;
 
 namespace AHA_Web.Controllers
 {
@@ -76,6 +77,14 @@ namespace AHA_Web.Controllers
         public ActionResult Ambassadors() { return View(); }
         public ActionResult TJXScholarship() { return View(); }
         public ActionResult BAM() { return View(); }
+        public ActionResult Calendar()
+        {
+            var scheduler = new DHXScheduler(this); //initializes dhtmlxScheduler
+            scheduler.LoadData = true;// allows loading data
+            scheduler.EnableDataprocessor = true;// enables DataProcessor in order to enable implementation CRUD operations
+            scheduler.Config.isReadonly = true;
+            return View(scheduler);
+        }
 
         [HttpPost]
       /*  [CaptchaValidator(

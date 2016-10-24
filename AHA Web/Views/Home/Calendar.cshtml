@@ -1,10 +1,15 @@
-﻿
+﻿<style>
+    .scheduler_container {
+        height: 500px;
+        width: 1100px;
+    }
+</style>
 @{
     ViewBag.Title = "Calendar";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Event Calendar</h2>
-<div class="scheduler_container">
+<div class="scheduler_container" contenteditable="false">
     @Html.Raw(Model.Render())
 </div>
