@@ -241,6 +241,7 @@
     <Compile Include="Controllers\Events\EventController.cs" />
     <Compile Include="Controllers\Grants\GrantController.cs" />
     <Compile Include="Controllers\Grants\GrantorController.cs" />
+    <Compile Include="Controllers\MailChimp\MailChimpController.cs" />
     <Compile Include="Controllers\Parents\ParentController.cs" />
     <Compile Include="Controllers\Programs\ProgramController.cs" />
     <Compile Include="Controllers\Programs\ProgramEnrollmentController.cs" />
@@ -255,6 +256,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="MailChimp\MailChimp.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdelanteStaff.cs" />
@@ -740,6 +742,7 @@
     <Content Include="Views\ProgramEnrollment\Details.cshtml" />
     <Content Include="Views\ProgramEnrollment\Edit.cshtml" />
     <Content Include="Views\ProgramEnrollment\Index.cshtml" />
+    <Content Include="Views\MailChimp\Index.cshtml" />
     <None Include="Views\UserPortal\Index.cshtml" />
     <None Include="Views\Shared\_UserPortalLayout.cshtml" />
     <Content Include="Views\UserPortal\_ViewStart.cshtml" />
