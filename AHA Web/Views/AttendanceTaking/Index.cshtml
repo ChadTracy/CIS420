@@ -1,4 +1,4 @@
-﻿@model IEnumerable<AHA_Web.Models.StudentAttendence>
+﻿@model IEnumerable<AHA_Web.Models.Attendance>
 
 @{
     ViewBag.Title = "Index";
@@ -12,13 +12,13 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Student.First_Name)
+            @Html.DisplayNameFor(model => model.EventID)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Sign_in_Time)
+            @Html.DisplayNameFor(model => model.Program_ID)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Sign_Out_Time)
+            @Html.DisplayNameFor(model => model.SignOut)
         </th>
         <th></th>
     </tr>
@@ -26,13 +26,13 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Student.First_Name)
+            @Html.DisplayFor(modelItem => item.EventID)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Sign_in_Time)
+            @Html.DisplayFor(modelItem => item.Program_ID)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Sign_Out_Time)
+            @Html.DisplayFor(modelItem => item.SignOut)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |

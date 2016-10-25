@@ -8,114 +8,116 @@ using System.Web;
 using System.Web.Mvc;
 using AHA_Web.Models;
 
-namespace AHA_Web.Controllers.Attendence
+namespace AHA_Web.Controllers.Attendances
 {
-    public class StudentAttendenceController : Controller
+    public class AttendanceTakingController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: StudentAttendence
+        // GET: AttendanceTaking
         public ActionResult Index()
         {
-            var studentAttendence = db.StudentAttendence.Include(s => s.Student);
-            return View(studentAttendence.ToList());
+            return View(db.Attendance.ToList());
         }
 
-        // GET: StudentAttendence/Details/5
+        // GET: AttendanceTaking/Details/5
+
+        public ActionResult TakeAttendance()
+        {
+            ViewBag.Events = new SelectList(db.Events, "text");
+            ViewBag.Programs = new SelectList(db.Programs, "Program_Name");
+            return View();
+                }
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            StudentAttendence studentAttendence = db.StudentAttendence.Find(id);
-            if (studentAttendence == null)
+            Attendance attendance = db.Attendance.Find(id);
+            if (attendance == null)
             {
                 return HttpNotFound();
             }
-            return View(studentAttendence);
+            return View(attendance);
         }
 
-        // GET: StudentAttendence/Create
+        // GET: AttendanceTaking/Create
         public ActionResult Create()
         {
-            ViewBag.Student_ID = new SelectList(db.Students, "Student_ID", "First_Name");
             return View();
         }
 
-        // POST: StudentAttendence/Create
+        // POST: AttendanceTaking/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Student_ID,Event_ID,Sign_in_Time,Sign_Out_Time")] StudentAttendence studentAttendence)
+        public ActionResult Create([Bind(Include = "Email,SignIn,EventID,Program_ID,SignOut")] Attendance attendance)
         {
             if (ModelState.IsValid)
             {
-                db.StudentAttendence.Add(studentAttendence);
+                db.Attendance.Add(attendance);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Student_ID = new SelectList(db.Students, "Student_ID", "First_Name", studentAttendence.Student_ID);
-            return View(studentAttendence);
+            return View(attendance);
         }
 
-        // GET: StudentAttendence/Edit/5
+        // GET: AttendanceTaking/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            StudentAttendence studentAttendence = db.StudentAttendence.Find(id);
-            if (studentAttendence == null)
+            Attendance attendance = db.Attendance.Find(id);
+            if (attendance == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.Student_ID = new SelectList(db.Students, "Student_ID", "First_Name", studentAttendence.Student_ID);
-            return View(studentAttendence);
+            return View(attendance);
         }
 
-        // POST: StudentAttendence/Edit/5
+        // POST: AttendanceTaking/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Student_ID,Event_ID,Sign_in_Time,Sign_Out_Time")] StudentAttendence studentAttendence)
+        public ActionResult Edit([Bind(Include = "Email,SignIn,EventID,Program_ID,SignOut")] Attendance attendance)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(studentAttendence).State = EntityState.Modified;
+                db.Entry(attendance).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Student_ID = new SelectList(db.Students, "Student_ID", "First_Name", studentAttendence.Student_ID);
-            return View(studentAttendence);
+            return View(attendance);
         }
 
-        // GET: StudentAttendence/Delete/5
+        // GET: AttendanceTaking/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            StudentAttendence studentAttendence = db.StudentAttendence.Find(id);
-            if (studentAttendence == null)
+            Attendance attendance = db.Attendance.Find(id);
+            if (attendance == null)
             {
                 return HttpNotFound();
             }
-            return View(studentAttendence);
+            return View(attendance);
         }
 
-        // POST: StudentAttendence/Delete/5
+        // POST: AttendanceTaking/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            StudentAttendence studentAttendence = db.StudentAttendence.Find(id);
-            db.StudentAttendence.Remove(studentAttendence);
+            Attendance attendance = db.Attendance.Find(id);
+            db.Attendance.Remove(attendance);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

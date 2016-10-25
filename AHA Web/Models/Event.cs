@@ -4,6 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 using DHTMLX.Scheduler;
 using DHTMLX.Scheduler.Data;
 using DHTMLX.Common;
+using System.Collections.Generic;
+using AHA_Web.Models;
 
 namespace AHA_web.Models
 {
@@ -17,5 +19,7 @@ namespace AHA_web.Models
         public DateTime start_date { get; set; }
 
         public DateTime end_date { get; set; }
+
+        public virtual ICollection<Attendance> Attendances { get; set; }
     }
 }
