@@ -20,5 +20,6 @@ namespace AHA_Web.Models
         public string Description { get; set; }
 
         public virtual ICollection<ProgramEnrollment> ProgramEnrollments { get; set; }
+        public virtual ICollection<Attendance> Attendances { get; set; }
     }
 }

@@ -243,8 +243,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\Attendance\StudentAttendenceController.cs" />
-    <Compile Include="Controllers\Attendance\Attendance.cs" />
+    <Compile Include="Controllers\Attendances\AttendanceTakingController.cs" />
     <Compile Include="Controllers\Donors\BoardMembers\BoardMemberController.cs" />
     <Compile Include="Controllers\Donors\DonorContactController.cs" />
     <Compile Include="Controllers\Donors\DonorController.cs" />
@@ -269,6 +268,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdelanteStaff.cs" />
+    <Compile Include="Models\Attendance.cs" />
     <Compile Include="Models\BoardMember.cs" />
     <Compile Include="Models\Donor.cs" />
     <Compile Include="Models\DonorContact.cs" />
@@ -283,7 +283,6 @@
     <Compile Include="Models\Program.cs" />
     <Compile Include="Models\ProgramEnrollment.cs" />
     <Compile Include="Models\SchedulerModel.cs" />
-    <Compile Include="Models\Attendance.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\StudentAttendence.cs" />
     <Compile Include="Models\StudentFamily.cs" />
@@ -734,11 +733,6 @@
     <Content Include="Views\BoardMember\Details.cshtml" />
     <Content Include="Views\BoardMember\Edit.cshtml" />
     <Content Include="Views\BoardMember\Index.cshtml" />
-    <Content Include="Views\StudentAttendence\Create.cshtml" />
-    <Content Include="Views\StudentAttendence\Delete.cshtml" />
-    <Content Include="Views\StudentAttendence\Details.cshtml" />
-    <Content Include="Views\StudentAttendence\Edit.cshtml" />
-    <Content Include="Views\StudentAttendence\Index.cshtml" />
     <Content Include="Views\Event\Create.cshtml" />
     <Content Include="Views\Event\Delete.cshtml" />
     <Content Include="Views\Event\Details.cshtml" />
@@ -765,6 +759,12 @@
     <Content Include="Views\Grant\Edit.cshtml" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
+    <Content Include="Views\AttendanceTaking\Create.cshtml" />
+    <Content Include="Views\AttendanceTaking\Delete.cshtml" />
+    <Content Include="Views\AttendanceTaking\Details.cshtml" />
+    <Content Include="Views\AttendanceTaking\Edit.cshtml" />
+    <Content Include="Views\AttendanceTaking\Index.cshtml" />
+    <Content Include="Views\AttendanceTaking\TakeAttendance.cshtml" />
     <None Include="Views\Grant\Index._depreciatedcshtml" />
     <Content Include="Views\Grantor\Create.cshtml" />
     <Content Include="Views\Grantor\Delete.cshtml" />
@@ -785,11 +785,6 @@
     <Content Include="Views\ProgramEnrollment\Details.cshtml" />
     <Content Include="Views\ProgramEnrollment\Edit.cshtml" />
     <Content Include="Views\ProgramEnrollment\Index.cshtml" />
-    <Content Include="Views\Attendance\Create.cshtml" />
-    <Content Include="Views\Attendance\Delete.cshtml" />
-    <Content Include="Views\Attendance\Details.cshtml" />
-    <Content Include="Views\Attendance\Edit.cshtml" />
-    <Content Include="Views\Attendance\Index.cshtml" />
     <Content Include="Views\MailChimp\index.cshtml" />
     <None Include="Views\UserPortal\Index.cshtml" />
     <None Include="Views\Shared\_UserPortalLayout.cshtml" />

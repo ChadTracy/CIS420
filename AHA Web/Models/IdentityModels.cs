@@ -65,6 +65,7 @@ namespace AHA_Web.Models
          public DbSet<VolunteerHistory> VolunteerHistory { get; set; }
         public DbSet<Program> Programs { get; set; }
         public DbSet<ProgramEnrollment> ProgramEnrollment { get; set; }
+        public DbSet<Attendance> Attendance { get; set; }
 
         public System.Data.Entity.DbSet<AHA_web.Models.MailChimp> MailChimps { get; set; }
     }
