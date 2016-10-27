@@ -24,6 +24,22 @@
  * Atribution: Animate CSS, Twitter Bootstrap, Materialize CSS, Normalize CSS, Waves JS, WOW JS, Toastr, Chart.js , Hammer.js
  *
  */
+
+/*Declare font faces*/
+@font-face {
+    font-family: "Lato Medium";
+    src: url("../fonts//Lato-Medium.ttf");
+}
+@font-face{
+    font-family: "Lato Semibold";
+    src: url("../fonts/Lato-Semibold.ttf");
+}
+@font-face{
+    font-family: "Lato Black";
+    src: url("../fonts/Lato-Black.ttf")
+}
+
+
 /*********************
   Mixins
 **********************/
@@ -2626,13 +2642,13 @@
 
 .navbar .nav > li > a { /*Change navbar text color*/
     color: #FFFFFF;
-    font-family: 'Lato';
+    font-family: 'Lato Medium';
 }
 .navbar-inverse {
     min-height:50px; 
     background-color: #24161B;
     color: #D90407;
-    font-family:'Lato'
+    font-family:'Lato Medium'
 }
 
 .z-depth-1-half, .media img, .tooltip .tooltip-inner, .btn:hover, .btn-secondary.active, .btn-secondary.dropdown-toggle, .btn-primary.active, .btn-default.active, .btn-success.active, .btn-info.active, .btn-warning.active, .btn-danger.active, .pager li a:hover, .btn-elegant.active, .btn-unique.active, .btn-pink.active, .btn-purple.active, .btn-deep-purple.active, .btn-indigo.active, .btn-cyan.active, .btn-light-green.active, .btn-dark-green.active, .btn-lime.active, .btn-yellow.active, .btn-amber.active, .btn-orange.active, .btn-deep-orange.active, .btn-brown.active, .btn-blue-grey.active, .btn-mdb.active {
@@ -8041,7 +8057,7 @@ i.btn-danger {
   border-bottom: 1px solid #1C2331;
 }
 .navbar-brand {
-    background: url('../Images/New Adelantelogo2015 smaller copy.png') no-repeat;
+    background: url('../Images/Adelante_FINAL_SM.png') no-repeat;
     background-size: 165px, 60px;
     background-position: center;
     vertical-align: middle;
