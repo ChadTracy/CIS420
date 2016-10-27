@@ -113,12 +113,12 @@ RequiredMessage = "The captcha field is required.")] */
             {
                 MailMessage mail = new MailMessage();
                 mail.To.Add("ahawebconfig@gmail.com");
-                MailAddress from = new MailAddress(Model.Email);
-                mail.From = from;
-                string Body = Model.Messge;
-                mail.Body += "Name: "; mail.Body += Model.Name; mail.Body += Environment.NewLine;
-                mail.Body += "E-mail Address: ";  mail.Body += Model.Email; mail.Body += Environment.NewLine;
-                mail.Body += Body;
+                mail.From = new MailAddress(Model.Email);
+                String MessageBody = "";
+                    MessageBody += "Name: "; MessageBody += Model.Name.ToString() + " "+"||"+" ";
+                    MessageBody += "E-mail Address: "; MessageBody += Model.Email.ToString() + " " + "||" + " ";
+                MessageBody += "Message: "; MessageBody += Model.Messge;
+                mail.Body += MessageBody;
                 mail.IsBodyHtml = true;
                 mail.Subject = Model.Subject;
                 SmtpClient smtp = new SmtpClient();
