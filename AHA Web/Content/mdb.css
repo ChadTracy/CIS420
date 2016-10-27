@@ -27,6 +27,11 @@
 /*********************
   Mixins
 **********************/
+.maskmb {
+    margin-bottom:30px;
+    height:50%;
+}
+
 .mdb-color.lighten-5 {
   background-color: #D0D6E2 !important;
 }

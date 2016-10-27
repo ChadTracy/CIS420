@@ -9,6 +9,8 @@
 
 </head>
 <body>
+
+
     <div id="fb-root"></div>
     <script>
 (function(d, s, id) {
@@ -19,7 +21,7 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
     <!-- Nav Stuff-->
-    <div class="navbar navbar-inverse navbar-static-top">
+    <div class="navbar navbar-inverse navbar-fixed-top scrolling-navbar">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -56,7 +58,10 @@
         </div>
     </div>
     <!-- End nav stuff-->
-
+    @if (IsSectionDefined("pageMask2"))
+    {
+        @RenderSection("pageMask2")
+    }
     <!--Mask, not for all pages-->
     @if (IsSectionDefined("pageMask"))
     {
