@@ -6,3 +6,25 @@
 
 <h2>Lists</h2>
 
+<table class="table">
+    <tr>
+        <th>List ID</th>
+        <th>Name</th>
+        <th>Visibility</th>
+        <th></th>
+    </tr>
+
+    @foreach(var list in ViewBag.lists)
+    {
+        <tr>
+            <td>@list.id</td>
+            <td>@list.name</td>
+            <td>@list.visibility</td>
+            @*<td><a rel=@list._links.rel href=@list._links["href"]>@list.name</a></td>*@
+            <td>
+                @Html.ActionLink("Members", "List", new { listID = list.id })
+            </td>
+        </tr>
+    }
+
+</table>

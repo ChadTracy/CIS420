@@ -15,6 +15,25 @@ namespace AHA_Web.MailChimp
         private string baseUri = "https://us14.api.mailchimp.com/3.0";
         private string username = "ahaadmn";
 
+        private List<string> exclude_fields = new List<string>() {
+            "_links", "total_items",
+            "lists._links", "lists.stats",
+            "members.stats", "members.last_note", "members.location", "members.interests"
+        };
+        private string excludeString
+        {
+            get
+            {
+                string value = "exclude_fields=";
+                foreach (string s in exclude_fields)
+                    value += s + ",";
+                value.Substring(0, value.Length - 1);
+                return value;
+            }
+        }
+
+        JavaScriptSerializer JSS = new JavaScriptSerializer();
+
         private void SetBasicAuthHeader(WebRequest request, String userName, String userPassword)
         {
             string authInfo = userName + ":" + userPassword;
@@ -70,19 +89,30 @@ namespace AHA_Web.MailChimp
         }
         #endregion Random Shit
 
-        public AllLists getLists()
+        public AllLists getAllLists()
         {
-            var response = getWebResponseJson(baseUri + "/lists");
+            var response = getWebResponseJson(baseUri + "/lists?" + excludeString);
 
             //Read data from stream
-            var JSS = new JavaScriptSerializer();
             AllLists lists = JSS.Deserialize<AllLists>(response);
 
             return lists;
         }
+
+        public Members getListMembers(string listID)
+        {
+            var response = getWebResponseJson(String.Format("{0}/lists/{1}/members?{2}", baseUri, listID, excludeString));
+            Members members = JSS.Deserialize<Members>(response);
+
+            return members;
+        }
     }
 
     #region Lists Classes
+    public class AllLists
+    {
+        public List<List> lists { get; set; }
+    }
     public class Contact
     {
         public string company { get; set; }
@@ -94,7 +124,6 @@ namespace AHA_Web.MailChimp
         public string country { get; set; }
         public string phone { get; set; }
     }
-
     public class CampaignDefaults
     {
         public string from_name { get; set; }
@@ -102,36 +131,6 @@ namespace AHA_Web.MailChimp
         public string subject { get; set; }
         public string language { get; set; }
     }
-
-    public class Stats
-    {
-        public int member_count { get; set; }
-        public int unsubscribe_count { get; set; }
-        public int cleaned_count { get; set; }
-        public int member_count_since_send { get; set; }
-        public int unsubscribe_count_since_send { get; set; }
-        public int cleaned_count_since_send { get; set; }
-        public int campaign_count { get; set; }
-        public string campaign_last_sent { get; set; }
-        public int merge_field_count { get; set; }
-        public int avg_sub_rate { get; set; }
-        public int avg_unsub_rate { get; set; }
-        public int target_sub_rate { get; set; }
-        public int open_rate { get; set; }
-        public int click_rate { get; set; }
-        public string last_sub_date { get; set; }
-        public string last_unsub_date { get; set; }
-    }
-
-    public class Link
-    {
-        public string rel { get; set; }
-        public string href { get; set; }
-        public string method { get; set; }
-        public string targetSchema { get; set; }
-        public string schema { get; set; }
-    }
-
     public class List
     {
         public string id { get; set; }
@@ -150,24 +149,39 @@ namespace AHA_Web.MailChimp
         public string beamer_address { get; set; }
         public string visibility { get; set; }
         public List<object> modules { get; set; }
-        public Stats stats { get; set; }
-        public List<Link> _links { get; set; }
     }
-
-    public class Link2
+    #endregion
+    #region Members Classes
+    public class Members
     {
-        public string rel { get; set; }
-        public string href { get; set; }
-        public string method { get; set; }
-        public string targetSchema { get; set; }
-        public string schema { get; set; }
-    }
-
-    public class AllLists
-    {
-        public List<List> lists { get; set; }
-        public List<Link2> _links { get; set; }
+        public IList<Member> members { get; set; }
+        public string list_id { get; set; }
         public int total_items { get; set; }
+    }
+    public class Member
+    {
+        public string id { get; set; }
+        public string email_address { get; set; }
+        public string unique_email_id { get; set; }
+        public string email_type { get; set; }
+        public string status { get; set; }
+        public string status_if_new { get; set; }
+        public MergeFields merge_fields { get; set; }
+        public string ip_signup { get; set; }
+        public string timestamp_signup { get; set; }
+        public string ip_opt { get; set; }
+        public string timestamp_opt { get; set; }
+        public int member_rating { get; set; }
+        public string last_changed { get; set; }
+        public string language { get; set; }
+        public bool vip { get; set; }
+        public string email_client { get; set; }
+        public string list_id { get; set; }
+    }
+    public class MergeFields
+    {
+        public string FNAME { get; set; }
+        public string LNAME { get; set; }
     }
     #endregion
 }

@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_UserPortalLayout.cshtml";
+}
+
+<h2>List</h2>
+
+<table class="table">
+    <tr>
+        <th>Email Address</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Status</th>
+    </tr>
+
+    @foreach (var member in ViewBag.members)
+    {
+        <tr>
+            <td>@member.email_address</td>
+            <td>@member.merge_fields.FNAME</td>
+            <td>@member.merge_fields.LNAME</td>
+            <td>@member.status</td>
+        </tr>
+    }
+
+</table>
