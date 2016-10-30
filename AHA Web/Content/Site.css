@@ -8,7 +8,7 @@
 /*Declare font faces*/
 @font-face {
     font-family: "Lato Medium";
-    src: url('../fonts//Lato-Medium.ttf');
+    src: url("../fonts//Lato-Medium.ttf");
 }
 @font-face{
     font-family: "Lato Semibold";
@@ -128,7 +128,7 @@ textarea {
 }
 
 .navbar-brand {
-    background: url('../Images/New Adelantelogo2015 smaller copy.png') no-repeat;
+    background: url('../Images/Adelante_FINAL_SM.png') no-repeat;
     background-size: 165px, 60px;
     background-position: center;
     vertical-align: middle;
