@@ -10,18 +10,18 @@ using AHA_Web.Models;
 
 namespace AHA_Web.Controllers.Programs
 {
-    public class ProgramEnrollmentController : Controller
+    public class ProgramEnrollmentsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: ProgramEnrollment
+        // GET: ProgramEnrollments
         public ActionResult Index()
         {
-            var programEnrollment = db.ProgramEnrollment.Include(p => p.Program).Include(p => p.Student);
+            var programEnrollment = db.ProgramEnrollment.Include(p => p.Program);
             return View(programEnrollment.ToList());
         }
 
-        // GET: ProgramEnrollment/Details/5
+        // GET: ProgramEnrollments/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
@@ -35,21 +35,39 @@ namespace AHA_Web.Controllers.Programs
             }
             return View(programEnrollment);
         }
+        public ActionResult LandingPageView()
+        {
+            var db = new ApplicationDbContext();
+            IEnumerable<SelectListItem> items = db.Events
+              .Select(e => new SelectListItem
+              {
+                  Value = e.EventID.ToString(),
+                  Text = e.text
+              });
+            ViewBag.Events = items;
+            IEnumerable<SelectListItem> progs = db.Programs
+              .Select(p => new SelectListItem
+              {
+                  Value = p.Program_ID.ToString(),
+                  Text = p.Program_Name
+              });
+            ViewBag.Programs = progs;
+            return View();
 
-        // GET: ProgramEnrollment/Create
+        }
+        // GET: ProgramEnrollments/Create
         public ActionResult Create()
         {
             ViewBag.Program_ID = new SelectList(db.Programs, "Program_ID", "Program_Name");
-            ViewBag.Student_ID = new SelectList(db.Students, "Student_ID", "First_Name");
             return View();
         }
 
-        // POST: ProgramEnrollment/Create
+        // POST: ProgramEnrollments/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Program_ID,Student_ID,Enrollment_Period")] ProgramEnrollment programEnrollment)
+        public ActionResult Create([Bind(Include = "Enrollment_Number,StudentEmail,Program_ID,EventID,StartTime,EndTime,Attended")] ProgramEnrollment programEnrollment)
         {
             if (ModelState.IsValid)
             {
@@ -59,11 +77,10 @@ namespace AHA_Web.Controllers.Programs
             }
 
             ViewBag.Program_ID = new SelectList(db.Programs, "Program_ID", "Program_Name", programEnrollment.Program_ID);
-            ViewBag.Student_ID = new SelectList(db.Students, "Student_ID", "First_Name", programEnrollment.Student_ID);
             return View(programEnrollment);
         }
 
-        // GET: ProgramEnrollment/Edit/5
+        // GET: ProgramEnrollments/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
@@ -76,16 +93,15 @@ namespace AHA_Web.Controllers.Programs
                 return HttpNotFound();
             }
             ViewBag.Program_ID = new SelectList(db.Programs, "Program_ID", "Program_Name", programEnrollment.Program_ID);
-            ViewBag.Student_ID = new SelectList(db.Students, "Student_ID", "First_Name", programEnrollment.Student_ID);
             return View(programEnrollment);
         }
 
-        // POST: ProgramEnrollment/Edit/5
+        // POST: ProgramEnrollments/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Program_ID,Student_ID,Enrollment_Period")] ProgramEnrollment programEnrollment)
+        public ActionResult Edit([Bind(Include = "Enrollment_Number,StudentEmail,Program_ID,EventID,StartTime,EndTime,Attended")] ProgramEnrollment programEnrollment)
         {
             if (ModelState.IsValid)
             {
@@ -94,11 +110,10 @@ namespace AHA_Web.Controllers.Programs
                 return RedirectToAction("Index");
             }
             ViewBag.Program_ID = new SelectList(db.Programs, "Program_ID", "Program_Name", programEnrollment.Program_ID);
-            ViewBag.Student_ID = new SelectList(db.Students, "Student_ID", "First_Name", programEnrollment.Student_ID);
             return View(programEnrollment);
         }
 
-        // GET: ProgramEnrollment/Delete/5
+        // GET: ProgramEnrollments/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
@@ -113,7 +128,7 @@ namespace AHA_Web.Controllers.Programs
             return View(programEnrollment);
         }
 
-        // POST: ProgramEnrollment/Delete/5
+        // POST: ProgramEnrollments/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)

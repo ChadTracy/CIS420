@@ -1,0 +1,63 @@
+﻿@model IEnumerable<AHA_Web.Models.ProgramEnrollment>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Program.Program_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EventID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Attended)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Program.Program_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudentEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EventID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Attended)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Enrollment_Number }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Enrollment_Number }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Enrollment_Number })
+        </td>
+    </tr>
+}
+
+</table>
