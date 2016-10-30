@@ -10,21 +10,22 @@ namespace AHA_Web.Models
     public class ProgramEnrollment
     {
         [Required]
-        [Column(Order =0)]
         [Key]
+        public string Enrollment_Number { get; set; }
+
+        public string StudentEmail { get; set; }
         public string Program_ID { get; set; }
+        public string EventID { get; set; }
+        public DateTime StartTime { get; set; }
 
-        [Required]
-        [Column(Order =1)]
-        [Key]
-        public string Student_ID { get; set; }
-
-        [Required]
-        [Column(Order = 2)]
-        [Key]
-        public string Enrollment_Period { get; set; }
+        public DateTime EndTime { get; set; }
+        
+        public bool Attended { get; set; }
+     
         public virtual Program Program { get; set; }
 
-        public virtual Student Student { get; set; }
+        
+
+     
     }
 }

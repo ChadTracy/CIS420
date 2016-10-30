@@ -1,0 +1,21 @@
+﻿@{
+    Layout = "~/Views/Shared/_UserPortalLayout.cshtml";
+}
+
+
+@using (Html.BeginForm())
+{
+    <legend>Programs</legend>
+    <div class="editor-field">@Html.DropDownList("Programs", "--Select One--")</div>
+    <input type="submit" name="action" value="Enroll Student" />
+    <input type="submit" name="action" value="Take Attendance" />
+}
+
+
+
+@using (Html.BeginForm())
+{
+    <legend>Events</legend>
+    <div class="editor-field">@Html.DropDownList("Events", "--Select One--")</div>
+    <input type="submit" value="Take Attendance" />
+}

@@ -10,7 +10,7 @@ namespace AHA_Web.Models
     {
         [Required]
         [Key]
-        [MaxLength(2),MinLength(2)]
+        [MaxLength(4),MinLength(4)]
         public string Program_ID { get; set; }
 
         public string Program_Name { get; set; }
