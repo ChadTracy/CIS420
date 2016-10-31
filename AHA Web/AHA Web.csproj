@@ -780,6 +780,7 @@
     <Content Include="Views\ProgramEnrollments\Edit.cshtml" />
     <Content Include="Views\ProgramEnrollments\Index.cshtml" />
     <Content Include="Views\ProgramEnrollments\LandingPageView.cshtml" />
+    <Content Include="Views\ProgramEnrollments\EnrollStudent.cshtml" />
     <None Include="Views\UserPortal\Index.cshtml" />
     <None Include="Views\Shared\_UserPortalLayout.cshtml" />
     <Content Include="Views\UserPortal\_ViewStart.cshtml" />

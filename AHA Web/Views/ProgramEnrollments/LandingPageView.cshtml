@@ -7,8 +7,9 @@
 {
     <legend>Programs</legend>
     <div class="editor-field">@Html.DropDownList("Programs", "--Select One--")</div>
-    <input type="submit" name="action" value="Enroll Student" />
-    <input type="submit" name="action" value="Take Attendance" />
+    @Html.ActionLink("Enroll Student","EnrollStudent")
+    <input type="submit" name="Enroll_Student" value="Enroll Student" />
+    <input type="submit" name="Take_Attendance" value="Take Attendance" />
 }
 
 
@@ -17,5 +18,5 @@
 {
     <legend>Events</legend>
     <div class="editor-field">@Html.DropDownList("Events", "--Select One--")</div>
-    <input type="submit" value="Take Attendance" />
+    <input type="submit" name="TakeEventAttendance" value="Take Attendance" />
 }
