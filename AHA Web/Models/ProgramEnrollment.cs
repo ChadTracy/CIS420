@@ -12,10 +12,11 @@ namespace AHA_Web.Models
         [Required]
         [Key]
         public string Enrollment_Number { get; set; }
-
-        public string StudentEmail { get; set; }
         public string Program_ID { get; set; }
         public string EventID { get; set; }
+        public string StudentEmail { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public DateTime StartTime { get; set; }
 
         public DateTime EndTime { get; set; }

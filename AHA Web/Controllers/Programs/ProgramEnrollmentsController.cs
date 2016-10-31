@@ -53,6 +53,20 @@ namespace AHA_Web.Controllers.Programs
               });
             ViewBag.Programs = progs;
             return View();
+        }
+        public ActionResult EnrollStudent()
+        {
+            var db = new ApplicationDbContext();
+
+            IEnumerable<SelectListItem> students = db.Users
+                .Where(e => e.AccountType == "Student")
+                .Select(e => new SelectListItem
+                {
+                    Value = e.Id.ToString(),
+                    Text = e.FirstName + " " + e.LastName
+                });
+            ViewBag.Users = students;
+            return View();
 
         }
         // GET: ProgramEnrollments/Create
