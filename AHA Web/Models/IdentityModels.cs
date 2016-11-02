@@ -69,6 +69,5 @@ namespace AHA_Web.Models
 
         public System.Data.Entity.DbSet<AHA_web.Models.MailChimp> MailChimps { get; set; }
 
-
     }
 }
