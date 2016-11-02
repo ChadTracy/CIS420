@@ -7,45 +7,82 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using AHA_Web.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace AHA_Web.Controllers.Attendances
 {
     public class AttendanceTakingController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        protected ApplicationDbContext ApplicationDbContext { get; set; }
+        protected UserManager<ApplicationUser> UserManager { get; set; }
+        private ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+
+        public AttendanceTakingController()
+        {
+            this.ApplicationDbContext = new ApplicationDbContext();
+            this.UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(this.ApplicationDbContext));
+        }
+
 
         // GET: AttendanceTaking
         public ActionResult Index()
         {
-            return View(db.Attendance.ToList());
+            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff")
+            {
+                return View(db.Attendance.ToList());
+            }
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Sorry, you don't have the proper authorization to access this");
+            }
+            
         }
 
         // GET: AttendanceTaking/Details/5
 
         public ActionResult TakeAttendance()
         {
-            ViewBag.Events = new SelectList(db.Events, "text");
-            ViewBag.Programs = new SelectList(db.Programs, "Program_Name");
-            return View();
-                }
+            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff")
+            {
+                ViewBag.Events = new SelectList(db.Events, "text");
+                ViewBag.Programs = new SelectList(db.Programs, "Program_Name");
+                return View();
+            }
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Sorry, you don't have the proper authorization to access this");
+            }
+
+        }
+
         public ActionResult Details(string id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Attendance attendance = db.Attendance.Find(id);
-            if (attendance == null)
+            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff")
             {
-                return HttpNotFound();
+                return View(attendance);
             }
-            return View(attendance);
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Sorry, you don't have the proper authorization to access this");
+            }
+            
         }
 
         // GET: AttendanceTaking/Create
         public ActionResult Create()
         {
-            return View();
+            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff")
+            {
+                return View();
+            }
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Sorry, you don't have the proper authorization to access this");
+            }
         }
 
         // POST: AttendanceTaking/Create
@@ -68,16 +105,15 @@ namespace AHA_Web.Controllers.Attendances
         // GET: AttendanceTaking/Edit/5
         public ActionResult Edit(string id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Attendance attendance = db.Attendance.Find(id);
-            if (attendance == null)
+            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff")
             {
-                return HttpNotFound();
+                return View(attendance);
             }
-            return View(attendance);
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Sorry, you don't have the proper authorization to access this");
+            }
         }
 
         // POST: AttendanceTaking/Edit/5
@@ -87,11 +123,18 @@ namespace AHA_Web.Controllers.Attendances
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Email,SignIn,EventID,Program_ID,SignOut")] Attendance attendance)
         {
-            if (ModelState.IsValid)
+            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff")
             {
-                db.Entry(attendance).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.Entry(attendance).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Sorry, you don't have the proper authorization to access this");
             }
             return View(attendance);
         }
@@ -99,16 +142,15 @@ namespace AHA_Web.Controllers.Attendances
         // GET: AttendanceTaking/Delete/5
         public ActionResult Delete(string id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Attendance attendance = db.Attendance.Find(id);
-            if (attendance == null)
+            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff")
             {
-                return HttpNotFound();
+                return View(attendance);
             }
-            return View(attendance);
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Sorry, you don't have the proper authorization to access this");
+            }
         }
 
         // POST: AttendanceTaking/Delete/5

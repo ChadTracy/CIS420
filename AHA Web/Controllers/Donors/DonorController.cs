@@ -7,38 +7,66 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using AHA_Web.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace AHA_Web.Controllers.Donors
 {
     public class DonorController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        protected ApplicationDbContext ApplicationDbContext { get; set; }
+        protected UserManager<ApplicationUser> UserManager { get; set; }
+        private ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+
+        public DonorController()
+        {
+            this.ApplicationDbContext = new ApplicationDbContext();
+            this.UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(this.ApplicationDbContext));
+        }
 
         // GET: Donor
         public ActionResult Index()
         {
-            return View(db.Donors.ToList());
+            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff" || user.AccountType == "Grantor")
+            {
+                return View(db.Donors.ToList());
+            }
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Sorry, you don't have the proper authorization to view this page");
+            }
+            
         }
 
         // GET: Donor/Details/5
         public ActionResult Details(string id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Donor donor = db.Donors.Find(id);
-            if (donor == null)
+            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff" || user.AccountType == "Grantor")
             {
-                return HttpNotFound();
+                return View(donor);
             }
-            return View(donor);
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Sorry, you don't have the proper authorization to view this page");
+            }
+            
         }
 
         // GET: Donor/Create
         public ActionResult Create()
         {
-            return View();
+            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff" || user.AccountType == "Grantor")
+            {
+                return View();
+            }
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Sorry, you don't have the proper authorization to view this page");
+            }
+            
         }
 
         // POST: Donor/Create
@@ -61,16 +89,16 @@ namespace AHA_Web.Controllers.Donors
         // GET: Donor/Edit/5
         public ActionResult Edit(string id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Donor donor = db.Donors.Find(id);
-            if (donor == null)
+            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff" || user.AccountType == "Grantor")
             {
-                return HttpNotFound();
+                return View(donor);
             }
-            return View(donor);
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Sorry, you don't have the proper authorization to view this page");
+            }
+            
         }
 
         // POST: Donor/Edit/5
@@ -92,16 +120,15 @@ namespace AHA_Web.Controllers.Donors
         // GET: Donor/Delete/5
         public ActionResult Delete(string id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Donor donor = db.Donors.Find(id);
-            if (donor == null)
+            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff" || user.AccountType == "Grantor")
             {
-                return HttpNotFound();
+                return View(donor);
             }
-            return View(donor);
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Sorry, you don't have the proper authorization to view this page");
+            }
         }
 
         // POST: Donor/Delete/5

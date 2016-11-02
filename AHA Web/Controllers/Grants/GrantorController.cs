@@ -7,38 +7,68 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using AHA_Web.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace AHA_Web.Controllers.Grants
 {
     public class GrantorController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        protected ApplicationDbContext ApplicationDbContext { get; set; }
+        protected UserManager<ApplicationUser> UserManager { get; set; }
+        private ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+
+        private GrantorController()
+        {
+            this.ApplicationDbContext = new ApplicationDbContext();
+            this.UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(this.ApplicationDbContext));
+        }
 
         // GET: Grantor
         public ActionResult Index()
         {
-            return View(db.Grantors.ToList());
+            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff" || user.AccountType == "Grantor" || user.AccountType == "BoardMember")
+            {
+                return View(db.Grantors.ToList());
+            }
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Sorry, you don't have the proper authorization to access this");
+            }
+            
         }
 
         // GET: Grantor/Details/5
         public ActionResult Details(string id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Grantor grantor = db.Grantors.Find(id);
-            if (grantor == null)
+
+            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff" || user.AccountType == "Grantor" || user.AccountType == "BoardMember")
             {
-                return HttpNotFound();
+                return View(grantor);
             }
-            return View(grantor);
+            
+            else 
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Sorry, you don't have the proper authorization to access this");
+            }
+            
         }
 
         // GET: Grantor/Create
         public ActionResult Create()
         {
-            return View();
+            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff" || user.AccountType == "Grantor" || user.AccountType == "BoardMember")
+            {
+                return View();
+            }
+
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Sorry, you don't have the proper authorization to access this");
+            }
         }
 
         // POST: Grantor/Create
@@ -61,16 +91,17 @@ namespace AHA_Web.Controllers.Grants
         // GET: Grantor/Edit/5
         public ActionResult Edit(string id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Grantor grantor = db.Grantors.Find(id);
-            if (grantor == null)
+
+            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff" || user.AccountType == "Grantor" || user.AccountType == "BoardMember")
             {
-                return HttpNotFound();
+                return View(grantor);
             }
-            return View(grantor);
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Sorry, you don't have the proper authorization to access this");
+            }
+            
         }
 
         // POST: Grantor/Edit/5
@@ -80,28 +111,29 @@ namespace AHA_Web.Controllers.Grants
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Grantor_ID,Organization,Address,City,State,Zip_Code,Email,Phone")] Grantor grantor)
         {
-            if (ModelState.IsValid)
+            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff" || user.AccountType == "Grantor" || user.AccountType == "BoardMember")
             {
-                db.Entry(grantor).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                return View(grantor);
             }
-            return View(grantor);
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Sorry, you don't have the proper authorization to access this");
+            }
         }
 
         // GET: Grantor/Delete/5
         public ActionResult Delete(string id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Grantor grantor = db.Grantors.Find(id);
-            if (grantor == null)
+
+            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff" || user.AccountType == "Grantor" || user.AccountType == "BoardMember")
             {
-                return HttpNotFound();
+                return View(grantor);
             }
-            return View(grantor);
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Sorry, you don't have the proper authorization to access this");
+            }
         }
 
         // POST: Grantor/Delete/5
