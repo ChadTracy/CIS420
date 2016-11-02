@@ -9,7 +9,7 @@
 
 body {
     margin-top: 100px;
-    background-color: #24161B;
+    background-color: #323741;
     width: 99.5%;
 }
 
@@ -46,7 +46,7 @@ body {
 
 /* Top Navigation */
 .navbar-brand {
-    background: url('../Images/New Adelantelogo2015 smaller copy.png') no-repeat;
+    background: url('../Images/Adelante_FINAL_SM.png') no-repeat;
     background-size: 165px, 60px;
     background-position: center;
     vertical-align: middle;
@@ -55,7 +55,7 @@ body {
     
 }
 .navbar {
-   background-color: #24161B;
+   background-color: #323741;
 }
 .top-nav {
     padding: 0 15px;
@@ -135,7 +135,7 @@ ul.alert-dropdown {
         border: none;
         border-radius: 0;
         overflow-y: auto;
-        background-color: #24161B;
+        background-color: #323741;
         bottom: 0;
         overflow-x: hidden;
         padding-bottom: 40px;

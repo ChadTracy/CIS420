@@ -21,7 +21,7 @@
 
 /* Side Panel CSS*/
 .panel{
-    background-color: #99cccc;
+    background-color: #323741;
     margin-top: 6px;
     margin-bottom:6px;
     padding: 5px;
@@ -122,7 +122,7 @@ textarea {
 }
 .navbar-inverse {
     min-height:50px; 
-    background-color: #99cccc;
+    background-color: #323741;
     color: #D90407;
     font-family:'Lato Black'
 }

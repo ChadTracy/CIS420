@@ -2651,9 +2651,9 @@
 }
 .navbar-inverse {
     min-height:50px; 
-    background-color: #24161B;
+    background-color: #323741;
     color: #D90407;
-    font-family:'Lato Medium'
+    font-family:'Lato Medium';
 }
 
 .z-depth-1-half, .media img, .tooltip .tooltip-inner, .btn:hover, .btn-secondary.active, .btn-secondary.dropdown-toggle, .btn-primary.active, .btn-default.active, .btn-success.active, .btn-info.active, .btn-warning.active, .btn-danger.active, .pager li a:hover, .btn-elegant.active, .btn-unique.active, .btn-pink.active, .btn-purple.active, .btn-deep-purple.active, .btn-indigo.active, .btn-cyan.active, .btn-light-green.active, .btn-dark-green.active, .btn-lime.active, .btn-yellow.active, .btn-amber.active, .btn-orange.active, .btn-deep-orange.active, .btn-brown.active, .btn-blue-grey.active, .btn-mdb.active {
@@ -2928,6 +2928,7 @@ body.modal-open {
 body {
   overflow: auto !important;
   font-family: "Lato Medium";
+  padding-top: 70px;
 }
 
 .card-columns .card {
