@@ -11,12 +11,16 @@ using Microsoft.Owin.Security;
 using AHA_Web.Models;
 using System.Web.Security;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Net;
 
 namespace AHA_Web.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -62,6 +66,43 @@ namespace AHA_Web.Controllers
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
+        
+        public ActionResult Index()
+        {
+
+            List<UsersViewModel> model = GetEssentialUserData();
+
+            // users is anonymous type, map it to a Model 
+            return View(model);
+
+        }
+
+        //Static method to return a UsersViewModel that contains generic user data and can access ID directly
+        public static List<UsersViewModel> GetEssentialUserData()
+        {
+            var applicationDbContext = new ApplicationDbContext();
+            var store = new UserStore<ApplicationUser>(new ApplicationDbContext());
+            var manager = new UserManager<ApplicationUser>(store);
+
+            var users = applicationDbContext.Users.ToList();
+            List<UsersViewModel> model = new List<UsersViewModel>();
+
+            foreach (var u in users)
+            {
+                UsersViewModel m = new UsersViewModel();
+                m.AccountType = u.AccountType;
+                m.BirthDate = u.BirthDate;
+                m.Email = u.Email;
+                m.FirstName = u.FirstName;
+                m.LastName = u.LastName;
+                m.UserName = u.UserName;
+                m.Id = u.Id;
+
+                model.Add(m);
+            }
+            return model;
+        }
+
         public ActionResult UserList()
         {
             var applicationDbContext = HttpContext.GetOwinContext().Get<ApplicationDbContext>();
@@ -151,6 +192,38 @@ namespace AHA_Web.Controllers
             }
         }
 
+        //Get: Account Roster Item edit
+
+        public ActionResult Edit(string Id)
+        {
+            if (Id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ApplicationUser user = db.Users.Find(Id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.AccountType = new SelectList(new[] { "Admin", "Staff", "BoardMember", "Donor", "Volunteer", "Student", "Parent", "Quarantine" });
+
+            return View(user);
+            
+            
+        }
+        //Post: Account Roster Item Edit
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include ="Id,FirstName,LastName,BirthDate,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName,AccountType")]ApplicationUser user)
+        {
+            if(ModelState.IsValid)
+            {
+                db.Entry(user).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(user);
+        }
         //
         // POST: 
         [HttpPost]

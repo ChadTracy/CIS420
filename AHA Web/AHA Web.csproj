@@ -758,6 +758,8 @@
     <Content Include="Views\Grant\Edit.cshtml" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
+    <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Account\Edit.cshtml" />
     <None Include="Views\Grant\Index._depreciatedcshtml" />
     <Content Include="Views\Grantor\Create.cshtml" />
     <Content Include="Views\Grantor\Delete.cshtml" />

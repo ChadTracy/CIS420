@@ -68,5 +68,6 @@ namespace AHA_Web.Models
         public DbSet<Attendance> Attendance { get; set; }
 
         public System.Data.Entity.DbSet<AHA_web.Models.MailChimp> MailChimps { get; set; }
+
     }
 }

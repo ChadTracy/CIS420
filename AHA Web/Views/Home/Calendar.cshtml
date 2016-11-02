@@ -8,8 +8,18 @@
     ViewBag.Title = "Calendar";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Event Calendar</h2>
+<div class="row">
 <div class="scheduler_container" contenteditable="false">
     @Html.Raw(Model.Render())
-</div>
+</div></div>
+
+@section pageMask{
+    <div class="row">
+        <div class="jumbotron text-center wow fadeIn">
+            <h2 class="h1-responsive wow fadeInDown" data-wow-delay="0.2s">Calendar of Events</h2>
+            <p class="wow fadeInDownBig">Use the calendar below to see our upcoming events.</p>
+        </div>
+    </div>
+}
+
+
