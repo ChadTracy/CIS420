@@ -24,6 +24,23 @@ namespace AHA_Web.Models
         public bool RememberMe { get; set; }
     }
 
+    public class UsersViewModel
+    {
+        public string Id { get; set; }
+        [Display(Name="First Name")]
+        public string FirstName { get; set; }
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+        [Display(Name = "Account Type")]
+        public string AccountType { get; set; }
+        [Display(Name = "Birth Date")]
+        public DateTime BirthDate { get; set; }
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+        [Display(Name = "Username")]
+        public string UserName { get; set; }
+    }
+
     public class VerifyCodeViewModel
     {
         [Required]

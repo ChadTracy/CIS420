@@ -11,6 +11,7 @@ using Microsoft.Owin.Security;
 using AHA_Web.Models;
 using System.Web.Security;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Collections.Generic;
 
 namespace AHA_Web.Controllers
 {
@@ -62,6 +63,43 @@ namespace AHA_Web.Controllers
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
+        
+        public ActionResult Index()
+        {
+
+            List<UsersViewModel> model = GetEssentialUserData();
+
+            // users is anonymous type, map it to a Model 
+            return View(model);
+
+        }
+
+        //Static method to return a UsersViewModel that contains generic user data and can access ID directly
+        public static List<UsersViewModel> GetEssentialUserData()
+        {
+            var applicationDbContext = new ApplicationDbContext();
+            var store = new UserStore<ApplicationUser>(new ApplicationDbContext());
+            var manager = new UserManager<ApplicationUser>(store);
+
+            var users = applicationDbContext.Users.ToList();
+            List<UsersViewModel> model = new List<UsersViewModel>();
+
+            foreach (var u in users)
+            {
+                UsersViewModel m = new UsersViewModel();
+                m.AccountType = u.AccountType;
+                m.BirthDate = u.BirthDate;
+                m.Email = u.Email;
+                m.FirstName = u.FirstName;
+                m.LastName = u.LastName;
+                m.UserName = u.UserName;
+                m.Id = u.Id;
+
+                model.Add(m);
+            }
+            return model;
+        }
+
         public ActionResult UserList()
         {
             var applicationDbContext = HttpContext.GetOwinContext().Get<ApplicationDbContext>();
@@ -149,6 +187,11 @@ namespace AHA_Web.Controllers
                     ModelState.AddModelError("", "Invalid code.");
                     return View(model);
             }
+        }
+
+        public async Task<ActionResult> Edit(string Id)
+        {
+            return View();
         }
 
         //
