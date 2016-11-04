@@ -271,6 +271,7 @@
     <Compile Include="Models\BoardMember.cs" />
     <Compile Include="Models\Donor.cs" />
     <Compile Include="Models\DonorContact.cs" />
+    <Compile Include="Models\EnrollStudentViewModels.cs" />
     <Compile Include="Models\MailChimp.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\Grant.cs" />
@@ -843,6 +844,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\EnrollStudentViewModel\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
