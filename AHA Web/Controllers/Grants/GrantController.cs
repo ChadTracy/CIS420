@@ -7,40 +7,78 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using AHA_Web.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace AHA_Web.Controllers.Grants
 {
     public class GrantController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        protected ApplicationDbContext ApplicationDbContext { get; set; }
+        protected UserManager<ApplicationUser> UserManager { get; set; }
+        private ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+
+        public GrantController()
+        {
+            this.ApplicationDbContext = new ApplicationDbContext();
+            this.UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(this.ApplicationDbContext));
+        }
 
         // GET: Grant
         public ActionResult Index()
         {
-            var grants = db.Grants.Include(g => g.Grantor);
-            return View(grants);
+            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff" || user.AccountType == "Grantor" || user.AccountType == "BoardMember")
+            {
+                var grants = db.Grants.Include(g => g.Grantor);
+                return View(grants);
+            }
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Sorry, you don't have the proper authorization to access this");
+            }
         }
 
         // GET: Grant/Details/5
         public ActionResult Details(string id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Grant grant = db.Grants.Find(id);
-            if (grant == null)
+            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff" || user.AccountType == "Grantor" || user.AccountType == "BoardMember")
+            {
+                return View(grant);
+            }
+            if (user == null)
             {
                 return HttpNotFound();
             }
-            return View(grant);
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Sorry, you don't have the proper authorization to access this");
+            }
         }
 
         // GET: Grant/Create
         public ActionResult Create()
         {
-            ViewBag.Grantor_ID = new SelectList(db.Grantors, "Grantor_ID", "Organization");
-            return View();
+            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff" || user.AccountType == "Grantor" || user.AccountType == "BoardMember")
+            {
+                ViewBag.Grantor_ID = new SelectList(db.Grantors, "Grantor_ID", "Organization");
+                return View();
+            }
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Sorry, you don't have the proper authorization to access this");
+            }
+
         }
 
         // POST: Grant/Create
@@ -64,17 +102,20 @@ namespace AHA_Web.Controllers.Grants
         // GET: Grant/Edit/5
         public ActionResult Edit(string id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Grant grant = db.Grants.Find(id);
-            if (grant == null)
+            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff" || user.AccountType == "Grantor" || user.AccountType == "BoardMember")
+            {
+                ViewBag.Grantor_ID = new SelectList(db.Grantors, "Grantor_ID", "Organization");
+                return View();
+            }
+            if (user == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.Grantor_ID = new SelectList(db.Grantors, "Grantor_ID", "Organization", grant.Grantor_ID);
-            return View(grant);
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Sorry, you don't have the proper authorization to access this");
+            }
         }
 
         // POST: Grant/Edit/5
@@ -97,16 +138,19 @@ namespace AHA_Web.Controllers.Grants
         // GET: Grant/Delete/5
         public ActionResult Delete(string id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Grant grant = db.Grants.Find(id);
-            if (grant == null)
+            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff" || user.AccountType == "Grantor" || user.AccountType == "BoardMember")
+            {
+                return View(grant);
+            }
+            if (user == null)
             {
                 return HttpNotFound();
             }
-            return View(grant);
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Sorry, you don't have the proper authorization to access this");
+            }
         }
 
         // POST: Grant/Delete/5
@@ -131,18 +175,51 @@ namespace AHA_Web.Controllers.Grants
 
         public ActionResult CreateGrant()
         {
-            return View();
+            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff" || user.AccountType == "Grantor" || user.AccountType == "BoardMember")
+            {
+                return View();
+            }
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Sorry, you don't have the proper authorization to access this");
+            }
         }
 
         public ActionResult EditGrants()
         {
-            return View();
+            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff" || user.AccountType == "Grantor" || user.AccountType == "BoardMember")
+            {
+                return View();
+            }
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Sorry, you don't have the proper authorization to access this");
+            }
         }
 
         public ActionResult ViewGrants()
         {
-            var grants = db.Grants.Include(g => g.Grantor);
-            return View(grants);
+            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff" || user.AccountType == "Grantor" || user.AccountType == "BoardMember")
+            {
+                var grants = db.Grants.Include(g => g.Grantor);
+                return View(grants);
+            }
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Sorry, you don't have the proper authorization to access this");
+            }
         }
     }
 }

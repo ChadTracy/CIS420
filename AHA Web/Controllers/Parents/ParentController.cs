@@ -7,38 +7,79 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using AHA_Web.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace AHA_Web.Controllers.Parents
 {
     public class ParentController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        protected ApplicationDbContext ApplicationDbContext { get; set; }
+        protected UserManager<ApplicationUser> UserManager { get; set; }
+        private ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+
+        public ParentController()
+        {
+            this.ApplicationDbContext = new ApplicationDbContext();
+            this.UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(this.ApplicationDbContext));
+        }
 
         // GET: Parent
         public ActionResult Index()
         {
-            return View(db.Parents.ToList());
+            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff")
+            {
+                return View(db.Parents.ToList());
+            }
+            if (user == null )
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Sorry, you don't have the proper authorization to access this");
+            }
+           
         }
 
         // GET: Parent/Details/5
         public ActionResult Details(string id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Parent parent = db.Parents.Find(id);
-            if (parent == null)
+            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff")
+            {
+                return View(parent);
+            }
+            if (id == null || user == null)
             {
                 return HttpNotFound();
             }
-            return View(parent);
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Sorry, you don't have the proper authorization to access this");
+            }
+            
+            
         }
 
         // GET: Parent/Create
         public ActionResult Create()
         {
-            return View();
+            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff")
+            {
+                return View();
+            }
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Sorry, you don't have the proper authorization to access this");
+            }
+            
         }
 
         // POST: Parent/Create
@@ -61,16 +102,19 @@ namespace AHA_Web.Controllers.Parents
         // GET: Parent/Edit/5
         public ActionResult Edit(string id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Parent parent = db.Parents.Find(id);
-            if (parent == null)
+            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff")
+            {
+                return View(parent);
+            }
+            if (user == null || parent == null)
             {
                 return HttpNotFound();
             }
-            return View(parent);
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Sorry, you don't have the proper authorization to access this");
+            }
         }
 
         // POST: Parent/Edit/5
@@ -92,16 +136,19 @@ namespace AHA_Web.Controllers.Parents
         // GET: Parent/Delete/5
         public ActionResult Delete(string id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Parent parent = db.Parents.Find(id);
-            if (parent == null)
+            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff")
+            {
+                return View(parent);
+            }
+            if (user == null || parent == null)
             {
                 return HttpNotFound();
             }
-            return View(parent);
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Sorry, you don't have the proper authorization to access this");
+            }
         }
 
         // POST: Parent/Delete/5
