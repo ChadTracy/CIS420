@@ -48,10 +48,28 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#account">- Account Roster</a>
                         <ul id="account" class="collapse">
                             <li>
-                                @Html.ActionLink("Edit Account Permissions", "Index", "Account")
+                                @Html.ActionLink("Edit Account Permissions", "Index", "Account", new { filterAccountType = "" }, null)
                             </li>
                             <li>
-                                <a href="#" >Link 2 </a>
+                                @Html.ActionLink("View Students", "Index", "Account", new { filterAccountType = "Student" }, null)
+                            </li>
+                            <li>
+                                @Html.ActionLink("View Parents", "Index", "Account", new { filterAccountType = "Parent" }, null)
+                            </li>
+                            <li>
+                                @Html.ActionLink("View Volunteers", "Index", "Account", new { filterAccountType = "Volunteer" }, null)
+                            </li>
+                            <li>
+                                @Html.ActionLink("View Staff", "Index", "Account", new { filterAccountType = "Staff" }, null)
+                            </li>
+                            <li>
+                                @Html.ActionLink("View Donors", "Index", "Account", new { filterAccountType = "Donor" }, null)
+                            </li>
+                            <li>
+                                @Html.ActionLink("View Board Members", "Index", "Account", new { filterAccountType = "BoardMember" }, null)
+                            </li>
+                            <li>
+                                @Html.ActionLink("Account Waitlist", "Index", "Account", new { filterAccountType = "Quarantine" }, null)
                             </li>
                         </ul>
                     </li>
