@@ -1,4 +1,4 @@
-﻿namespace AHA.Models
+﻿namespace AHA_Web.Models
 {
     public class MailViewModel
     {

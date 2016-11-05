@@ -10,13 +10,14 @@ using DHTMLX.Scheduler;
 using DHTMLX.Scheduler.Data;
 using DHTMLX.Common;
 using reCAPTCHA.MVC;
-using AHA.Models;
-using AHA_web.Models;
+using AHA_Web.Models;
 
 namespace AHA_Web.Controllers
 {
     public class HomeController : Controller
     {
+        public readonly AHA_Web.Models.ApplicationDbContext _db = new AHA_Web.Models.ApplicationDbContext();
+
         public ActionResult Index()
         {
             return View();
@@ -84,6 +85,11 @@ namespace AHA_Web.Controllers
             scheduler.EnableDataprocessor = true;// enables DataProcessor in order to enable implementation CRUD operations
             scheduler.Config.isReadonly = true;
             return View(scheduler);
+        }
+        public ActionResult Data()
+        {
+            //events for loading to scheduler
+            return new SchedulerAjaxData(_db.Events);
         }
 
         [HttpPost]

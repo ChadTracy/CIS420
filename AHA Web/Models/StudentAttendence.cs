@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using AHA_web.Models;
+using AHA_Web.Models;
 
 namespace AHA_Web.Models
 {

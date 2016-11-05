@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Mvc;
-using AHA_web.Models;
+using AHA_Web.Models;
 using DHTMLX.Common;
 using DHTMLX.Scheduler;
 using DHTMLX.Scheduler.Data;
 
-namespace AHA_web.Controllers
+namespace AHA_Web.Controllers
 {
     public class EventController : Controller
     {
