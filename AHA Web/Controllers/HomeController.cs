@@ -11,6 +11,8 @@ using DHTMLX.Scheduler.Data;
 using DHTMLX.Common;
 using reCAPTCHA.MVC;
 using AHA_Web.Models;
+using System.Net;
+using System.IO;
 
 namespace AHA_Web.Controllers
 {
@@ -123,18 +125,23 @@ RequiredMessage = "The captcha field is required.")] */
                 String MessageBody = "";
                     MessageBody += "Name: "; MessageBody += Model.Name.ToString() + " "+"||"+" ";
                     MessageBody += "E-mail Address: "; MessageBody += Model.Email.ToString() + " " + "||" + " ";
-                MessageBody += "Message: "; MessageBody += Model.Messge;
+                MessageBody += "Message: "; MessageBody += Model.Message;
                 mail.Body += MessageBody;
                 mail.IsBodyHtml = true;
                 mail.Subject = Model.Subject;
-                SmtpClient smtp = new SmtpClient();
-                smtp.Host = "smtp.gmail.com";
-                smtp.Port = 587;
-                smtp.UseDefaultCredentials = false;
-                smtp.Credentials = new System.Net.NetworkCredential
-                ("AHAWebConfig@gmail.com", "ahawebconfig123"); // ("user", "pass");
-                smtp.EnableSsl = true;
-                smtp.Send(mail);
+
+                SmtpClient client = new SmtpClient(); //Gmail smtp
+                client.Host = "smtp.gmail.com";
+                client.EnableSsl = true;
+                System.Net.NetworkCredential NetworkCred = new System.Net.NetworkCredential();
+                NetworkCred.UserName = "ahawebconfig@gmail.com";
+                NetworkCred.Password = "ahawebconfig123";
+                client.UseDefaultCredentials = false;
+                client.Credentials = NetworkCred;
+                client.Port = 587;
+                                
+                client.Send(mail);
+
                 return View("~/Views/Home/ThankYou.cshtml"); // TODO: make thank you page
             }
             else

@@ -53,7 +53,7 @@ namespace AHA_Web.Controllers
                 _db.SaveChanges();
                 action.TargetId = updatedEvent.EventID;
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
                 action.Type = DataActionTypes.Error;
             }
