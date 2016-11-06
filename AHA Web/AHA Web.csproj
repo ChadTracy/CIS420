@@ -784,6 +784,7 @@
     <Content Include="Views\ProgramEnrollments\Index.cshtml" />
     <Content Include="Views\ProgramEnrollments\LandingPageView.cshtml" />
     <Content Include="Views\ProgramEnrollments\EnrollStudent.cshtml" />
+    <Content Include="Views\ProgramEnrollments\ManageEnrollments.cshtml" />
     <None Include="Views\UserPortal\Index.cshtml" />
     <None Include="Views\Shared\_UserPortalLayout.cshtml" />
     <Content Include="Views\UserPortal\_ViewStart.cshtml" />

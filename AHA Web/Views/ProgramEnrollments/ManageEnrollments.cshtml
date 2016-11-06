@@ -1,0 +1,67 @@
+﻿@model List<AHA_Web.Models.EnrollStudentViewModel>
+@using AHA_Web.Models
+@{
+    Layout = "~/Views/Shared/_UserPortalLayout.cshtml";
+}
+@{ 
+    //Get the ID as a variable
+    string programId = (Model[0].Program_ID);
+    //Get the name of a program
+    var db = new ApplicationDbContext();
+    Program workingProgram = db.Programs.Find(programId);
+    string programName = workingProgram.Program_Name;
+}
+<h2>Enrolled Accounts in @programName</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model[0].UserModel.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].UserModel.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].UserModel.AccountType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].UserModel.BirthDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].UserModel.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].UserModel.UserName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserModel.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserModel.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserModel.AccountType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserModel.BirthDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserModel.Email)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.UserModel.UserName)
+            </td>
+            <td>
+                @Html.ActionLink("Unenroll this Student", "UnenrollStudentAction", "ProgramEnrollments", new { programID=programId, userID=item.UserModel.Id}, null)
+            </td>
+        </tr>
+    }
+
+</table>
