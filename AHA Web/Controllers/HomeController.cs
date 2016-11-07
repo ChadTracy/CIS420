@@ -95,52 +95,42 @@ namespace AHA_Web.Controllers
         }
 
         [HttpPost]
-      /*  [CaptchaValidator(
-PrivateKey = "6Lcd6wcUAAAAALyfSPaS1UOZADXj6eDcFNCgqcUa",
-ErrorMessage = "Invalid input captcha.",
-RequiredMessage = "The captcha field is required.")] */
+        /*  [CaptchaValidator(
+  PrivateKey = "6Lcd6wcUAAAAALyfSPaS1UOZADXj6eDcFNCgqcUa",
+  ErrorMessage = "Invalid input captcha.",
+  RequiredMessage = "The captcha field is required.")] */
+
         public ActionResult Contact(MailViewModel Model)
         {
-            //For help on setting up the captcha visit the link below and refer to the "Quick Start" guide.
-            //http://recaptchamvc.apphb.com/
-
-
-            //To get your site and private keys for the captcha, visit the link below.
-            // https://www.google.com/recaptcha/intro/index.html
-
-
-            //Below is how to set up a contact form for GMAIL ONLY!.
-
-            //If you receive an error on Line smtp.Send(mail) then you might need to log into that Gmail 
-            //account you are trying to send the emails from and find the option to "Enable Less Secure Apps"
-            //Google is being nice and disabling the Gmail account to be accessed by less secure applications.
-
-            //See the referenced code for explanation of this example.
-            //http://www.c-sharpcorner.com/uploadfile/sourabh_mishra1/sending-an-e-mail-using-asp-net-mvc/
             if (ModelState.IsValid)
             {
-                MailMessage mail = new MailMessage();
-                mail.To.Add("ahawebconfig@gmail.com");
-                mail.From = new MailAddress(Model.Email);
-                String MessageBody = "";
-                    MessageBody += "Name: "; MessageBody += Model.Name.ToString() + " "+"||"+" ";
-                    MessageBody += "E-mail Address: "; MessageBody += Model.Email.ToString() + " " + "||" + " ";
-                MessageBody += "Message: "; MessageBody += Model.Message;
-                mail.Body += MessageBody;
-                mail.IsBodyHtml = true;
-                mail.Subject = Model.Subject;
+                var toEmail = "ahawebconfig@gmail.com";
+                var toEmailPassword = "ahawebconfig123";
+                string Body = Model.Message;
 
-                SmtpClient client = new SmtpClient(); //Gmail smtp
-                client.Host = "smtp.gmail.com";
-                client.EnableSsl = true;
-                System.Net.NetworkCredential NetworkCred = new System.Net.NetworkCredential();
-                NetworkCred.UserName = "ahawebconfig@gmail.com";
-                NetworkCred.Password = "ahawebconfig123";
-                client.UseDefaultCredentials = false;
-                client.Credentials = NetworkCred;
-                client.Port = 587;
-                                
-                client.Send(mail);
+                MailMessage mail = new MailMessage();
+                mail.To.Add(toEmail);
+                mail.From = new MailAddress(Model.Email);
+                mail.Subject = "Contact Form Submission";
+                mail.Body = Body;
+                mail.IsBodyHtml = true;
+                SmtpClient smtp = new SmtpClient();
+
+                //SMTP settings when running locally (uses gmail)
+                //smtp.Host = "smtp.gmail.com";
+                //smtp.Port = 587;
+                //smtp.EnableSsl = true;
+                //Setup credentials to login to our sender email address ("UserName", "Password")
+                //NetworkCredential credentials = new NetworkCredential(toEmail, toEmailPassword);
+                //smtp.UseDefaultCredentials = false;
+                //smtp.Credentials = credentials;
+
+                //Production settings        
+                smtp.EnableSsl = false;
+                smtp.Host = "relay-hosting.secureserver.net";
+                smtp.Port = 25;
+
+                smtp.Send(mail);
 
                 return View("~/Views/Home/ThankYou.cshtml"); // TODO: make thank you page
             }
