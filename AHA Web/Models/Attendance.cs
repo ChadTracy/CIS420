@@ -11,13 +11,13 @@ namespace AHA_Web.Models
     {
         [Key]
         [Column(Order = 0)]
-        public string Event_ID { get; set; }
+        public string EventID { get; set; }
 
         [Key]
         [Column(Order = 1)]
-        public string User_ID { get; set; }
+        public string Email { get; set; }
 
-        public DateTime ClockIn {get; set;}
-        public DateTime ClockOut {get; set;}
+        public DateTime SignIn {get; set;}
+        public DateTime SignOut {get; set;}
     }
 }
