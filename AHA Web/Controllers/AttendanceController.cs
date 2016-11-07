@@ -17,13 +17,13 @@ namespace AHA_Web.Controllers
             var attendance = db.Attendance;
             var events = db.Events.Select(e => e.text);
             var eventList = new SelectList(events);
-            ViewData.Add("Event_ID", eventList);
+            ViewData.Add("EventID", eventList);
             ViewBag.EventList = eventList;
             return View();
         }
 
         [HttpPost]
-        public ActionResult ClockIn([Bind(Exclude ="ClockIn,ClockOut", Include ="Event_ID,User_ID")]Attendance newAttendance)
+        public ActionResult ClockIn([Bind(Exclude = "SignIn,SignOut", Include ="EventID,Email")]Attendance newAttendance)
         {
             newAttendance.SignIn = DateTime.Now;
             newAttendance.SignOut = DateTime.Now;
@@ -39,7 +39,7 @@ namespace AHA_Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult ClockOut([Bind(Exclude = "ClockIn,ClockOut", Include = "Event_ID,User_ID")]Attendance newAttendance)
+        public ActionResult ClockOut([Bind(Exclude = "SignIn,SignOut", Include = "EventID,Email")]Attendance newAttendance)
         {
             newAttendance.SignOut = DateTime.Now;
 
