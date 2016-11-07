@@ -328,6 +328,7 @@
     <Content Include="Images\9.jpg" />
     <Content Include="Images\about-us.png" />
     <Content Include="Images\Adelante Logo trimmed.png" />
+    <Content Include="Images\Adelante_FINAL_SM.png" />
     <Content Include="Images\becomesponsor.png" />
     <Content Include="Images\Bellarmine_Knights.png" />
     <Content Include="Images\close.svg" />
@@ -353,6 +354,7 @@
     <Content Include="Images\Copy of IMG_2465.JPG" />
     <Content Include="Images\donate.png" />
     <Content Include="Images\donate2.png" />
+    <Content Include="Images\Dustin Bishop.JPG" />
     <Content Include="Images\Dustin.jpg" />
     <Content Include="Images\Dustin2.jpg" />
     <Content Include="Images\DustinHS.jpg" />
@@ -364,6 +366,7 @@
     <Content Include="Images\Mara2.jpg" />
     <Content Include="Images\MaraHS.jpg" />
     <Content Include="Images\Morgan - VISTA.jpg" />
+    <Content Include="Images\Morgan Gerke.jpg" />
     <Content Include="Images\New Adelantelogo2015 smaller copy.png" />
     <Content Include="Images\New.jpg" />
     <Content Include="Images\New.png" />
@@ -877,7 +880,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>52826</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

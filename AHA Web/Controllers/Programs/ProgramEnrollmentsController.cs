@@ -75,11 +75,14 @@ namespace AHA_Web.Controllers.Programs
                     emodel.Program_ID = id;
                     emodel.UserModel = v;
                     returnList.Add(emodel);
-                    return View(returnList);    
                 }
             }
-
-            return RedirectToAction("Index", "Program");
+            if(returnList.Count!=0) //If returnlist is not empty
+            {
+                return View(returnList);
+            }
+            else
+                return RedirectToAction("Index", "Program");
 
         }
         //Action result for managing enrollments
@@ -113,11 +116,14 @@ namespace AHA_Web.Controllers.Programs
                     emodel.Program_ID = id;
                     emodel.UserModel = v;
                     returnList.Add(emodel);
-                    return View(returnList);
                 }
             }
-
-            return RedirectToAction("Index", "Program");
+            if (returnList.Count != 0) //If returnlist is not empty
+            {
+                return View(returnList);
+            }
+            else
+                return RedirectToAction("Index", "Program");
         }
 
         // GET: ProgramEnrollments/Create
