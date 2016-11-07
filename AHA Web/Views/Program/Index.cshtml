@@ -57,7 +57,8 @@
             @Html.ActionLink("Edit", "Edit", new { id=item.Program_ID }) |
             @Html.ActionLink("Details", "Details", new { id=item.Program_ID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.Program_ID }) |
-            @Html.ActionLink("Enroll a User", "EnrollStudent", "ProgramEnrollments", new { id = item.Program_ID }, null )
+            @Html.ActionLink("Enroll a User", "EnrollStudent", "ProgramEnrollments", new { id = item.Program_ID }, null ) |
+            @Html.ActionLink("Manage Program Enrollments", "ManageEnrollments", "ProgramEnrollments", new { id=item.Program_ID}, null)
         </td>
     </tr>
 }

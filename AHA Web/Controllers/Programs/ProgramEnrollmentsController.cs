@@ -82,6 +82,44 @@ namespace AHA_Web.Controllers.Programs
             return RedirectToAction("Index", "Program");
 
         }
+        //Action result for managing enrollments
+        public ActionResult ManageEnrollments(string id)
+        {
+            var db = new ApplicationDbContext();
+            //create a list of all users
+            List<UsersViewModel> users = AccountController.GetEssentialUserData();
+            //Create a list of program enrollments
+            List<ProgramEnrollment> allEnrollments = db.ProgramEnrollment.ToList();
+            //Create a lookup list for return
+            List<EnrollStudentViewModel> returnList = new List<EnrollStudentViewModel>();
+            //find all student IDs that are already enrolled in the current program
+            List<string> enrolledIDs = new List<String>();
+            foreach (var v in allEnrollments)
+            {
+                //Only look at IDs that match the program ID
+                if (v.Program_ID == id)
+                {
+                    enrolledIDs.Add(v.AccountID); //Add the already registed account Id to the exclusion list
+                }
+            } //By now you have a list of all ID's that are already registered
+              //Parse through all the users to build the model for the view
+            foreach (var v in users)
+            {
+                //check if user is in the list of enrollments
+                if (enrolledIDs.Contains(v.Id))
+                {
+                    //Build a program enrollment model 
+                    EnrollStudentViewModel emodel = new EnrollStudentViewModel();
+                    emodel.Program_ID = id;
+                    emodel.UserModel = v;
+                    returnList.Add(emodel);
+                    return View(returnList);
+                }
+            }
+
+            return RedirectToAction("Index", "Program");
+        }
+
         // GET: ProgramEnrollments/Create
         public ActionResult Create()
         {
@@ -101,6 +139,18 @@ namespace AHA_Web.Controllers.Programs
             }
             //Return a redirect to the prior screen
             return RedirectToAction("EnrollStudent", "ProgramEnrollments", new { id = programID});
+        }
+
+        public ActionResult UnenrollStudentAction(string programID, string userID)
+        {
+            if (programID != null && userID != null)
+            {
+                ProgramEnrollment a=db.ProgramEnrollment.Find(programID, userID);
+                db.ProgramEnrollment.Remove(a);
+                db.SaveChanges();
+            }
+            //Return a redirect to the prior screen
+            return RedirectToAction("ManageEnrollments", "ProgramEnrollments", new { id = programID });
         }
 
         // POST: ProgramEnrollments/Create

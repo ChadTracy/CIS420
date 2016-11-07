@@ -10,15 +10,14 @@ namespace AHA_Web.Models
     public class Attendance
     {
         [Key]
-        [Column(Order =0)]
-        public string Email { get; set; }
-
-        public string EventID { get; set; }
-        public string Program_ID { get; set; }
+        [Column(Order = 0)]
+        public string Event_ID { get; set; }
 
         [Key]
-        [Column (Order =3)]
-        public DateTime SignIn { get; set; }
-        public DateTime SignOut { get; set; }
+        [Column(Order = 1)]
+        public string User_ID { get; set; }
+
+        public DateTime ClockIn {get; set;}
+        public DateTime ClockOut {get; set;}
     }
 }
