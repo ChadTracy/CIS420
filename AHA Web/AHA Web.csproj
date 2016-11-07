@@ -713,7 +713,6 @@
     <Content Include="Content\mdb.css" />
     <Content Include="Views\Home\Bellarmine_Knights.png" />
     <Content Include="Views\UserPortal\AccountManagement.cshtml" />
-    <Content Include="Views\UserPortal\ViewAccounts.cshtml" />
     <Content Include="Views\Grant\Index.cshtml" />
     <Content Include="Views\Home\MentoringEnrichment.cshtml" />
     <Content Include="Views\Home\CollegeReadiness.cshtml" />
