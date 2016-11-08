@@ -26,8 +26,9 @@ namespace AHA_Web.Controllers
         public ActionResult ClockIn([Bind(Exclude = "SignIn,SignOut", Include ="EventID,Email")]Attendance newAttendance)
         {
             newAttendance.SignIn = DateTime.Now;
-            newAttendance.SignOut = DateTime.Now;
-
+            newAttendance.SignOut =null;
+            if (newAttendance.Email == null || newAttendance.Email == "")
+                return RedirectToAction("Index");
             if (ModelState.IsValid)
             {
                 db.Attendance.Add(newAttendance);
@@ -39,14 +40,19 @@ namespace AHA_Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult ClockOut([Bind(Exclude = "SignIn,SignOut", Include = "EventID,Email")]Attendance newAttendance)
+        public ActionResult ClockOut([Bind(Exclude = "SignIn, SignOut", Include = "EventID,Email")]Attendance newAttendance)
         {
+            if (newAttendance.Email == null || newAttendance.Email == "")
+                return RedirectToAction("Index");
+            Attendance currentSignIn = db.Attendance.Find(newAttendance.EventID, newAttendance.Email);
             newAttendance.SignOut = DateTime.Now;
-
+            newAttendance.SignIn=currentSignIn.SignIn;
+            
             if (ModelState.IsValid)
             {
                 //db.Attendance.Add(newAttendace);
-                db.Entry(newAttendance).State = EntityState.Modified;
+                db.Attendance.Remove(currentSignIn);
+                db.Attendance.Add(newAttendance);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

@@ -17,7 +17,7 @@ namespace AHA_Web.Models
         [Column(Order = 1)]
         public string Email { get; set; }
 
-        public DateTime SignIn {get; set;}
-        public DateTime SignOut {get; set;}
+        public DateTime? SignIn {get; set;}
+        public DateTime? SignOut {get; set;}
     }
 }
