@@ -30,6 +30,9 @@ namespace AHA_Web.Controllers
         {
             return View();
         }
-        
+        public ActionResult eventListView()
+        {
+            return View();
+        }
     }
 }
