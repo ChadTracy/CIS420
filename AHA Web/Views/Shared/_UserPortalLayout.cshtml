@@ -29,11 +29,22 @@
                     <li>
                         <a href="@Url.Action("Index", "UserPortal")">Dashboard</a>
                     </li>
+
                     <li>
-                        <a href="@Url.Action("Index", "Event")">Events</a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#attend">- Attendance</a>
+                        <ul id="attend" class="collapse">
+                            <li>
+                                <a href="@Url.Action("Index", "Event")">Events</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Index", "Attendance")">Attendance Menu</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("ListView", "Event")">Event Attendance</a>
+                            </li>
+                        </ul>
                     </li>
                     <li>
-                        <a href="@Url.Action("Index", "Attendance")">Attendance</a>
                     </li>
                     <!--Dropdown links-->
                     <li>
