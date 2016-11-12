@@ -29,7 +29,7 @@ namespace AHA_Web.Controllers.Staff
         // GET: AdelanteStaff
         public ActionResult Index()
         {
-            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff")
+            if (user.AccountType == "Admin" || user.AccountType == "Staff")
             {
                 return View(db.Staff.ToList());
             }
@@ -43,11 +43,11 @@ namespace AHA_Web.Controllers.Staff
             }
         }
 
-        // GET: AdelanteStaff/Details/5
+        // GET: Staff/Details/5
         public ActionResult Details(string id)
         {
             AdelanteStaff adelanteStaff = db.Staff.Find(id);
-            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff")
+            if (user.AccountType == "Admin" || user.AccountType == "Staff")
             {
                 return View(adelanteStaff);
             }
@@ -63,10 +63,10 @@ namespace AHA_Web.Controllers.Staff
             
         }
 
-        // GET: AdelanteStaff/Create
+        // GET: Staff/Create
         public ActionResult Create()
         {
-            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff")
+            if (user.AccountType == "Admin" || user.AccountType == "Staff")
             {
                 return View();
             }
@@ -80,7 +80,7 @@ namespace AHA_Web.Controllers.Staff
             }
         }
 
-        // POST: AdelanteStaff/Create
+        // POST: Staff/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -101,7 +101,7 @@ namespace AHA_Web.Controllers.Staff
         public ActionResult Edit(string id)
         {
             AdelanteStaff adelanteStaff = db.Staff.Find(id);
-            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff")
+            if (user.AccountType == "Admin" || user.AccountType == "Staff")
             {
                 return View(adelanteStaff);
             }
@@ -136,7 +136,7 @@ namespace AHA_Web.Controllers.Staff
         public ActionResult Delete(string id)
         {
             AdelanteStaff adelanteStaff = db.Staff.Find(id);
-            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff")
+            if (user.AccountType == "Admin" || user.AccountType == "Staff")
             {
                 return View(adelanteStaff);
             }

@@ -23,9 +23,11 @@ namespace AHA_Web.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
 
         public AccountController()
         {
+            
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -271,18 +273,19 @@ namespace AHA_Web.Controllers
 
         public ActionResult Edit(string Id)
         {
-            if (Id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             ApplicationUser user = db.Users.Find(Id);
-            if (user == null)
+            if (user.AccountType == "Admin")
             {
-                return HttpNotFound();
-            }
-            ViewBag.AccountType = new SelectList(new[] { "Admin", "Staff", "BoardMember", "Donor", "Volunteer", "Student", "Parent", "Quarantine" });
+                ViewBag.AccountType = new SelectList(new[] { "Admin", "Staff", "BoardMember", "Donor", "Volunteer", "Student", "Parent", "Quarantine" });
 
-            return View(user);
+                return View(user);
+            }
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Sorry, you lack the authorization to access this feature");
+            }
+
+
             
             
         }

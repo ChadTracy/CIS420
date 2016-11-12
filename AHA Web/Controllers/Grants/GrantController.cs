@@ -29,7 +29,7 @@ namespace AHA_Web.Controllers.Grants
         // GET: Grant
         public ActionResult Index()
         {
-            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff" || user.AccountType == "Grantor" || user.AccountType == "BoardMember")
+            if (user.AccountType == "Admin" || user.AccountType == "Staff" || user.AccountType == "Grantor" || user.AccountType == "BoardMember")
             {
                 var grants = db.Grants.Include(g => g.Grantor);
                 return View(grants);
@@ -48,7 +48,7 @@ namespace AHA_Web.Controllers.Grants
         public ActionResult Details(string id)
         {
             Grant grant = db.Grants.Find(id);
-            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff" || user.AccountType == "Grantor" || user.AccountType == "BoardMember")
+            if (user.AccountType == "Admin" || user.AccountType == "Staff" || user.AccountType == "Grantor" || user.AccountType == "BoardMember")
             {
                 return View(grant);
             }
@@ -65,7 +65,7 @@ namespace AHA_Web.Controllers.Grants
         // GET: Grant/Create
         public ActionResult Create()
         {
-            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff" || user.AccountType == "Grantor" || user.AccountType == "BoardMember")
+            if (user.AccountType == "Admin" || user.AccountType == "Staff" || user.AccountType == "Grantor" || user.AccountType == "BoardMember")
             {
                 ViewBag.Grantor_ID = new SelectList(db.Grantors, "Grantor_ID", "Organization");
                 return View();
@@ -103,7 +103,7 @@ namespace AHA_Web.Controllers.Grants
         public ActionResult Edit(string id)
         {
             Grant grant = db.Grants.Find(id);
-            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff" || user.AccountType == "Grantor" || user.AccountType == "BoardMember")
+            if (user.AccountType == "Admin" || user.AccountType == "Staff" || user.AccountType == "Grantor" || user.AccountType == "BoardMember")
             {
                 ViewBag.Grantor_ID = new SelectList(db.Grantors, "Grantor_ID", "Organization");
                 return View();
@@ -139,7 +139,7 @@ namespace AHA_Web.Controllers.Grants
         public ActionResult Delete(string id)
         {
             Grant grant = db.Grants.Find(id);
-            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff" || user.AccountType == "Grantor" || user.AccountType == "BoardMember")
+            if (user.AccountType == "Admin" || user.AccountType == "Staff" || user.AccountType == "Grantor" || user.AccountType == "BoardMember")
             {
                 return View(grant);
             }
@@ -175,7 +175,7 @@ namespace AHA_Web.Controllers.Grants
 
         public ActionResult CreateGrant()
         {
-            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff" || user.AccountType == "Grantor" || user.AccountType == "BoardMember")
+            if (user.AccountType == "Admin" || user.AccountType == "Staff" || user.AccountType == "Grantor" || user.AccountType == "BoardMember")
             {
                 return View();
             }
@@ -191,7 +191,7 @@ namespace AHA_Web.Controllers.Grants
 
         public ActionResult EditGrants()
         {
-            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff" || user.AccountType == "Grantor" || user.AccountType == "BoardMember")
+            if (user.AccountType == "Admin" || user.AccountType == "Staff" || user.AccountType == "Grantor" || user.AccountType == "BoardMember")
             {
                 return View();
             }
@@ -207,7 +207,7 @@ namespace AHA_Web.Controllers.Grants
 
         public ActionResult ViewGrants()
         {
-            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff" || user.AccountType == "Grantor" || user.AccountType == "BoardMember")
+            if (user.AccountType == "Admin" || user.AccountType == "Staff" || user.AccountType == "Grantor" || user.AccountType == "BoardMember")
             {
                 var grants = db.Grants.Include(g => g.Grantor);
                 return View(grants);

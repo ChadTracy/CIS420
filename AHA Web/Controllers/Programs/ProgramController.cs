@@ -36,7 +36,7 @@ namespace AHA_Web.Controllers.Programs
         public ActionResult Details(string id)
         {
             Program program = db.Programs.Find(id);
-            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff")
+            if (user.AccountType == "Admin" || user.AccountType == "Staff")
             {
                 return View(program);
             }
@@ -54,7 +54,7 @@ namespace AHA_Web.Controllers.Programs
         // GET: Program/Create
         public ActionResult Create()
         {
-            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff")
+            if (user.AccountType == "Admin" || user.AccountType == "Staff")
             {
                 return View();
             }
@@ -89,7 +89,7 @@ namespace AHA_Web.Controllers.Programs
         public ActionResult Edit(string id)
         {
             Program program = db.Programs.Find(id);
-            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff")
+            if (user.AccountType == "Admin" || user.AccountType == "Staff")
             {
                 return View(program);
             }
@@ -124,7 +124,7 @@ namespace AHA_Web.Controllers.Programs
         public ActionResult Delete(string id)
         {
             Program program = db.Programs.Find(id);
-            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff")
+            if (user.AccountType == "Admin" || user.AccountType == "Staff")
             {
                 return View(program);
             }

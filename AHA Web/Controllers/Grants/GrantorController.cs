@@ -29,7 +29,7 @@ namespace AHA_Web.Controllers.Grants
         // GET: Grantor
         public ActionResult Index()
         {
-            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff" || user.AccountType == "Grantor")
+            if (user.AccountType == "Admin" || user.AccountType == "Staff" || user.AccountType == "Grantor")
             {
                 return View(db.Grantors.ToList());
             }
@@ -48,7 +48,7 @@ namespace AHA_Web.Controllers.Grants
         public ActionResult Details(string id)
         {
             Grantor grantor = db.Grantors.Find(id);
-            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff" || user.AccountType == "Grantor")
+            if (user.AccountType == "Admin" || user.AccountType == "Staff" || user.AccountType == "Grantor")
             {
                 return View(grantor);
             }
@@ -89,7 +89,7 @@ namespace AHA_Web.Controllers.Grants
         public ActionResult Edit(string id)
         {
             Grantor grantor = db.Grantors.Find(id);
-            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff" || user.AccountType == "Grantor")
+            if (user.AccountType == "Admin" || user.AccountType == "Staff" || user.AccountType == "Grantor")
             {
                 return View(grantor);
             }
@@ -123,7 +123,7 @@ namespace AHA_Web.Controllers.Grants
         public ActionResult Delete(string id)
         {
             Grantor grantor = db.Grantors.Find(id);
-            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff" || user.AccountType == "Grantor")
+            if (user.AccountType == "Admin" || user.AccountType == "Staff" || user.AccountType == "Grantor")
             {
                 return View(grantor);
             }

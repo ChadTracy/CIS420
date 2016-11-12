@@ -29,7 +29,7 @@ namespace AHA_Web.Controllers.Parents
         // GET: Parent
         public ActionResult Index()
         {
-            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff")
+            if (user.AccountType == "Admin" || user.AccountType == "Staff")
             {
                 return View(db.Parents.ToList());
             }
@@ -48,7 +48,7 @@ namespace AHA_Web.Controllers.Parents
         public ActionResult Details(string id)
         {
             Parent parent = db.Parents.Find(id);
-            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff")
+            if (user.AccountType == "Admin" || user.AccountType == "Staff")
             {
                 return View(parent);
             }
@@ -67,7 +67,7 @@ namespace AHA_Web.Controllers.Parents
         // GET: Parent/Create
         public ActionResult Create()
         {
-            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff")
+            if (user.AccountType == "Admin" || user.AccountType == "Staff")
             {
                 return View();
             }
@@ -103,7 +103,7 @@ namespace AHA_Web.Controllers.Parents
         public ActionResult Edit(string id)
         {
             Parent parent = db.Parents.Find(id);
-            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff")
+            if (user.AccountType == "Admin" || user.AccountType == "Staff")
             {
                 return View(parent);
             }
@@ -137,7 +137,7 @@ namespace AHA_Web.Controllers.Parents
         public ActionResult Delete(string id)
         {
             Parent parent = db.Parents.Find(id);
-            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff")
+            if (user.AccountType == "Admin" || user.AccountType == "Staff")
             {
                 return View(parent);
             }

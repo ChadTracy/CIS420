@@ -29,7 +29,10 @@ namespace AHA_Web.Controllers.Students
         // GET: Student
         public ActionResult Index()
         {
-            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff")
+            if (user.AccountType == "Admin" || user.AccountType == "" +
+                "Staff" +
+                "" +
+                "")
             {
                 return View(db.Students.ToList());
             }
@@ -47,7 +50,7 @@ namespace AHA_Web.Controllers.Students
         public ActionResult Details(string id)
         {
             Student student = db.Students.Find(id);
-            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff")
+            if (user.AccountType == "Admin" || user.AccountType == "Staff")
             {
                 return View(student);
             }
@@ -64,7 +67,7 @@ namespace AHA_Web.Controllers.Students
         // GET: Student/Create
         public ActionResult Create()
         {
-            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff")
+            if (user.AccountType == "Admin" || user.AccountType == "Staff")
             {
                 return View();
             }
@@ -99,7 +102,7 @@ namespace AHA_Web.Controllers.Students
         public ActionResult Edit(string id)
         {
             Student student = db.Students.Find(id);
-            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff")
+            if (user.AccountType == "Admin" || user.AccountType == "Staff")
             {
                 return View(student);
             }
@@ -134,7 +137,7 @@ namespace AHA_Web.Controllers.Students
         public ActionResult Delete(string id)
         {
             Student student = db.Students.Find(id);
-            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff")
+            if (user.AccountType == "Admin" || user.AccountType == "Staff")
             {
                 return View(student);
             }

@@ -33,7 +33,11 @@ namespace AHA_Web.Controllers
         // GET: MailChimp
         public ActionResult Index()
         {
-            if (user.AccountType == "Admin" || user.AccountType == "AdelanteStaff")
+            if (user.AccountType == "Admin" || user.AccountType == "" +
+                "Staff" +
+                "" +
+                "" +
+                "")
             {
                 return View();
             }
