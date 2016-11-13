@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -15,8 +16,7 @@ namespace AHA_Web.Controllers
         public ActionResult Index()
         {
             var attendance = db.Attendance;
-            var events = db.Events.Select(e => e.text);
-            var eventList = new SelectList(events);
+            var eventList = new SelectList(db.Events, "EventID", "text");
             ViewData.Add("EventID", eventList);
             ViewBag.EventList = eventList;
             return View();
@@ -31,11 +31,34 @@ namespace AHA_Web.Controllers
                 return RedirectToAction("Index");
             if (ModelState.IsValid)
             {
-                db.Attendance.Add(newAttendance);
+                db.Attendance.AddOrUpdate(newAttendance);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(newAttendance);
+        }
+        public ActionResult ViewAttendance(string id)
+        {
+            //Get event by ID
+            Event tEvent = db.Events.Find(Int32.Parse(id));
+            //Get list of users
+            List<UsersViewModel> users = AccountController.GetEssentialUserData();
+            List<AttendViewModel> enrolledUsers = new List<AttendViewModel>();
+            //Iterate through the list of users, if attendance table contains (EventID, UserID), add that user to return list
+            foreach(var v in db.Attendance)
+            {
+                //Limit to items that have the same eID
+                if(v.EventID==id)
+                {
+                    AttendViewModel attend = new AttendViewModel();
+                    attend.UserModel=users.Find(u =>u.Email==v.Email);
+                    attend.eventEntry = tEvent;
+                    attend.ClockIn = (DateTime)v.SignIn;
+                    attend.ClockOut = (DateTime)v.SignOut;
+                    enrolledUsers.Add(attend);
+                }
+            }
+            return View(enrolledUsers);
         }
 
         [HttpPost]

@@ -32,7 +32,7 @@
             @Html.DisplayFor(modelItem => item.end_date)
         </td>
         <td>
-           <a href="#">View Attendance</a>
+           @Html.ActionLink("View Attendance", "ViewAttendance", "Attendance", new { id = item.EventID }, null)
         </td>
     </tr>
 }
