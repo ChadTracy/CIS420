@@ -273,8 +273,11 @@ namespace AHA_Web.Controllers
 
         public ActionResult Edit(string Id)
         {
-            ApplicationUser user = db.Users.Find(Id);
-            if (user.AccountType == "Admin")
+            ApplicationUser user = db.Users.Find(Id); //
+            var store = new UserStore<ApplicationUser>(new ApplicationDbContext());
+            var manager = new UserManager<ApplicationUser>(store);
+            var currentUser = manager.FindById(User.Identity.GetUserId());
+            if (currentUser.AccountType == "Admin")
             {
                 ViewBag.AccountType = new SelectList(new[] { "Admin", "Staff", "BoardMember", "Donor", "Volunteer", "Student", "Parent", "Quarantine" });
 
