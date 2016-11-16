@@ -127,6 +127,14 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -243,6 +251,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AttendanceController.cs" />
     <Compile Include="Controllers\Donors\BoardMembers\BoardMemberController.cs" />
     <Compile Include="Controllers\Donors\DonorContactController.cs" />
     <Compile Include="Controllers\Donors\DonorController.cs" />
@@ -271,6 +280,8 @@
     <Compile Include="Models\BoardMember.cs" />
     <Compile Include="Models\Donor.cs" />
     <Compile Include="Models\DonorContact.cs" />
+    <Compile Include="Models\AttendViewModel.cs" />
+    <Compile Include="Models\EnrollStudentViewModels.cs" />
     <Compile Include="Models\MailChimp.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\Grant.cs" />
@@ -318,6 +329,7 @@
     <Content Include="Images\9.jpg" />
     <Content Include="Images\about-us.png" />
     <Content Include="Images\Adelante Logo trimmed.png" />
+    <Content Include="Images\Adelante_FINAL_SM.png" />
     <Content Include="Images\becomesponsor.png" />
     <Content Include="Images\Bellarmine_Knights.png" />
     <Content Include="Images\close.svg" />
@@ -343,6 +355,7 @@
     <Content Include="Images\Copy of IMG_2465.JPG" />
     <Content Include="Images\donate.png" />
     <Content Include="Images\donate2.png" />
+    <Content Include="Images\Dustin Bishop.JPG" />
     <Content Include="Images\Dustin.jpg" />
     <Content Include="Images\Dustin2.jpg" />
     <Content Include="Images\DustinHS.jpg" />
@@ -354,6 +367,7 @@
     <Content Include="Images\Mara2.jpg" />
     <Content Include="Images\MaraHS.jpg" />
     <Content Include="Images\Morgan - VISTA.jpg" />
+    <Content Include="Images\Morgan Gerke.jpg" />
     <Content Include="Images\New Adelantelogo2015 smaller copy.png" />
     <Content Include="Images\New.jpg" />
     <Content Include="Images\New.png" />
@@ -703,7 +717,6 @@
     <Content Include="Content\mdb.css" />
     <Content Include="Views\Home\Bellarmine_Knights.png" />
     <Content Include="Views\UserPortal\AccountManagement.cshtml" />
-    <Content Include="Views\UserPortal\ViewAccounts.cshtml" />
     <Content Include="Views\Grant\Index.cshtml" />
     <Content Include="Views\Home\MentoringEnrichment.cshtml" />
     <Content Include="Views\Home\CollegeReadiness.cshtml" />
@@ -760,6 +773,9 @@
     <Content Include="Scripts\jquery-3.1.1.min.map" />
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Account\Edit.cshtml" />
+    <Content Include="Views\Attendance\Index.cshtml" />
+    <Content Include="Views\Event\ListView.cshtml" />
+    <Content Include="Views\Attendance\ViewAttendance.cshtml" />
     <None Include="Views\Grant\Index._depreciatedcshtml" />
     <Content Include="Views\Grantor\Create.cshtml" />
     <Content Include="Views\Grantor\Delete.cshtml" />
@@ -783,6 +799,8 @@
     <Content Include="Views\ProgramEnrollments\Index.cshtml" />
     <Content Include="Views\ProgramEnrollments\LandingPageView.cshtml" />
     <Content Include="Views\ProgramEnrollments\EnrollStudent.cshtml" />
+    <Content Include="Views\ProgramEnrollments\ManageEnrollments.cshtml" />
+    <Content Include="Views\Attendance\AttendanceError.cshtml" />
     <None Include="Views\UserPortal\Index.cshtml" />
     <None Include="Views\Shared\_UserPortalLayout.cshtml" />
     <Content Include="Views\UserPortal\_ViewStart.cshtml" />
@@ -843,6 +861,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\EnrollStudentViewModel\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -865,7 +884,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>52826</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using AHA_web.Models;
+using AHA_Web.Models;
 using System;
 
 namespace AHA_Web.Models
@@ -67,7 +67,7 @@ namespace AHA_Web.Models
         public DbSet<ProgramEnrollment> ProgramEnrollment { get; set; }
         public DbSet<Attendance> Attendance { get; set; }
 
-        public System.Data.Entity.DbSet<AHA_web.Models.MailChimp> MailChimps { get; set; }
+        public System.Data.Entity.DbSet<AHA_Web.Models.MailChimp> MailChimps { get; set; }
 
     }
 }

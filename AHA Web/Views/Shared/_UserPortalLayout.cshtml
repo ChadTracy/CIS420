@@ -29,8 +29,22 @@
                     <li>
                         <a href="@Url.Action("Index", "UserPortal")">Dashboard</a>
                     </li>
+
                     <li>
-                        <a href="@Url.Action("Index", "Event")">Events</a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#attend">- Event Management</a>
+                        <ul id="attend" class="collapse">
+                            <li>
+                                <a href="@Url.Action("Index", "Event")">Events</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Index", "Attendance")">Attendance Menu</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("ListView", "Event")">Event Attendance</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
                     </li>
                     <!--Dropdown links-->
                     <li>
@@ -48,11 +62,35 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#account">- Account Roster</a>
                         <ul id="account" class="collapse">
                             <li>
-                                @Html.ActionLink("Edit Account Permissions", "Index", "Account")
+                                @Html.ActionLink("Edit Account Permissions", "Index", "Account", new { filterAccountType = "" }, null)
                             </li>
                             <li>
-                                <a href="#" >Link 2 </a>
+                                @Html.ActionLink("Account Waitlist", "Index", "Account", new { filterAccountType = "Quarantine" }, null)
                             </li>
+                            <li>
+                                <a href="javascript:;" data-toggle="collapse" data-target="#accountFilter">- Account Filters</a>
+                                <ul id="accountFilter" class="collapse">
+                                    <li>
+                                        @Html.ActionLink("View Students", "Index", "Account", new { filterAccountType = "Student" }, null)
+                                    </li>
+                                    <li>
+                                        @Html.ActionLink("View Parents", "Index", "Account", new { filterAccountType = "Parent" }, null)
+                                    </li>
+                                    <li>
+                                        @Html.ActionLink("View Volunteers", "Index", "Account", new { filterAccountType = "Volunteer" }, null)
+                                    </li>
+                                    <li>
+                                        @Html.ActionLink("View Staff", "Index", "Account", new { filterAccountType = "Staff" }, null)
+                                    </li>
+                                    <li>
+                                        @Html.ActionLink("View Donors", "Index", "Account", new { filterAccountType = "Donor" }, null)
+                                    </li>
+                                    <li>
+                                        @Html.ActionLink("View Board Members", "Index", "Account", new { filterAccountType = "BoardMember" }, null)
+                                    </li>
+                                </ul>
+                            </li>
+
                         </ul>
                     </li>
                     <li>
@@ -60,9 +98,6 @@
                         <ul id="staff" class="collapse">
                             <li>
                                 <a href="@Url.Action("Index", "Program")">Program Management</a>
-                            </li>
-                            <li>
-                                <a href="#">Program Enrollment</a>
                             </li>
                         </ul>
                     </li>

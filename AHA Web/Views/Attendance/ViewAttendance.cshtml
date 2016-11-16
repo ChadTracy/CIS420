@@ -1,0 +1,45 @@
+﻿@model List<AHA_Web.Models.AttendViewModel>
+@using AHA_Web.Models
+@{
+    ViewBag.Title = "Attendance";
+    Layout = "~/Views/Shared/_UserPortalLayout.cshtml";
+}
+@{ 
+    string eventName = Model.First().eventEntry.text;
+}
+<h2>Attendance for @eventName</h2>
+<table class="table">
+    <tr>
+        <th>
+            <b>First Name</b>
+        </th>
+        <th>
+            <b>Last Name</b>
+        </th>
+        <th>
+            <b>Clock In</b>
+        </th>
+        <th>
+            <b>Clock Out</b>
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserModel.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserModel.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClockIn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClockOut)
+            </td>
+        </tr>
+    }
+
+</table>

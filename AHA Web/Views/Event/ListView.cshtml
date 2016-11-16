@@ -1,0 +1,40 @@
+﻿@model IEnumerable<AHA_Web.Models.Event>
+
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_UserPortalLayout.cshtml";
+}
+
+<h2>Select an Event</h2>
+<table class="table">
+    <tr>
+        <th>
+            <b>Event Name</b>
+        </th>
+        <th>
+            <b>Start Date</b>
+        </th>
+        <th>
+            <b>End Date</b>
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.text)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.start_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.end_date)
+        </td>
+        <td>
+           @Html.ActionLink("View Attendance", "ViewAttendance", "Attendance", new { id = item.EventID }, null)
+        </td>
+    </tr>
+}
+
+</table>

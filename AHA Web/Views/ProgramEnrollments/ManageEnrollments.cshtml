@@ -11,7 +11,7 @@
     Program workingProgram = db.Programs.Find(programId);
     string programName = workingProgram.Program_Name;
 }
-<h2>Enroll Accounts in @programName</h2>
+<h2>Enrolled Accounts in @programName</h2>
 
 <table class="table">
     <tr>
@@ -59,7 +59,7 @@
                 @Html.DisplayFor(modelItem => item.UserModel.UserName)
             </td>
             <td>
-                @Html.ActionLink("Enroll this Student", "EnrollStudentAction", "ProgramEnrollments", new { programID=programId, userID=item.UserModel.Id}, null)
+                @Html.ActionLink("Unenroll this Student", "UnenrollStudentAction", "ProgramEnrollments", new { programID=programId, userID=item.UserModel.Id}, null)
             </td>
         </tr>
     }

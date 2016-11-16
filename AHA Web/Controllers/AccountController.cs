@@ -23,9 +23,11 @@ namespace AHA_Web.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
 
         public AccountController()
         {
+            
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -67,13 +69,88 @@ namespace AHA_Web.Controllers
             return View();
         }
         
-        public ActionResult Index()
+        public ActionResult Index(string filterAccountType)
         {
 
             List<UsersViewModel> model = GetEssentialUserData();
-
-            // users is anonymous type, map it to a Model 
-            return View(model);
+            List<UsersViewModel> returnModel = new List<UsersViewModel>();
+            switch (filterAccountType)
+            {
+                case "Quarantine":
+                    foreach(var v in model)
+                    {
+                        if(v.AccountType=="Quarantine")
+                        {
+                            returnModel.Add(v);
+                        }
+                    }
+                    return View(returnModel);
+                case "Student":
+                    foreach (var v in model)
+                    {
+                        if (v.AccountType == "Student")
+                        {
+                            returnModel.Add(v);
+                        }
+                    }
+                    return View(returnModel);
+                case "Parent":
+                    foreach (var v in model)
+                    {
+                        if (v.AccountType == "Parent")
+                        {
+                            returnModel.Add(v);
+                        }
+                    }
+                    return View(returnModel);
+                case "Staff":
+                    foreach (var v in model)
+                    {
+                        if (v.AccountType == "Staff")
+                        {
+                            returnModel.Add(v);
+                        }
+                    }
+                    return View(returnModel);
+                case "Admin":
+                    foreach (var v in model)
+                    {
+                        if (v.AccountType == "Admin")
+                        {
+                            returnModel.Add(v);
+                        }
+                    }
+                    return View(returnModel);
+                case "Donor":
+                    foreach (var v in model)
+                    {
+                        if (v.AccountType == "Donor")
+                        {
+                            returnModel.Add(v);
+                        }
+                    }
+                    return View(returnModel);
+                case "BoardMember":
+                    foreach (var v in model)
+                    {
+                        if (v.AccountType == "BoardMember")
+                        {
+                            returnModel.Add(v);
+                        }
+                    }
+                    return View(returnModel);
+                case "Volunteer":
+                    foreach (var v in model)
+                    {
+                        if (v.AccountType == "Volunteer")
+                        {
+                            returnModel.Add(v);
+                        }
+                    }
+                    return View(returnModel);
+                default: //if no passed type, return full list
+                    return View(model);
+            }
 
         }
 
@@ -196,18 +273,19 @@ namespace AHA_Web.Controllers
 
         public ActionResult Edit(string Id)
         {
-            if (Id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             ApplicationUser user = db.Users.Find(Id);
-            if (user == null)
+            if (user.AccountType == "Admin")
             {
-                return HttpNotFound();
-            }
-            ViewBag.AccountType = new SelectList(new[] { "Admin", "Staff", "BoardMember", "Donor", "Volunteer", "Student", "Parent", "Quarantine" });
+                ViewBag.AccountType = new SelectList(new[] { "Admin", "Staff", "BoardMember", "Donor", "Volunteer", "Student", "Parent", "Quarantine" });
 
-            return View(user);
+                return View(user);
+            }
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Sorry, you lack the authorization to access this feature");
+            }
+
+
             
             
         }

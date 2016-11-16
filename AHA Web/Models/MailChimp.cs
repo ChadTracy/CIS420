@@ -5,7 +5,7 @@ using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace AHA_web.Models
+namespace AHA_Web.Models
 {
     public partial class MailChimp
     {

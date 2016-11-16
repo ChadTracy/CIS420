@@ -11,22 +11,11 @@ namespace AHA_Web.Models
     {
         [Required]
         [Key]
-        public string Enrollment_Number { get; set; }
+        [Column(Order=0)]
         public string Program_ID { get; set; }
-        public string EventID { get; set; }
-        public string StudentEmail { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public DateTime StartTime { get; set; }
-
-        public DateTime EndTime { get; set; }
-        
-        public bool Attended { get; set; }
-     
-        public virtual Program Program { get; set; }
-
-        
-
-     
+        [Required]
+        [Key]
+        [Column(Order=1)]
+        public string AccountID { get; set; }
     }
 }

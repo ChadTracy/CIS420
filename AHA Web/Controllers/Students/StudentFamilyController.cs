@@ -7,41 +7,84 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using AHA_Web.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace AHA_Web.Controllers.Students
 {
     public class StudentFamilyController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        protected ApplicationDbContext ApplicationDbContext { get; set; }
+        protected UserManager<ApplicationUser> UserManager { get; set; }
+        private ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+
+        public StudentFamilyController()
+        {
+            this.ApplicationDbContext = new ApplicationDbContext();
+            this.UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(this.ApplicationDbContext));
+        }
 
         // GET: StudentFamily
         public ActionResult Index()
         {
-            var studentFamily = db.StudentFamily.Include(s => s.Parent).Include(s => s.Student);
-            return View(studentFamily.ToList());
+            if (user.AccountType == "Admin" || user.AccountType == "" +
+                "Staff" +
+                "" +
+                "")
+            {
+                var studentFamily = db.StudentFamily.Include(s => s.Parent).Include(s => s.Student);
+                return View(studentFamily.ToList());
+            }
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Sorry, you don't have the proper authorization to access this");
+            }
+
         }
 
         // GET: StudentFamily/Details/5
         public ActionResult Details(string id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             StudentFamily studentFamily = db.StudentFamily.Find(id);
-            if (studentFamily == null)
+            if (user.AccountType == "Admin" || user.AccountType == "Staff")
+            {
+                return View(studentFamily);
+            }
+            if (user == null || id == null || studentFamily == null)
             {
                 return HttpNotFound();
             }
-            return View(studentFamily);
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Sorry, you don't have the proper authorization to access this");
+            }
+           
         }
 
         // GET: StudentFamily/Create
         public ActionResult Create()
         {
-            ViewBag.Parent_ID = new SelectList(db.Parents, "Parent_ID", "First_Name");
-            ViewBag.Student_ID = new SelectList(db.Students, "Student_ID", "First_Name");
-            return View();
+            if (user.AccountType == "Admin" || user.AccountType == "Staff")
+            {
+                ViewBag.Parent_ID = new SelectList(db.Parents, "Parent_ID", "First_Name");
+                ViewBag.Student_ID = new SelectList(db.Students, "Student_ID", "First_Name");
+                return View();
+            }
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Sorry, you don't have the proper authorization to access this");
+            }
+
         }
 
         // POST: StudentFamily/Create
@@ -101,16 +144,19 @@ namespace AHA_Web.Controllers.Students
         // GET: StudentFamily/Delete/5
         public ActionResult Delete(string id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             StudentFamily studentFamily = db.StudentFamily.Find(id);
-            if (studentFamily == null)
+            if (user.AccountType == "Admin" || user.AccountType == "Staff")
+            {
+                return View(studentFamily);
+            }
+            if (user == null || id == null || studentFamily == null)
             {
                 return HttpNotFound();
             }
-            return View(studentFamily);
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Sorry, you don't have the proper authorization to access this");
+            }
         }
 
         // POST: StudentFamily/Delete/5

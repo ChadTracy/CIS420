@@ -1,5 +1,5 @@
 ﻿@*@using reCAPTCHA.MVC*@
-@model AHA.Models.MailViewModel
+@model AHA_Web.Models.MailViewModel
 <!------------------------Page Specific CSS and Links------------------------>
 <style type="text/css">
     #map {
@@ -172,11 +172,7 @@
                         </div>
 
                         <div class="md-form">
-                            @Html.TextBoxFor(m => m.Subject, new { @placeholder = "Subject", @type = "text" })
-                        </div>
-
-                        <div class="md-form">
-                            @Html.TextAreaFor(m => m.Messge, new { @placeholder = "Message", @required = "true"})
+                            @Html.TextAreaFor(m => m.Message, new { @placeholder = "Message", @required = "true"})
                         </div> 
                         @* 
                         @Html.Recaptcha()

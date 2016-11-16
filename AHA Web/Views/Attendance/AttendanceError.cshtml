@@ -1,0 +1,17 @@
+﻿@{
+    Layout = "~/Views/Shared/_UserPortalLayout.cshtml";
+    ViewBag.Title = "AttendanceError";
+}
+
+
+@section pageMask
+{
+    <div class="row">
+        <div class="jumbotron text-center wow fadeIn">
+            <h2 class="h1-responsive wow fadeInDown" data-wow-delay="0.2s">Error :(</h2>
+            <p class="wow fadeInDownBig">This user has already checked in to this event!</p>
+            <hr />
+            <a href="~/Views/UserPortal/Index.cshtml" class="btn btn-success btn-lg wow fadeInLeft" data-wow-delay="0.2s">Return</a>
+        </div>
+    </div>
+}

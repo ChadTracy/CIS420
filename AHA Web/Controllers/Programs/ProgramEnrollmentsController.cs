@@ -17,23 +17,13 @@ namespace AHA_Web.Controllers.Programs
         // GET: ProgramEnrollments
         public ActionResult Index()
         {
-            var programEnrollment = db.ProgramEnrollment.Include(p => p.Program);
-            return View(programEnrollment.ToList());
+            return View();
         }
 
         // GET: ProgramEnrollments/Details/5
         public ActionResult Details(string id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ProgramEnrollment programEnrollment = db.ProgramEnrollment.Find(id);
-            if (programEnrollment == null)
-            {
-                return HttpNotFound();
-            }
-            return View(programEnrollment);
+            return View();
         }
         public ActionResult LandingPageView()
         {
@@ -54,26 +44,119 @@ namespace AHA_Web.Controllers.Programs
             ViewBag.Programs = progs;
             return View();
         }
-        public ActionResult EnrollStudent()
+        public ActionResult EnrollStudent(string id)
         {
             var db = new ApplicationDbContext();
-
-            IEnumerable<SelectListItem> students = db.Users
-                .Where(e => e.AccountType == "Student")
-                .Select(e => new SelectListItem
+            //create a list of all users
+            List<UsersViewModel> users = AccountController.GetEssentialUserData();
+            //Create a list of program enrollments
+            List<ProgramEnrollment> allEnrollments = db.ProgramEnrollment.ToList();
+            //Create a lookup list for return
+            List < EnrollStudentViewModel > returnList= new List<EnrollStudentViewModel>();
+            //find all student IDs that are already enrolled in the current program
+            List<string> enrolledIDs = new List<String>();
+            foreach(var v in allEnrollments)
+            {
+                //Only look at IDs that match the program ID
+                if(v.Program_ID==id)
                 {
-                    Value = e.Id.ToString(),
-                    Text = e.FirstName + " " + e.LastName
-                });
-            ViewBag.Users = students;
-            return View();
+                    enrolledIDs.Add(v.AccountID); //Add the already registed account Id to the exclusion list
+                }
+            } //By now you have a list of all ID's that are already registered
+            
+            //Parse through all the users to build the model for the view
+            foreach (var v in users)
+            {
+                //check if user is not in the list of enrollments
+                if(!enrolledIDs.Contains(v.Id))
+                {
+                    //Build a program enrollment model 
+                    EnrollStudentViewModel emodel=new EnrollStudentViewModel();
+                    emodel.Program_ID = id;
+                    emodel.UserModel = v;
+                    returnList.Add(emodel);
+                }
+            }
+            if(returnList.Count!=0) //If returnlist is not empty
+            {
+                return View(returnList);
+            }
+            else
+                return RedirectToAction("Index", "Program");
 
         }
+        //Action result for managing enrollments
+        public ActionResult ManageEnrollments(string id)
+        {
+            var db = new ApplicationDbContext();
+            //create a list of all users
+            List<UsersViewModel> users = AccountController.GetEssentialUserData();
+            //Create a list of program enrollments
+            List<ProgramEnrollment> allEnrollments = db.ProgramEnrollment.ToList();
+            //Create a lookup list for return
+            List<EnrollStudentViewModel> returnList = new List<EnrollStudentViewModel>();
+            //find all student IDs that are already enrolled in the current program
+            List<string> enrolledIDs = new List<String>();
+            foreach (var v in allEnrollments)
+            {
+                //Only look at IDs that match the program ID
+                if (v.Program_ID == id)
+                {
+                    enrolledIDs.Add(v.AccountID); //Add the already registed account Id to the exclusion list
+                }
+            } //By now you have a list of all ID's that are already registered
+              //Parse through all the users to build the model for the view
+            foreach (var v in users)
+            {
+                //check if user is in the list of enrollments
+                if (enrolledIDs.Contains(v.Id))
+                {
+                    //Build a program enrollment model 
+                    EnrollStudentViewModel emodel = new EnrollStudentViewModel();
+                    emodel.Program_ID = id;
+                    emodel.UserModel = v;
+                    returnList.Add(emodel);
+                }
+            }
+            if (returnList.Count != 0) //If returnlist is not empty
+            {
+                return View(returnList);
+            }
+            else
+                return RedirectToAction("Index", "Program");
+        }
+
         // GET: ProgramEnrollments/Create
         public ActionResult Create()
         {
             ViewBag.Program_ID = new SelectList(db.Programs, "Program_ID", "Program_Name");
             return View();
+        }
+        //Action that performs actual enrollment
+        public ActionResult EnrollStudentAction(string programID, string userID)
+        {
+            if(programID!=null&&userID!=null)
+            {
+                ProgramEnrollment enrollItem = new ProgramEnrollment();
+                enrollItem.AccountID = userID;
+                enrollItem.Program_ID = programID;
+                db.ProgramEnrollment.Add(enrollItem);
+                db.SaveChanges();
+            }
+            //Return a redirect to the prior screen
+            return RedirectToAction("EnrollStudent", "ProgramEnrollments", new { id = programID});
+        }
+
+        public ActionResult UnenrollStudentAction(string programID, string userID)
+        {
+            if (programID != null && userID != null)
+            {
+                ProgramEnrollment a=db.ProgramEnrollment.Find(programID, userID);
+                db.ProgramEnrollment.Remove(a);
+                db.SaveChanges();
+            }
+            //Return a redirect to the prior screen
+            return RedirectToAction("ManageEnrollments", "ProgramEnrollments", new { id = programID });
         }
 
         // POST: ProgramEnrollments/Create

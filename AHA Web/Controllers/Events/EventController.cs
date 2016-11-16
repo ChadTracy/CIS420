@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Mvc;
-using AHA_web.Models;
+using AHA_Web.Models;
 using DHTMLX.Common;
 using DHTMLX.Scheduler;
 using DHTMLX.Scheduler.Data;
+using System.Collections.Generic;
 
-namespace AHA_web.Controllers
+namespace AHA_Web.Controllers
 {
     public class EventController : Controller
     {
@@ -27,6 +28,26 @@ namespace AHA_web.Controllers
         {
             //events for loading to scheduler
             return new SchedulerAjaxData(_db.Events);
+        }
+        public ActionResult ListView()
+        {
+            List<Attendance> aList = new List<Attendance>();
+            aList = _db.Attendance.ToList();
+            List<Event> returnlist = new List<Event>();
+
+            //Return a list of events that only have attendance
+            foreach (var e in _db.Events)
+            {
+                bool attendanceContains;
+                //check to see if the ID of e is in any of a list
+                foreach (var a in aList)
+                {
+                    if (a.EventID == e.EventID.ToString())
+                        attendanceContains = true;
+                }
+                returnlist.Add(e);
+            }
+            return View(returnlist);
         }
 
         public ActionResult Save(Event updatedEvent, FormCollection formData)
@@ -53,7 +74,7 @@ namespace AHA_web.Controllers
                 _db.SaveChanges();
                 action.TargetId = updatedEvent.EventID;
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
                 action.Type = DataActionTypes.Error;
             }

@@ -7,7 +7,7 @@ using DHTMLX.Common;
 using System.Collections.Generic;
 using AHA_Web.Models;
 
-namespace AHA_web.Models
+namespace AHA_Web.Models
 {
     public partial class Event
     {

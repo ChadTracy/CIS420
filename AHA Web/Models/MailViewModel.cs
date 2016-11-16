@@ -1,10 +1,9 @@
-﻿namespace AHA.Models
+﻿namespace AHA_Web.Models
 {
     public class MailViewModel
     {
         public string Name { get; set; }
         public string Email { get; set; }
-        public string Subject { get; set; }
-        public string Messge { get; set; }
+        public string Message { get; set; }
     }
 }

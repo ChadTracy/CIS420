@@ -7,41 +7,80 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using AHA_Web.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace AHA_Web.Controllers.Staff
 {
     public class AdelanteStaffController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        protected ApplicationDbContext ApplicationDbContext { get; set; }
+        protected UserManager<ApplicationUser> UserManager { get; set; }
+        private ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+
+        public AdelanteStaffController()
+        {
+            this.ApplicationDbContext = new ApplicationDbContext();
+            this.UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(this.ApplicationDbContext));
+        }
 
         // GET: AdelanteStaff
         public ActionResult Index()
         {
-            return View(db.Staff.ToList());
-        }
-
-        // GET: AdelanteStaff/Details/5
-        public ActionResult Details(string id)
-        {
-            if (id == null)
+            if (user.AccountType == "Admin" || user.AccountType == "Staff")
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return View(db.Staff.ToList());
             }
-            AdelanteStaff adelanteStaff = db.Staff.Find(id);
-            if (adelanteStaff == null)
+            if (user == null)
             {
                 return HttpNotFound();
             }
-            return View(adelanteStaff);
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Sorry, you don't have the proper authorization to access this");
+            }
         }
 
-        // GET: AdelanteStaff/Create
+        // GET: Staff/Details/5
+        public ActionResult Details(string id)
+        {
+            AdelanteStaff adelanteStaff = db.Staff.Find(id);
+            if (user.AccountType == "Admin" || user.AccountType == "Staff")
+            {
+                return View(adelanteStaff);
+            }
+            if (user == null || adelanteStaff == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Sorry, you don't have the proper authorization to access this");
+            }
+
+            
+        }
+
+        // GET: Staff/Create
         public ActionResult Create()
         {
-            return View();
+            if (user.AccountType == "Admin" || user.AccountType == "Staff")
+            {
+                return View();
+            }
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Sorry, you don't have the proper authorization to access this");
+            }
         }
 
-        // POST: AdelanteStaff/Create
+        // POST: Staff/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -61,16 +100,20 @@ namespace AHA_Web.Controllers.Staff
         // GET: AdelanteStaff/Edit/5
         public ActionResult Edit(string id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             AdelanteStaff adelanteStaff = db.Staff.Find(id);
-            if (adelanteStaff == null)
+            if (user.AccountType == "Admin" || user.AccountType == "Staff")
+            {
+                return View(adelanteStaff);
+            }
+            if (user == null || id == null || adelanteStaff == null)
             {
                 return HttpNotFound();
             }
-            return View(adelanteStaff);
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Sorry, you don't have the proper authorization to access this");
+            }
+            
         }
 
         // POST: AdelanteStaff/Edit/5
@@ -92,16 +135,19 @@ namespace AHA_Web.Controllers.Staff
         // GET: AdelanteStaff/Delete/5
         public ActionResult Delete(string id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             AdelanteStaff adelanteStaff = db.Staff.Find(id);
-            if (adelanteStaff == null)
+            if (user.AccountType == "Admin" || user.AccountType == "Staff")
+            {
+                return View(adelanteStaff);
+            }
+            if (user == null || id == null || adelanteStaff == null)
             {
                 return HttpNotFound();
             }
-            return View(adelanteStaff);
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Sorry, you don't have the proper authorization to access this");
+            }
         }
 
         // POST: AdelanteStaff/Delete/5

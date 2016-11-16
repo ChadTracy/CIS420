@@ -7,12 +7,24 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using AHA_Web.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace AHA_Web.Controllers.Programs
 {
     public class ProgramController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        protected ApplicationDbContext ApplicationDbContext { get; set; }
+        protected UserManager<ApplicationUser> UserManager { get; set; }
+        private ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+
+        public ProgramController()
+        {
+            this.ApplicationDbContext = new ApplicationDbContext();
+            this.UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(this.ApplicationDbContext));
+        }
 
         // GET: Program
         public ActionResult Index()
@@ -23,22 +35,37 @@ namespace AHA_Web.Controllers.Programs
         // GET: Program/Details/5
         public ActionResult Details(string id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Program program = db.Programs.Find(id);
-            if (program == null)
+            if (user.AccountType == "Admin" || user.AccountType == "Staff")
+            {
+                return View(program);
+            }
+            if (user == null)
             {
                 return HttpNotFound();
             }
-            return View(program);
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Sorry, you don't have the proper authorization to access this");
+            }
+            
         }
 
         // GET: Program/Create
         public ActionResult Create()
         {
-            return View();
+            if (user.AccountType == "Admin" || user.AccountType == "Staff")
+            {
+                return View();
+            }
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Sorry, you don't have the proper authorization to access this");
+            }
         }
 
         // POST: Program/Create
@@ -61,16 +88,20 @@ namespace AHA_Web.Controllers.Programs
         // GET: Program/Edit/5
         public ActionResult Edit(string id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Program program = db.Programs.Find(id);
-            if (program == null)
+            if (user.AccountType == "Admin" || user.AccountType == "Staff")
+            {
+                return View(program);
+            }
+            if (user == null)
             {
                 return HttpNotFound();
             }
-            return View(program);
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Sorry, you don't have the proper authorization to access this");
+            }
+
         }
 
         // POST: Program/Edit/5
@@ -92,16 +123,19 @@ namespace AHA_Web.Controllers.Programs
         // GET: Program/Delete/5
         public ActionResult Delete(string id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Program program = db.Programs.Find(id);
-            if (program == null)
+            if (user.AccountType == "Admin" || user.AccountType == "Staff")
+            {
+                return View(program);
+            }
+            if (user == null)
             {
                 return HttpNotFound();
             }
-            return View(program);
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Sorry, you don't have the proper authorization to access this");
+            }
         }
 
         // POST: Program/Delete/5
