@@ -53,8 +53,14 @@ namespace AHA_Web.Controllers
                     AttendViewModel attend = new AttendViewModel();
                     attend.UserModel=users.Find(u =>u.Email==v.Email);
                     attend.eventEntry = tEvent;
-                    attend.ClockIn = (DateTime)v.SignIn;
-                    attend.ClockOut = (DateTime)v.SignOut;
+                    if (v.SignIn != null)
+                        attend.ClockIn = (DateTime)v.SignIn;
+                    else
+                        attend.ClockIn = new DateTime(1900, 01, 01);
+                    if (v.SignOut != null)
+                        attend.ClockOut = (DateTime)v.SignOut;
+                    else
+                        attend.ClockOut = new DateTime(1900, 01, 01);
                     enrolledUsers.Add(attend);
                 }
             }
