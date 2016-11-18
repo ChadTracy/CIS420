@@ -4,8 +4,25 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_UserPortalLayout.cshtml";
 }
-
+@ViewBag.acctType
 <h2>Edit User Permissions</h2>
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            Edit User Permissions
+            <small>@ViewBag.acctType</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li>
+                @Html.ActionLink("Dashboard", "Index", "UserPortal")
+            </li>
+            <li class="active">
+                User Permissions
+            </li>
+        </ol>
+    </div>
+</div>
 
 <table class="table">
     <tr>

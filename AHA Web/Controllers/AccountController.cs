@@ -71,7 +71,7 @@ namespace AHA_Web.Controllers
         
         public ActionResult Index(string filterAccountType)
         {
-
+            ViewBag.acctType = filterAccountType;
             List<UsersViewModel> model = GetEssentialUserData();
             List<UsersViewModel> returnModel = new List<UsersViewModel>();
             switch (filterAccountType)
