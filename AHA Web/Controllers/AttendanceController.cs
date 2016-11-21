@@ -4,22 +4,49 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace AHA_Web.Controllers
 {
     public class AttendanceController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        protected ApplicationDbContext ApplicationDbContext { get; set; }
+        protected UserManager<ApplicationUser> UserManager { get; set; }
+        private ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+
+        public AttendanceController()
+        {
+            this.ApplicationDbContext = new ApplicationDbContext();
+            this.UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(this.ApplicationDbContext));
+        }
+
+
         // GET: Attendance
         public ActionResult Index()
         {
-            var attendance = db.Attendance;
-            var eventList = new SelectList(db.Events, "EventID", "text");
-            ViewData.Add("EventID", eventList);
-            ViewBag.EventList = eventList;
-            return View();
+            if (user.AccountType == "Admin" || user.AccountType == "Staff")
+            {
+                var attendance = db.Attendance;
+                var eventList = new SelectList(db.Events, "EventID", "text");
+                ViewData.Add("EventID", eventList);
+                ViewBag.EventList = eventList;
+                return View();
+            }
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Sorry, you don't have the proper authorization to access this");
+            }
+
         }
 
         [HttpPost]
